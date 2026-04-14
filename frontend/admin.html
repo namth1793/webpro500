@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin — WebPro</title>
+<meta name="robots" content="noindex,nofollow"/>
+<style>
+/* ── RESET ──────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:15px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:#F0F2F5;color:#111;line-height:1.55}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+input,select,textarea{font-family:inherit}
+
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root{
+  --blue:#22C55E;--blue-d:#16A34A;--blue-xs:#F0FDF4;
+  --ink:#020617;--ink-2:#0F172A;
+  --muted:#6B7280;--border:#E4E7EB;--bg:#F0F2F5;
+  --white:#fff;--green:#22C55E;--green-xs:#F0FDF4;
+  --red:#DC2626;--red-xs:#FEF2F2;--amber:#D97706;--amber-xs:#FFFBEB;
+  --secondary:#334155;
+  --sidebar-w:240px;--topbar-h:56px;
+  --sh:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.06);
+}
+
+/* ── LOGIN PAGE ─────────────────────────────────────────── */
+#loginPage{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#020617 0%,#0F172A 60%,#0a2a1a 100%);
+}
+.login-card{
+  background:#fff;border-radius:16px;padding:40px 36px;
+  width:100%;max-width:380px;
+  box-shadow:0 24px 64px rgba(0,0,0,.3);
+}
+.login-logo{font-size:20px;font-weight:800;letter-spacing:-.03em;color:var(--ink);margin-bottom:6px}
+.login-logo span{color:var(--blue)}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.lf-group{margin-bottom:14px}
+.lf-group label{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.lf-group input{
+  width:100%;padding:11px 13px;border:1.5px solid var(--border);
+  border-radius:8px;font-size:15px;outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.lf-group input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(34,197,94,.1)}
+.login-btn{
+  width:100%;padding:13px;background:var(--blue);color:#fff;
+  border-radius:8px;font-size:15px;font-weight:700;border:none;cursor:pointer;
+  transition:background .15s,transform .15s;margin-top:6px;
+}
+.login-btn:hover{background:var(--blue-d);transform:translateY(-1px)}
+.login-err{
+  display:none;background:var(--red-xs);border:1px solid #FCA5A5;
+  color:#991B1B;border-radius:8px;padding:10px 13px;font-size:13px;font-weight:600;margin-top:10px;
+}
+.login-err.show{display:block}
+
+/* ── APP SHELL ──────────────────────────────────────────── */
+#appShell{display:none;height:100vh;overflow:hidden}
+#appShell.show{display:flex}
+
+/* ── SIDEBAR ────────────────────────────────────────────── */
+.sidebar{
+  width:var(--sidebar-w);min-width:var(--sidebar-w);
+  background:var(--ink-2);display:flex;flex-direction:column;
+  height:100vh;overflow-y:auto;flex-shrink:0;
+}
+.sb-header{padding:18px 20px 14px;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-logo{font-size:17px;font-weight:800;letter-spacing:-.03em;color:#fff}
+.sb-logo span{color:#4ADE80}
+.sb-admin{font-size:11px;color:rgba(255,255,255,.35);margin-top:2px;letter-spacing:.04em;text-transform:uppercase}
+
+.sb-section{padding:12px 12px 4px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.sb-nav{display:flex;flex-direction:column;gap:2px;padding:0 10px 12px}
+.sb-link{
+  display:flex;align-items:center;gap:10px;
+  padding:9px 12px;border-radius:8px;
+  font-size:13.5px;font-weight:600;color:rgba(255,255,255,.55);
+  transition:background .15s,color .15s;cursor:pointer;
+}
+.sb-link:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.85)}
+.sb-link.active{background:rgba(27,94,228,.35);color:#fff}
+.sb-link svg{flex-shrink:0;opacity:.7}
+.sb-link.active svg{opacity:1}
+
+.sb-footer{margin-top:auto;padding:14px 12px;border-top:1px solid rgba(255,255,255,.07)}
+.sb-logout{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 12px;border-radius:8px;width:100%;
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.4);
+  transition:background .15s,color .15s;
+}
+.sb-logout:hover{background:rgba(220,38,38,.15);color:#F87171}
+.sb-visit{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 12px;border-radius:8px;width:100%;
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.4);
+  transition:background .15s,color .15s;margin-bottom:4px;
+}
+.sb-visit:hover{background:rgba(255,255,255,.06);color:rgba(255,255,255,.75)}
+
+/* ── MAIN ───────────────────────────────────────────────── */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+
+/* topbar */
+.topbar{
+  height:var(--topbar-h);min-height:var(--topbar-h);
+  background:#fff;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;
+}
+.topbar-title{font-size:15px;font-weight:700;color:var(--ink)}
+.topbar-right{display:flex;align-items:center;gap:12px}
+.topbar-user{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--muted);
+}
+.topbar-avatar{
+  width:30px;height:30px;border-radius:50%;background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:800;color:#fff;
+}
+
+/* content area */
+.content{flex:1;overflow-y:auto;padding:24px}
+
+/* ── PAGE SECTIONS ──────────────────────────────────────── */
+.page{display:none}
+.page.active{display:block}
+
+/* ── STATS ROW ──────────────────────────────────────────── */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:24px}
+.stat-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 18px}
+.stat-label{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stat-value{font-size:32px;font-weight:800;letter-spacing:-.04em;color:var(--ink);line-height:1}
+.stat-sub{font-size:12px;color:var(--muted);margin-top:4px}
+.stat-card.blue .stat-value{color:var(--blue)}
+.stat-card.green .stat-value{color:var(--green)}
+.stat-card.amber .stat-value{color:var(--amber)}
+
+/* ── CARD ───────────────────────────────────────────────── */
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-header{
+  padding:16px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+}
+.card-title{font-size:14px;font-weight:700;color:var(--ink)}
+.card-body{padding:0}
+
+/* ── TABLE ──────────────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th{
+  padding:10px 16px;font-size:11px;font-weight:700;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--muted);
+  background:var(--bg);border-bottom:1px solid var(--border);text-align:left;
+  white-space:nowrap;
+}
+td{
+  padding:13px 16px;font-size:13.5px;color:#374151;
+  border-bottom:1px solid var(--border);vertical-align:middle;
+}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FAFAFA}
+
+/* ── BADGES ─────────────────────────────────────────────── */
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:99px;font-size:11px;font-weight:700;white-space:nowrap}
+.badge-new     {background:#F0FDF4;color:var(--blue)}
+.badge-contacted{background:var(--amber-xs);color:var(--amber)}
+.badge-done    {background:var(--green-xs);color:var(--green)}
+.badge-active  {background:var(--green-xs);color:var(--green)}
+.badge-inactive{background:#F3F4F6;color:var(--muted)}
+
+/* ── BUTTONS ────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:9px 16px;border-radius:8px;font-size:13px;font-weight:700;
+  transition:all .15s;border:1.5px solid transparent;cursor:pointer;white-space:nowrap;
+}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn-primary:hover{background:var(--blue-d)}
+.btn-ghost{background:transparent;color:var(--muted);border-color:var(--border)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-danger{background:var(--red-xs);color:var(--red);border-color:#FCA5A5}
+.btn-danger:hover{background:#FEE2E2}
+.btn-sm{padding:6px 12px;font-size:12px;border-radius:6px}
+.btn-icon{padding:7px;border-radius:7px}
+
+/* ── ACTION ROW ─────────────────────────────────────────── */
+.action-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border)}
+.search-box{position:relative;flex:1;min-width:200px;max-width:320px}
+.search-box input{
+  width:100%;padding:8px 12px 8px 34px;border:1.5px solid var(--border);
+  border-radius:8px;font-size:13.5px;outline:none;transition:border-color .2s;
+}
+.search-box input:focus{border-color:var(--blue)}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted)}
+
+/* ── MODAL ──────────────────────────────────────────────── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:800;align-items:center;justify-content:center;padding:20px;
+}
+.modal-overlay.open{display:flex}
+.modal{
+  background:#fff;border-radius:14px;width:100%;max-width:500px;
+  max-height:90vh;overflow-y:auto;
+  box-shadow:0 24px 64px rgba(0,0,0,.2);
+}
+.modal-head{
+  padding:20px 24px 16px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.modal-head h3{font-size:16px;font-weight:800;color:var(--ink)}
+.modal-close{
+  width:28px;height:28px;border-radius:50%;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;color:var(--muted);
+}
+.modal-close:hover{background:var(--border)}
+.modal-body{padding:20px 24px}
+.modal-foot{
+  padding:14px 24px;border-top:1px solid var(--border);
+  display:flex;justify-content:flex-end;gap:10px;
+}
+
+/* form inside modal */
+.fg{margin-bottom:14px}
+.fg label{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.fg input,.fg select,.fg textarea{
+  width:100%;padding:10px 12px;border:1.5px solid var(--border);
+  border-radius:8px;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(34,197,94,.1)}
+.fg textarea{resize:vertical;min-height:70px}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ── TOAST ──────────────────────────────────────────────── */
+#toast{
+  position:fixed;bottom:24px;right:24px;z-index:999;
+  background:var(--ink);color:#fff;
+  padding:12px 18px;border-radius:10px;font-size:13.5px;font-weight:600;
+  box-shadow:0 8px 24px rgba(0,0,0,.2);
+  transform:translateY(10px);opacity:0;transition:all .25s;pointer-events:none;
+}
+#toast.show{transform:translateY(0);opacity:1}
+#toast.ok{background:#065F46;border-left:3px solid #34D399}
+#toast.err{background:#991B1B;border-left:3px solid #F87171}
+
+/* ── EMPTY STATE ────────────────────────────────────────── */
+.empty{text-align:center;padding:48px 20px;color:var(--muted)}
+.empty svg{opacity:.2;margin:0 auto 12px}
+.empty p{font-size:14px}
+
+/* ── DETAIL PANEL (contact) ─────────────────────────────── */
+.detail-panel{
+  position:fixed;top:0;right:0;height:100vh;width:360px;
+  background:#fff;border-left:1px solid var(--border);
+  transform:translateX(100%);transition:transform .25s;
+  z-index:600;display:flex;flex-direction:column;
+  box-shadow:-8px 0 32px rgba(0,0,0,.1);
+}
+.detail-panel.open{transform:translateX(0)}
+.dp-head{
+  padding:18px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.dp-head h3{font-size:15px;font-weight:800}
+.dp-body{flex:1;overflow-y:auto;padding:20px}
+.dp-field{margin-bottom:16px}
+.dp-field label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);display:block;margin-bottom:4px}
+.dp-field p{font-size:14px;color:var(--ink)}
+.dp-foot{padding:16px 20px;border-top:1px solid var(--border);display:flex;gap:10px}
+
+/* ── DEMO PREVIEW ───────────────────────────────────────── */
+.demo-preview{height:100px;border-radius:8px;display:flex;flex-direction:column;padding:10px;margin-bottom:14px}
+.demo-preview.theme-blue{background:linear-gradient(145deg,#22C55E,#16A34A)}
+.demo-preview.theme-green{background:linear-gradient(145deg,#065F46,#047857)}
+.demo-preview.theme-dark{background:linear-gradient(145deg,#0F172A,#1E293B)}
+.demo-preview.theme-purple{background:linear-gradient(145deg,#5B21B6,#7C3AED)}
+.demo-preview.theme-red{background:linear-gradient(145deg,#991B1B,#DC2626)}
+.dp-nav{height:14px;background:rgba(255,255,255,.15);border-radius:3px;margin-bottom:7px}
+.dp-hero{flex:1;background:rgba(255,255,255,.08);border-radius:5px}
+
+/* ── RESPONSIVE ─────────────────────────────────────────── */
+@media(max-width:768px){
+  .sidebar{width:200px;min-width:200px}
+  :root{--sidebar-w:200px}
+}
+@media(max-width:600px){
+  #appShell{flex-direction:column}
+  .sidebar{display:none}
+  .fg-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ LOGIN PAGE ══════════════════════════════════════════ -->
+<div id="loginPage">
+  <div class="login-card">
+    <div class="login-logo">Web<span>Pro</span></div>
+    <div class="login-sub">Đăng nhập vào trang quản trị</div>
+    <div class="lf-group">
+      <label>Tên đăng nhập</label>
+      <input type="text" id="loginUser" placeholder="admin" autocomplete="username"/>
+    </div>
+    <div class="lf-group">
+      <label>Mật khẩu</label>
+      <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()" id="loginBtn">Đăng nhập</button>
+    <div class="login-err" id="loginErr"></div>
+    <a href="/" style="display:block;text-align:center;margin-top:16px;font-size:13px;color:var(--muted);transition:color .15s" onmouseover="this.style.color='var(--ink)'" onmouseout="this.style.color='var(--muted)'">
+      ← Về trang chủ
+    </a>
+  </div>
+</div>
+
+<!-- ══ APP SHELL ═══════════════════════════════════════════ -->
+<div id="appShell">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sb-header">
+      <div class="sb-logo">Web<span>Pro</span></div>
+      <div class="sb-admin" id="sbAdminName">Admin</div>
+    </div>
+
+    <div class="sb-section">Quản lý</div>
+    <div class="sb-nav">
+      <div class="sb-link active" data-page="dashboard" onclick="showPage('dashboard')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Tổng quan
+      </div>
+      <div class="sb-link" data-page="contacts" onclick="showPage('contacts')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        Khách liên hệ
+        <span id="sbContactCount" style="margin-left:auto;background:var(--blue);color:#fff;font-size:10px;font-weight:800;padding:1px 7px;border-radius:99px;display:none"></span>
+      </div>
+      <div class="sb-link" data-page="demos" onclick="showPage('demos')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Website mẫu
+      </div>
+    </div>
+
+    <div class="sb-footer">
+      <a href="/" target="_blank" class="sb-visit">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Xem trang chủ
+      </a>
+      <button class="sb-visit" onclick="openModal('changePwModal')">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        Đổi mật khẩu
+      </button>
+      <button class="sb-logout" onclick="doLogout()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Đăng xuất
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <div class="main">
+    <!-- Topbar -->
+    <div class="topbar">
+      <div class="topbar-title" id="topbarTitle">Tổng quan</div>
+      <div class="topbar-right">
+        <div class="topbar-user">
+          <div class="topbar-avatar" id="topbarAvatar">A</div>
+          <span id="topbarName">Admin</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+      <!-- ── DASHBOARD ── -->
+      <div id="page-dashboard" class="page active">
+        <div class="stats-row" id="dashStats">
+          <div class="stat-card blue">
+            <div class="stat-label">Tổng liên hệ</div>
+            <div class="stat-value" id="ds-total">—</div>
+            <div class="stat-sub">Tất cả thời gian</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Chưa xử lý</div>
+            <div class="stat-value" id="ds-new">—</div>
+            <div class="stat-sub">Cần liên hệ lại</div>
+          </div>
+          <div class="stat-card amber">
+            <div class="stat-label">Đang xử lý</div>
+            <div class="stat-value" id="ds-contacted">—</div>
+            <div class="stat-sub">Đã liên hệ</div>
+          </div>
+          <div class="stat-card green">
+            <div class="stat-label">Hoàn tất</div>
+            <div class="stat-value" id="ds-done">—</div>
+            <div class="stat-sub">Đã chốt đơn</div>
+          </div>
+        </div>
+        <!-- Recent contacts -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Liên hệ gần đây</div>
+            <button class="btn btn-ghost btn-sm" onclick="showPage('contacts')">Xem tất cả</button>
+          </div>
+          <div class="card-body tbl-wrap">
+            <table>
+              <thead><tr><th>Họ tên</th><th>Điện thoại</th><th>Dịch vụ</th><th>Trạng thái</th><th>Thời gian</th></tr></thead>
+              <tbody id="recentTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── CONTACTS ── -->
+      <div id="page-contacts" class="page">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Danh sách khách liên hệ</div>
+            <button class="btn btn-ghost btn-sm" onclick="exportCSV()">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Xuất CSV
+            </button>
+          </div>
+          <div class="action-row">
+            <div class="search-box">
+              <span class="search-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              </span>
+              <input type="search" id="contactSearch" placeholder="Tìm theo tên, số điện thoại…" oninput="filterContacts()"/>
+            </div>
+            <select id="contactStatusFilter" onchange="filterContacts()" style="padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;outline:none;color:var(--ink)">
+              <option value="">Tất cả trạng thái</option>
+              <option value="new">Chưa xử lý</option>
+              <option value="contacted">Đang xử lý</option>
+              <option value="done">Hoàn tất</option>
+            </select>
+          </div>
+          <div class="card-body tbl-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Họ tên</th>
+                  <th>Điện thoại</th>
+                  <th>Loại website</th>
+                  <th>Trạng thái</th>
+                  <th>Ngày liên hệ</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="contactTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── DEMOS ── -->
+      <div id="page-demos" class="page">
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Quản lý website mẫu</div>
+            <button class="btn btn-primary btn-sm" onclick="openDemoModal()">
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Thêm mới
+            </button>
+          </div>
+          <div class="card-body tbl-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Thứ tự</th>
+                  <th>Ảnh</th>
+                  <th>Tiêu đề</th>
+                  <th>Danh mục</th>
+                  <th>Link demo</th>
+                  <th>Trạng thái</th>
+                  <th>Thao tác</th>
+                </tr>
+              </thead>
+              <tbody id="demoTbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content -->
+  </div><!-- /main -->
+</div><!-- /appShell -->
+
+<!-- ══ CONTACT DETAIL PANEL ════════════════════════════════ -->
+<div class="detail-panel" id="detailPanel">
+  <div class="dp-head">
+    <h3>Chi tiết liên hệ</h3>
+    <button class="modal-close" onclick="closeDetail()">
+      <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="dp-body" id="detailBody"></div>
+  <div class="dp-foot" id="detailFoot"></div>
+</div>
+
+<!-- ══ DEMO MODAL ═══════════════════════════════════════════ -->
+<div class="modal-overlay" id="demoModal" onclick="closeModalOut(event,'demoModal')">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="demoModalTitle">Thêm website mẫu</h3>
+      <button class="modal-close" onclick="closeDemoModal()">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="demoId"/>
+      <input type="hidden" id="demoImageUrl"/>
+      <!-- Image upload -->
+      <div class="fg">
+        <label>Ảnh banner <span style="color:var(--muted);font-weight:400;text-transform:none">(JPG/PNG, tối đa 5MB)</span></label>
+        <div id="imgUploadArea" onclick="document.getElementById('demoImageFile').click()"
+          style="border:2px dashed var(--border);border-radius:8px;padding:16px;text-align:center;cursor:pointer;transition:border-color .2s;min-height:100px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:#FAFAFA"
+          onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--border)'">
+          <img id="imgPreview" src="" alt="" style="display:none;max-height:120px;border-radius:6px;object-fit:cover;width:100%"/>
+          <div id="imgPlaceholder" style="color:var(--muted);font-size:13px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Nhấn để chọn ảnh
+          </div>
+          <div id="imgUploadStatus" style="font-size:12px;color:var(--blue);display:none">Đang tải lên…</div>
+        </div>
+        <input type="file" id="demoImageFile" accept="image/*" style="display:none" onchange="handleImageUpload(this)"/>
+      </div>
+      <div class="fg">
+        <label>Tiêu đề <span style="color:var(--red)">*</span></label>
+        <input type="text" id="demoTitle" placeholder="VD: Website shop thời trang online"/>
+      </div>
+      <div class="fg-row">
+        <div class="fg">
+          <label>Danh mục <span style="color:var(--red)">*</span></label>
+          <input type="text" id="demoCategory" placeholder="VD: Shop bán hàng"/>
+        </div>
+        <div class="fg">
+          <label>Thứ tự hiển thị</label>
+          <input type="number" id="demoOrder" placeholder="1" min="0"/>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Link website demo</label>
+        <input type="url" id="demoDemoUrl" placeholder="https://demo.webpro.vn/shop"/>
+      </div>
+      <div class="fg">
+        <label>Mô tả ngắn</label>
+        <textarea id="demoDesc" placeholder="Mô tả tính năng, đặc điểm của website mẫu này…"></textarea>
+      </div>
+      <div class="fg">
+        <label>Trạng thái</label>
+        <select id="demoActive">
+          <option value="1">Hiển thị</option>
+          <option value="0">Ẩn</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeDemoModal()">Hủy</button>
+      <button class="btn btn-primary" onclick="saveDemo()" id="demoSaveBtn">Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHANGE PASSWORD MODAL ════════════════════════════════ -->
+<div class="modal-overlay" id="changePwModal" onclick="closeModalOut(event,'changePwModal')">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-head">
+      <h3>Đổi mật khẩu</h3>
+      <button class="modal-close" onclick="closeModal('changePwModal')">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label>Mật khẩu hiện tại</label>
+        <input type="password" id="pwCurrent" placeholder="••••••••"/>
+      </div>
+      <div class="fg">
+        <label>Mật khẩu mới</label>
+        <input type="password" id="pwNew" placeholder="Tối thiểu 6 ký tự"/>
+      </div>
+      <div class="fg">
+        <label>Xác nhận mật khẩu mới</label>
+        <input type="password" id="pwConfirm" placeholder="Nhập lại mật khẩu mới"/>
+      </div>
+      <div id="pwErr" style="display:none;color:var(--red);font-size:13px;font-weight:600;margin-top:6px"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('changePwModal')">Hủy</button>
+      <button class="btn btn-primary" onclick="doChangePw()" id="changePwBtn">Lưu mật khẩu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONFIRM MODAL ════════════════════════════════════════ -->
+<div class="modal-overlay" id="confirmModal" onclick="closeModalOut(event,'confirmModal')">
+  <div class="modal" style="max-width:380px">
+    <div class="modal-head">
+      <h3>Xác nhận xóa</h3>
+      <button class="modal-close" onclick="closeModal('confirmModal')">
+        <svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p id="confirmMsg" style="font-size:14px;color:#374151"></p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal('confirmModal')">Hủy</button>
+      <button class="btn btn-danger" id="confirmOkBtn">Xóa</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TOAST ════════════════════════════════════════════════ -->
+<div id="toast"></div>
+
+<script>
+'use strict';
+
+// ── STATE ────────────────────────────────────────────────────
+let token = localStorage.getItem('wp_token') || '';
+let contacts = [], demos = [];
+let currentPage = 'dashboard';
+
+// ── UTILS ────────────────────────────────────────────────────
+const API = (path, opts={}) => {
+  const headers = {'Content-Type':'application/json'};
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  return fetch('/api/admin' + path, { headers, ...opts }).then(r => {
+    const ct = r.headers.get('content-type') || '';
+    if (ct.includes('application/json')) return r.json();
+    return r.text().then(t => ({ error: `Server error ${r.status}: ${t.slice(0,80)}` }));
+  });
+};
+
+function toast(msg, type='ok') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'show ' + type;
+  setTimeout(() => { el.className = ''; }, 3000);
+}
+
+function fmtDate(str) {
+  const d = new Date(str);
+  return d.toLocaleDateString('vi-VN', { day:'2-digit', month:'2-digit', year:'numeric' })
+    + ' ' + d.toLocaleTimeString('vi-VN', { hour:'2-digit', minute:'2-digit' });
+}
+
+function serviceLabel(v) {
+  const map = {landing_page:'Landing page',shop:'Shop bán hàng',service:'Spa/Nail/Salon',restaurant:'Quán ăn/Cafe',portfolio:'Portfolio',company:'Website công ty',other:'Khác'};
+  return map[v] || v || '—';
+}
+
+const statusBadge = s => ({
+  new:        '<span class="badge badge-new">Chưa xử lý</span>',
+  contacted:  '<span class="badge badge-contacted">Đang xử lý</span>',
+  done:       '<span class="badge badge-done">Hoàn tất</span>',
+}[s] || s);
+
+const themeName = t => ({blue:'Xanh dương',green:'Xanh lá',dark:'Tối',purple:'Tím',red:'Đỏ'}[t] || t);
+
+// ── AUTH ─────────────────────────────────────────────────────
+async function doLogin() {
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('loginErr');
+  const u   = document.getElementById('loginUser').value.trim();
+  const p   = document.getElementById('loginPass').value;
+  err.className = 'login-err';
+  btn.textContent = 'Đang đăng nhập…'; btn.disabled = true;
+
+  const data = await fetch('/api/admin/login', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ username: u, password: p })
+  }).then(r => r.json()).catch(() => ({ error: 'Không kết nối được server.' }));
+
+  btn.textContent = 'Đăng nhập'; btn.disabled = false;
+
+  if (data.token) {
+    token = data.token;
+    localStorage.setItem('wp_token', token);
+    enterApp(data.username);
+  } else {
+    err.textContent = data.error || 'Lỗi không xác định.';
+    err.className = 'login-err show';
+  }
+}
+
+function enterApp(username) {
+  document.getElementById('loginPage').style.display = 'none';
+  document.getElementById('appShell').classList.add('show');
+  document.getElementById('sbAdminName').textContent = username;
+  document.getElementById('topbarName').textContent  = username;
+  document.getElementById('topbarAvatar').textContent = username[0].toUpperCase();
+  loadAll();
+}
+
+function doLogout() {
+  token = ''; localStorage.removeItem('wp_token');
+  location.reload();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('loginPage').style.display !== 'none') doLogin();
+});
+
+// ── NAVIGATION ───────────────────────────────────────────────
+const pageTitles = { dashboard:'Tổng quan', contacts:'Khách liên hệ', demos:'Website mẫu' };
+
+function showPage(name) {
+  currentPage = name;
+  document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.sb-link').forEach(el => {
+    el.classList.toggle('active', el.dataset.page === name);
+  });
+  document.getElementById('topbarTitle').textContent = pageTitles[name] || name;
+  if (name === 'contacts') renderContacts();
+  if (name === 'demos')    renderDemos();
+}
+
+// ── LOAD DATA ────────────────────────────────────────────────
+async function loadAll() {
+  const [c, d] = await Promise.all([
+    API('/contacts'),
+    API('/demo-sites')
+  ]);
+  if (Array.isArray(c)) {
+    contacts = c;
+    renderDashboard();
+    updateContactBadge();
+  }
+  if (Array.isArray(d)) {
+    demos = d;
+  }
+}
+
+function updateContactBadge() {
+  const n = contacts.filter(c => c.status === 'new').length;
+  const el = document.getElementById('sbContactCount');
+  if (n > 0) { el.textContent = n; el.style.display = 'inline-block'; }
+  else el.style.display = 'none';
+}
+
+// ── DASHBOARD ────────────────────────────────────────────────
+function renderDashboard() {
+  const total     = contacts.length;
+  const newCount  = contacts.filter(c => c.status === 'new').length;
+  const contacted = contacts.filter(c => c.status === 'contacted').length;
+  const done      = contacts.filter(c => c.status === 'done').length;
+  document.getElementById('ds-total').textContent     = total;
+  document.getElementById('ds-new').textContent       = newCount;
+  document.getElementById('ds-contacted').textContent = contacted;
+  document.getElementById('ds-done').textContent      = done;
+
+  const recent = contacts.slice(0, 8);
+  const tbody  = document.getElementById('recentTbody');
+  tbody.innerHTML = recent.length ? recent.map(c => `
+    <tr style="cursor:pointer" onclick="openDetail(${c.id})">
+      <td><strong>${esc(c.name)}</strong></td>
+      <td><a href="tel:${esc(c.phone)}" style="color:var(--blue);font-weight:600">${esc(c.phone)}</a></td>
+      <td>${serviceLabel(c.service_type)}</td>
+      <td>${statusBadge(c.status)}</td>
+      <td style="color:var(--muted);font-size:13px">${fmtDate(c.created_at)}</td>
+    </tr>`).join('')
+  : `<tr><td colspan="5"><div class="empty"><p>Chưa có liên hệ nào.</p></div></td></tr>`;
+}
+
+// ── CONTACTS ─────────────────────────────────────────────────
+function renderContacts(list) {
+  list = list || contacts;
+  const tbody = document.getElementById('contactTbody');
+  tbody.innerHTML = list.length ? list.map((c, i) => `
+    <tr>
+      <td style="color:var(--muted);font-size:12px">${i+1}</td>
+      <td><strong style="cursor:pointer;color:var(--blue)" onclick="openDetail(${c.id})">${esc(c.name)}</strong></td>
+      <td><a href="tel:${esc(c.phone)}" style="color:var(--blue);font-weight:600">${esc(c.phone)}</a></td>
+      <td>${serviceLabel(c.service_type)}</td>
+      <td>
+        <select onchange="updateStatus(${c.id}, this.value)"
+          style="padding:4px 8px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;outline:none;cursor:pointer;background:#fff">
+          <option value="new"       ${c.status==='new'       ?'selected':''}>Chưa xử lý</option>
+          <option value="contacted" ${c.status==='contacted' ?'selected':''}>Đang xử lý</option>
+          <option value="done"      ${c.status==='done'      ?'selected':''}>Hoàn tất</option>
+        </select>
+      </td>
+      <td style="color:var(--muted);font-size:12px">${fmtDate(c.created_at)}</td>
+      <td>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-ghost btn-sm btn-icon" title="Xem chi tiết" onclick="openDetail(${c.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+          <button class="btn btn-danger btn-sm btn-icon" title="Xóa" onclick="deleteContact(${c.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>`).join('')
+  : `<tr><td colspan="7"><div class="empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg><p>Không có kết quả phù hợp.</p></div></td></tr>`;
+}
+
+function filterContacts() {
+  const q   = document.getElementById('contactSearch').value.toLowerCase();
+  const st  = document.getElementById('contactStatusFilter').value;
+  const res = contacts.filter(c =>
+    (!q  || c.name.toLowerCase().includes(q) || c.phone.includes(q)) &&
+    (!st || c.status === st)
+  );
+  renderContacts(res);
+}
+
+async function updateStatus(id, status) {
+  await API(`/contacts/${id}/status`, { method:'PATCH', body: JSON.stringify({ status }) });
+  contacts = contacts.map(c => c.id === id ? {...c, status} : c);
+  renderDashboard();
+  updateContactBadge();
+  toast('Đã cập nhật trạng thái.');
+}
+
+function deleteContact(id) {
+  const c = contacts.find(x => x.id === id);
+  document.getElementById('confirmMsg').textContent = `Bạn có chắc muốn xóa liên hệ "${c?.name}"? Hành động này không thể hoàn tác.`;
+  document.getElementById('confirmOkBtn').onclick = async () => {
+    await API(`/contacts/${id}`, { method:'DELETE' });
+    contacts = contacts.filter(x => x.id !== id);
+    closeModal('confirmModal'); closeDetail();
+    renderDashboard(); renderContacts(); updateContactBadge();
+    toast('Đã xóa liên hệ.');
+  };
+  openModal('confirmModal');
+}
+
+// ── DETAIL PANEL ─────────────────────────────────────────────
+function openDetail(id) {
+  const c = contacts.find(x => x.id === id);
+  if (!c) return;
+  document.getElementById('detailBody').innerHTML = `
+    <div class="dp-field"><label>Họ và tên</label><p>${esc(c.name)}</p></div>
+    <div class="dp-field"><label>Số điện thoại</label><p><a href="tel:${esc(c.phone)}" style="color:var(--blue);font-weight:700">${esc(c.phone)}</a></p></div>
+    <div class="dp-field"><label>Loại website</label><p>${serviceLabel(c.service_type)}</p></div>
+    <div class="dp-field"><label>Ghi chú</label><p>${c.message ? esc(c.message) : '<span style="color:var(--muted)">Không có ghi chú</span>'}</p></div>
+    <div class="dp-field"><label>Trạng thái</label><p>${statusBadge(c.status)}</p></div>
+    <div class="dp-field"><label>Ngày liên hệ</label><p>${fmtDate(c.created_at)}</p></div>
+  `;
+  document.getElementById('detailFoot').innerHTML = `
+    <a href="tel:${esc(c.phone)}" class="btn btn-primary" style="flex:1;justify-content:center">Gọi điện</a>
+    <a href="https://zalo.me/${esc(c.phone)}" target="_blank" rel="noopener" class="btn btn-ghost" style="flex:1;justify-content:center">Zalo</a>
+  `;
+  document.getElementById('detailPanel').classList.add('open');
+}
+
+function closeDetail() { document.getElementById('detailPanel').classList.remove('open'); }
+
+// ── DEMOS ────────────────────────────────────────────────────
+function renderDemos() {
+  const tbody = document.getElementById('demoTbody');
+  tbody.innerHTML = demos.length ? demos.map(d => `
+    <tr>
+      <td style="color:var(--muted);font-weight:700;width:50px">${d.sort_order}</td>
+      <td style="width:80px">
+        ${d.image_url
+          ? `<img src="${esc(d.image_url)}" style="width:64px;height:40px;object-fit:cover;border-radius:5px;border:1px solid var(--border)"/>`
+          : `<div style="width:64px;height:40px;border-radius:5px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`
+        }
+      </td>
+      <td><strong>${esc(d.title)}</strong></td>
+      <td><span style="font-size:12px;color:var(--muted)">${esc(d.category)}</span></td>
+      <td>${d.demo_url
+          ? `<a href="${esc(d.demo_url)}" target="_blank" rel="noopener" style="color:var(--blue);font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:4px">Xem demo <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>`
+          : '<span style="font-size:12px;color:var(--border)">—</span>'
+        }</td>
+      <td>${d.is_active ? '<span class="badge badge-active">Hiển thị</span>' : '<span class="badge badge-inactive">Ẩn</span>'}</td>
+      <td>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-ghost btn-sm btn-icon" title="Chỉnh sửa" onclick="openDemoModal(${d.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          </button>
+          <button class="btn btn-danger btn-sm btn-icon" title="Xóa" onclick="deleteDemo(${d.id})">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/></svg>
+          </button>
+        </div>
+      </td>
+    </tr>`).join('')
+  : `<tr><td colspan="7"><div class="empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/></svg><p>Chưa có website mẫu nào.</p></div></td></tr>`;
+}
+
+function openDemoModal(id) {
+  const d = id ? demos.find(x => x.id === id) : null;
+  document.getElementById('demoModalTitle').textContent = d ? 'Chỉnh sửa website mẫu' : 'Thêm website mẫu';
+  document.getElementById('demoId').value        = d?.id || '';
+  document.getElementById('demoTitle').value     = d?.title || '';
+  document.getElementById('demoCategory').value  = d?.category || '';
+  document.getElementById('demoDesc').value      = d?.description || '';
+  document.getElementById('demoOrder').value     = d?.sort_order ?? '';
+  document.getElementById('demoActive').value    = d?.is_active !== false ? '1' : '0';
+  document.getElementById('demoDemoUrl').value   = d?.demo_url || '';
+  document.getElementById('demoImageUrl').value  = d?.image_url || '';
+  document.getElementById('demoImageFile').value = '';
+  const preview = document.getElementById('imgPreview');
+  const placeholder = document.getElementById('imgPlaceholder');
+  if (d?.image_url) {
+    preview.src = d.image_url; preview.style.display = 'block';
+    placeholder.style.display = 'none';
+  } else {
+    preview.src = ''; preview.style.display = 'none';
+    placeholder.style.display = 'block';
+  }
+  openModal('demoModal');
+}
+
+async function handleImageUpload(input) {
+  const file = input.files[0];
+  if (!file) return;
+  const status = document.getElementById('imgUploadStatus');
+  const placeholder = document.getElementById('imgPlaceholder');
+  const preview = document.getElementById('imgPreview');
+  status.style.display = 'block'; placeholder.style.display = 'none'; preview.style.display = 'none';
+  const fd = new FormData();
+  fd.append('image', file);
+  const res = await fetch('/api/admin/upload-image', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + token },
+    body: fd
+  }).then(r => r.json()).catch(() => ({ error: 'Lỗi kết nối.' }));
+  status.style.display = 'none';
+  if (res.url) {
+    document.getElementById('demoImageUrl').value = res.url;
+    preview.src = res.url; preview.style.display = 'block';
+    toast('Tải ảnh lên thành công.');
+  } else {
+    placeholder.style.display = 'block';
+    toast(res.error || 'Upload thất bại.', 'err');
+  }
+}
+
+function closeDemoModal() { closeModal('demoModal'); }
+
+async function saveDemo() {
+  const id       = document.getElementById('demoId').value;
+  const title    = document.getElementById('demoTitle').value.trim();
+  const category = document.getElementById('demoCategory').value.trim();
+  if (!title || !category) { toast('Vui lòng nhập tiêu đề và danh mục.', 'err'); return; }
+
+  const body = {
+    title, category,
+    description: document.getElementById('demoDesc').value.trim(),
+    image_url:   document.getElementById('demoImageUrl').value,
+    demo_url:    document.getElementById('demoDemoUrl').value.trim(),
+    sort_order:  parseInt(document.getElementById('demoOrder').value) || 0,
+    is_active:   document.getElementById('demoActive').value === '1',
+  };
+
+  const btn = document.getElementById('demoSaveBtn');
+  btn.disabled = true; btn.textContent = 'Đang lưu…';
+
+  let res;
+  if (id) {
+    res = await API(`/demo-sites/${id}`, { method:'PUT', body: JSON.stringify(body) });
+    if (res.success) { demos = demos.map(d => d.id === parseInt(id) ? {...d, ...body, id:parseInt(id)} : d); toast('Đã cập nhật website mẫu.'); }
+  } else {
+    res = await API('/demo-sites', { method:'POST', body: JSON.stringify(body) });
+    if (res.success) { demos.push({ ...body, id: res.id, created_at: new Date().toISOString() }); toast('Đã thêm website mẫu mới.'); }
+  }
+
+  btn.disabled = false; btn.textContent = 'Lưu';
+  if (res?.success) { closeDemoModal(); renderDemos(); }
+  else toast(res?.error || 'Lỗi khi lưu.', 'err');
+}
+
+function deleteDemo(id) {
+  const d = demos.find(x => x.id === id);
+  document.getElementById('confirmMsg').textContent = `Bạn có chắc muốn xóa website mẫu "${d?.title}"? Hành động này không thể hoàn tác.`;
+  document.getElementById('confirmOkBtn').onclick = async () => {
+    await API(`/demo-sites/${id}`, { method:'DELETE' });
+    demos = demos.filter(x => x.id !== id);
+    closeModal('confirmModal'); renderDemos();
+    toast('Đã xóa website mẫu.');
+  };
+  openModal('confirmModal');
+}
+
+// ── CHANGE PASSWORD ──────────────────────────────────────────
+async function doChangePw() {
+  const cur  = document.getElementById('pwCurrent').value;
+  const nw   = document.getElementById('pwNew').value;
+  const conf = document.getElementById('pwConfirm').value;
+  const err  = document.getElementById('pwErr');
+  err.style.display = 'none';
+  if (!cur || !nw || !conf) { err.textContent = 'Vui lòng điền đầy đủ.'; err.style.display='block'; return; }
+  if (nw.length < 6)        { err.textContent = 'Mật khẩu mới tối thiểu 6 ký tự.'; err.style.display='block'; return; }
+  if (nw !== conf)          { err.textContent = 'Mật khẩu xác nhận không khớp.'; err.style.display='block'; return; }
+  const btn = document.getElementById('changePwBtn');
+  btn.disabled = true; btn.textContent = 'Đang lưu…';
+  const res = await API('/change-password', { method:'POST', body: JSON.stringify({ current: cur, newPassword: nw }) });
+  btn.disabled = false; btn.textContent = 'Lưu mật khẩu';
+  if (res.success) {
+    closeModal('changePwModal');
+    document.getElementById('pwCurrent').value = document.getElementById('pwNew').value = document.getElementById('pwConfirm').value = '';
+    toast('Đã đổi mật khẩu thành công.');
+  } else {
+    err.textContent = res.error || 'Lỗi không xác định.'; err.style.display='block';
+  }
+}
+
+// ── EXPORT CSV ───────────────────────────────────────────────
+function exportCSV() {
+  if (!contacts.length) { toast('Không có dữ liệu để xuất.', 'err'); return; }
+  const rows = [['#','Họ tên','Điện thoại','Loại website','Trạng thái','Ngày liên hệ']];
+  contacts.forEach((c, i) => rows.push([
+    i+1, c.name, c.phone, serviceLabel(c.service_type),
+    {new:'Chưa xử lý',contacted:'Đang xử lý',done:'Hoàn tất'}[c.status]||c.status,
+    fmtDate(c.created_at)
+  ]));
+  const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8'}));
+  a.download = `contacts_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  toast('Đã xuất file CSV.');
+}
+
+// ── MODAL HELPERS ────────────────────────────────────────────
+function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+function closeModalOut(e, id) { if (e.target === document.getElementById(id)) closeModal(id); }
+
+// ── XSS ESCAPE ───────────────────────────────────────────────
+function esc(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── BOOT ─────────────────────────────────────────────────────
+(async () => {
+  if (token) {
+    const me = await API('/me').catch(() => ({}));
+    if (me.username) { enterApp(me.username); }
+    else { token = ''; localStorage.removeItem('wp_token'); }
+  }
+})();
+</script>
+</body>
+</html>

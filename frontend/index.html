@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Làm Website Giá Rẻ Từ 500K – Giao 1–3 Ngày | WebPro</title>
+<meta name="description" content="Thiết kế website giá rẻ chuyên nghiệp từ 500.000đ. Chuẩn mobile, tốc độ nhanh, SEO cơ bản. Phù hợp shop, spa, sinh viên, doanh nghiệp nhỏ. Tư vấn miễn phí 0852 297 684."/>
+<meta name="keywords" content="làm website giá rẻ, thiết kế website giá rẻ, làm web 500k, thiết kế web cho shop"/>
+<meta name="robots" content="index,follow"/>
+<meta property="og:title" content="Làm Website Giá Rẻ Từ 500K – WebPro"/>
+<meta property="og:description" content="Thiết kế web chuyên nghiệp từ 500K. Giao 1–3 ngày. Chuẩn mobile. Tư vấn miễn phí."/>
+<meta property="og:type" content="website"/>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-XXXX');</script>
+
+<style>
+/* ─── RESET ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.75;color:#111;background:#fff;
+  padding-bottom:72px;
+}
+@media(min-width:769px){body{padding-bottom:0}}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{cursor:pointer;font-family:inherit;border:none;background:none}
+
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root{
+  --blue:#22C55E;
+  --blue-d:#16A34A;
+  --blue-xs:#F0FDF4;
+  --blue-sm:#DCFCE7;
+  --ink:#020617;
+  --ink-2:#0F172A;
+  --muted:#64748B;
+  --border:#E2E8F0;
+  --bg:#F8FAFC;
+  --white:#fff;
+  --green:#22C55E;
+  --green-xs:#F0FDF4;
+  --red:#DC2626;
+  --secondary:#334155;
+  --cta:#22C55E;
+  --cta-d:#16A34A;
+  --r:10px;
+  --r-lg:16px;
+  --sh:0 1px 4px rgba(0,0,0,.07),0 4px 16px rgba(0,0,0,.06);
+  --sh-lg:0 8px 40px rgba(0,0,0,.12);
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+.wrap-sm{max-width:720px;margin:0 auto;padding:0 24px}
+.sec{padding:88px 0}
+.sec-sm{padding:64px 0}
+.bg-ink{background:var(--ink-2)}
+.bg-light{background:var(--bg)}
+.center{text-align:center}
+
+/* ─── TYPE ───────────────────────────────────────────── */
+h1{font-size:clamp(32px,5.5vw,60px);font-weight:900;line-height:1.1;letter-spacing:-.04em;color:var(--ink)}
+h2{font-size:clamp(24px,3.5vw,40px);font-weight:800;line-height:1.2;letter-spacing:-.03em;color:var(--ink)}
+h3{font-size:clamp(15px,2vw,18px);font-weight:700;line-height:1.4;color:var(--ink)}
+p{color:#374151;line-height:1.75}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:16px;
+}
+.eyebrow-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--blue);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.lead{font-size:17px;color:var(--muted);max-width:560px;margin:10px auto 0;line-height:1.7}
+
+/* ─── BUTTONS ────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;border-radius:var(--r);font-size:15px;font-weight:700;
+  transition:transform .18s,box-shadow .18s,background .18s;
+  border:none;cursor:pointer;white-space:nowrap;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.3)}
+.btn-primary:hover{background:var(--blue-d);box-shadow:0 6px 20px rgba(34,197,94,.4)}
+.btn-dark{background:var(--ink);color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+.btn-dark:hover{background:#1a1a2e;transform:translateY(-2px)}
+.btn-zalo{background:#0068FF;color:#fff;box-shadow:0 4px 14px rgba(0,104,255,.28)}
+.btn-zalo:hover{background:#0052cc;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,104,255,.38)}
+.btn-outline{background:transparent;color:var(--blue);border:1.5px solid var(--blue)}
+.btn-outline:hover{background:var(--blue-xs)}
+.btn-ghost{background:transparent;color:var(--muted);border:1.5px solid var(--border)}
+.btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
+.btn-lg{padding:18px 34px;font-size:16px;border-radius:12px}
+.btn-xl{padding:20px 40px;font-size:18px;border-radius:14px}
+.btn-full{width:100%}
+
+/* ─── SVG ICON HELPER ────────────────────────────────── */
+.icon{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ─── NAVBAR ─────────────────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 0;
+}
+.logo{font-size:18px;font-weight:800;letter-spacing:-.03em;color:var(--ink)}
+.logo span{color:var(--blue)}
+.logo-tag{
+  font-size:10px;font-weight:700;letter-spacing:.04em;
+  background:var(--blue-xs);color:var(--blue);
+  padding:2px 7px;border-radius:4px;margin-left:6px;vertical-align:middle;
+}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.nav-tel{
+  font-size:14px;font-weight:700;color:var(--ink);
+  display:flex;align-items:center;gap:7px;
+}
+@media(max-width:560px){.nav-tel{display:none}}
+
+/* ─── ALERT BAND ─────────────────────────────────────── */
+.alert-band{
+  background:var(--ink);padding:10px 0;text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.alert-band p{
+  font-size:13px;font-weight:600;color:rgba(255,255,255,.8);
+}
+.alert-band a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4)}
+.alert-band strong{color:#fff}
+
+/* ─── HERO ───────────────────────────────────────────── */
+.hero{
+  background:var(--ink-2);
+  padding:96px 0 88px;
+  position:relative;overflow:hidden;
+}
+/* glow bottom */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(ellipse 80% 50% at 50% 100%,rgba(34,197,94,.13) 0%,transparent 70%);
+  pointer-events:none;
+}
+/* grid lines */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+.hero-grid{
+  position:relative;z-index:1;
+  max-width:740px;margin:0 auto;
+  text-align:center;
+}
+
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.7);font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:6px 14px;border-radius:99px;margin-bottom:24px;
+}
+.hero-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:#34D399}
+.hero h1{color:#fff;margin-bottom:18px}
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#4ADE80 0%,#22C55E 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  font-size:18px;color:rgba(255,255,255,.65);
+  max-width:560px;margin:0 auto 36px;line-height:1.65;
+}
+.hero-sub strong{color:rgba(255,255,255,.95)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:44px;justify-content:center}
+
+/* hero stat bar */
+.hero-stats{
+  display:flex;flex-wrap:wrap;gap:28px;
+  padding-top:32px;border-top:1px solid rgba(255,255,255,.09);
+  justify-content:center;
+}
+.hs-item{}
+.hs-num{font-size:26px;font-weight:800;color:#fff;line-height:1;margin-bottom:3px}
+.hs-lbl{font-size:12px;color:rgba(255,255,255,.45);letter-spacing:.03em}
+
+/* browser mockup */
+.browser{
+  background:#161625;border-radius:14px;overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.07);
+}
+.browser-bar{
+  background:#1e1e32;padding:10px 14px;
+  display:flex;align-items:center;gap:8px;
+}
+.b-dots{display:flex;gap:5px}
+.b-dot{width:9px;height:9px;border-radius:50%}
+.b-url{
+  flex:1;margin-left:10px;
+  background:#161625;border-radius:4px;
+  padding:4px 10px;font-size:11px;color:#4B5563;
+}
+.browser-body{background:#fff;padding:14px}
+.bb-nav{height:24px;background:var(--blue);border-radius:5px;margin-bottom:10px;opacity:.9}
+.bb-hero{
+  height:72px;background:linear-gradient(120deg,var(--blue-xs),#E8EEFF);
+  border-radius:7px;margin-bottom:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.03em;
+}
+.bb-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.bb-card{height:36px;background:var(--bg);border-radius:5px;border:1px solid var(--border)}
+.bb-card:nth-child(2){background:var(--blue-xs)}
+.bb-btn{height:24px;background:var(--blue);border-radius:5px;margin-top:8px;opacity:.75}
+
+/* ─── TRUST BAR ──────────────────────────────────────── */
+.trust-bar{background:var(--ink);padding:14px 0}
+.trust-inner{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:6px 32px;
+}
+.trust-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:#6B7280;
+}
+.trust-check{
+  width:16px;height:16px;border-radius:50%;
+  background:rgba(5,150,105,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+
+/* ─── PROBLEM ────────────────────────────────────────── */
+.problem-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:48px;
+}
+.problem-card{
+  background:#fff;border:1px solid #FCA5A5;border-left:3px solid var(--red);
+  border-radius:var(--r);padding:22px 20px;
+  transition:box-shadow .2s;
+}
+.problem-card:hover{box-shadow:var(--sh)}
+.prob-icon-wrap{
+  width:36px;height:36px;border-radius:8px;
+  background:#FEF2F2;display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;flex-shrink:0;
+}
+.problem-card h3{font-size:15px;margin-bottom:6px}
+.problem-card p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ─── FEATURES ───────────────────────────────────────── */
+.feature-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;margin-top:48px;
+}
+.feature-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:24px 20px;transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.feature-card:hover{border-color:var(--blue);box-shadow:var(--sh);transform:translateY(-3px)}
+.feat-icon-wrap{
+  width:40px;height:40px;border-radius:9px;
+  background:var(--blue-xs);display:flex;align-items:center;justify-content:center;
+  margin-bottom:14px;flex-shrink:0;
+}
+.feature-card h3{font-size:15px;margin-bottom:6px}
+.feature-card p{font-size:13px;color:var(--muted);line-height:1.55}
+
+/* ─── DEMO / PORTFOLIO ───────────────────────────────── */
+.demo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;margin-top:48px;
+}
+.demo-card{
+  border-radius:var(--r-lg);overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:var(--sh);
+  transition:box-shadow .22s,transform .22s;
+}
+.demo-card:hover{box-shadow:var(--sh-lg);transform:translateY(-4px)}
+.demo-screen{
+  height:190px;padding:14px;
+  display:flex;flex-direction:column;
+}
+.ds-shop{background:linear-gradient(145deg,#1B5EE4,#0D3A9E)}
+.ds-spa{background:linear-gradient(145deg,#065F46,#047857)}
+.ds-corp{background:linear-gradient(145deg,#0F172A,#1E293B)}
+.ds-nav{height:20px;background:rgba(255,255,255,.14);border-radius:4px;margin-bottom:10px}
+.ds-hero{
+  flex:1;background:rgba(255,255,255,.07);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+}
+.ds-hero span{
+  font-size:11px;font-weight:700;color:rgba(255,255,255,.6);
+  text-align:center;line-height:1.5;padding:0 10px;letter-spacing:.03em;
+}
+.ds-row{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:8px}
+.ds-mini{height:14px;background:rgba(255,255,255,.1);border-radius:3px}
+.demo-info{padding:18px 20px;background:#fff}
+.demo-type{
+  font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--blue);margin-bottom:5px;
+}
+.demo-info h3{font-size:15px;margin-bottom:4px}
+.demo-info p{font-size:13px;color:var(--muted)}
+
+/* ─── PRICING ────────────────────────────────────────── */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+  gap:20px;margin-top:48px;
+}
+.price-card{
+  background:#fff;border:1.5px solid var(--border);border-radius:var(--r-lg);
+  padding:30px 26px;position:relative;
+  transition:border-color .2s,box-shadow .2s,transform .2s;
+}
+.price-card:hover{border-color:var(--blue);box-shadow:var(--sh);transform:translateY(-3px)}
+.price-card.hot{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(34,197,94,.1),var(--sh);
+}
+.price-badge{
+  position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  background:var(--blue);color:#fff;
+  font-size:11px;font-weight:700;letter-spacing:.04em;
+  padding:3px 16px;border-radius:99px;white-space:nowrap;
+}
+.price-tier{
+  font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:8px;
+}
+.price-amount{
+  font-size:42px;font-weight:800;letter-spacing:-.04em;
+  color:var(--blue);line-height:1;margin-bottom:4px;
+}
+.price-note{font-size:13px;color:var(--muted);margin-bottom:18px}
+.price-sep{height:1px;background:var(--border);margin:16px 0}
+.price-features{display:flex;flex-direction:column;gap:9px}
+.pf{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#374151;line-height:1.45}
+.pf-y{color:var(--green);flex-shrink:0;margin-top:1px}
+.pf-n{color:#D1D5DB;flex-shrink:0;margin-top:1px}
+
+/* ─── PROCESS ────────────────────────────────────────── */
+.process-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:16px;margin-top:48px;
+}
+.step-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:28px 22px;text-align:center;transition:box-shadow .2s;
+}
+.step-card:hover{box-shadow:var(--sh)}
+.step-num{
+  width:48px;height:48px;
+  background:var(--ink);border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;font-weight:800;color:#fff;
+  margin:0 auto 16px;
+}
+.step-card p{font-size:13px;color:var(--muted);margin-top:7px;line-height:1.55}
+
+/* ─── TESTIMONIALS CAROUSEL ─────────────────────────── */
+.testi-track-wrap{
+  overflow:hidden;
+  margin-top:48px;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 7%,#000 93%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0%,#000 7%,#000 93%,transparent 100%);
+}
+.testi-track{
+  display:flex;gap:16px;width:max-content;
+  animation:testi-scroll 36s linear infinite;
+}
+.testi-track:hover{animation-play-state:paused}
+@keyframes testi-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.testi-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:22px;width:300px;flex-shrink:0;
+}
+.stars{display:flex;gap:3px;margin-bottom:12px}
+.star{
+  width:14px;height:14px;
+  background:#F59E0B;
+  clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+}
+.star.empty{background:#E5E7EB}
+.testi-text{font-size:14px;color:#374151;font-style:italic;line-height:1.65;margin-bottom:16px}
+.testi-author{display:flex;align-items:center;gap:11px}
+.avatar{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:14px;color:#fff;flex-shrink:0;
+}
+.author-name{font-size:14px;font-weight:700;color:var(--ink)}
+.author-role{font-size:12px;color:var(--muted)}
+
+/* ─── FAQ ────────────────────────────────────────────── */
+.faq-list{max-width:740px;margin:48px auto 0;display:flex;flex-direction:column;gap:8px}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.faq-q{
+  padding:17px 20px;font-weight:700;font-size:15px;
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  cursor:pointer;transition:background .15s;user-select:none;
+}
+.faq-q:hover{background:var(--bg)}
+.faq-toggle{
+  width:22px;height:22px;min-width:22px;border-radius:50%;
+  background:var(--bg);display:flex;align-items:center;justify-content:center;
+  transition:transform .25s;
+}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease,padding .3s;
+  font-size:14px;color:#4B5563;line-height:1.7;
+}
+.faq-item.open .faq-a{max-height:280px;padding:0 20px 16px}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+
+/* ─── CTA BAND ───────────────────────────────────────── */
+.cta-band{background:var(--ink-2);padding:72px 0;text-align:center}
+.cta-band h2{color:#fff;margin-bottom:10px}
+.cta-band .lead{color:rgba(255,255,255,.55);max-width:480px}
+.cta-btns{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:32px}
+
+/* ─── CONTACT ────────────────────────────────────────── */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:48px;
+  margin-top:48px;align-items:start;
+}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr}}
+.form-box{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:32px;box-shadow:var(--sh);
+}
+.form-box h3{font-size:18px;margin-bottom:22px;color:var(--ink)}
+.form-group{margin-bottom:14px}
+.form-group label{
+  display:block;font-size:13px;font-weight:700;
+  color:var(--ink);margin-bottom:5px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;padding:11px 13px;
+  border:1.5px solid var(--border);border-radius:var(--r);
+  font-size:15px;font-family:inherit;color:var(--ink);background:#fff;
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(34,197,94,.1);
+}
+.form-group textarea{resize:vertical;min-height:80px}
+.form-note{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.5}
+.form-msg{
+  display:none;border-radius:var(--r);padding:12px 15px;
+  font-size:14px;font-weight:600;margin-top:12px;
+}
+.form-msg.ok{background:var(--green-xs);color:#065F46;border:1px solid #A7F3D0;display:block}
+.form-msg.err{background:#FEF2F2;color:#991B1B;border:1px solid #FCA5A5;display:block}
+
+.info-box h3{font-size:18px;margin-bottom:16px;color:var(--ink)}
+.channels{display:flex;flex-direction:column;gap:10px}
+.channel{
+  display:flex;align-items:center;gap:14px;
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--r);
+  padding:14px 16px;transition:background .15s,border-color .15s;
+}
+.channel:hover{background:var(--blue-xs);border-color:var(--blue-sm)}
+.ch-icon-box{
+  width:40px;height:40px;background:#fff;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:var(--sh);flex-shrink:0;
+}
+.ch-label{font-size:11px;color:var(--muted);font-weight:600}
+.ch-value{font-size:15px;font-weight:700;color:var(--ink)}
+.guarantee{
+  margin-top:16px;background:var(--blue-xs);
+  border:1px solid var(--blue-sm);border-radius:var(--r);padding:18px 20px;
+}
+.guarantee h4{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:10px;letter-spacing:.03em;text-transform:uppercase}
+.guarantee ul{display:flex;flex-direction:column;gap:7px}
+.guarantee li{font-size:13px;color:#166534;display:flex;gap:8px;align-items:flex-start}
+
+.address-box{
+  margin-top:12px;background:#fff;border:1px solid var(--border);
+  border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--muted);
+}
+.address-box strong{color:var(--ink);display:block;margin-bottom:4px;font-size:13px}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+footer{background:var(--ink);color:#6B7280;padding:52px 0 36px}
+.footer-grid{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px;
+  margin-bottom:36px;
+}
+@media(max-width:768px){.footer-grid{grid-template-columns:1fr;gap:28px}}
+.footer-brand p{font-size:13px;line-height:1.65;margin:10px 0 16px}
+.footer-logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:-.03em}
+.footer-logo span{color:#4ADE80}
+.footer-contact{font-size:13px;line-height:1.8}
+.footer-contact a{color:#6B7280;transition:color .15s}
+.footer-contact a:hover{color:#fff}
+footer h5{color:#fff;font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;margin-bottom:14px}
+.flinks{display:flex;flex-direction:column;gap:8px}
+.flinks a{font-size:13px;color:#6B7280;transition:color .15s}
+.flinks a:hover{color:#fff}
+.footer-sep{height:1px;background:#1F2937;margin-bottom:20px}
+.footer-bottom{
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:10px;font-size:12px;color:#374151;
+}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{color:#374151;transition:color .15s}
+.footer-legal a:hover{color:#9CA3AF}
+
+/* ─── STICKY MOBILE CTA ──────────────────────────────── */
+.sticky-cta{
+  position:fixed;bottom:0;left:0;right:0;
+  display:none;z-index:500;
+  box-shadow:0 -2px 16px rgba(0,0,0,.16);
+}
+@media(max-width:768px){.sticky-cta{display:flex}}
+.sticky-cta a{
+  flex:1;padding:16px 8px;
+  font-size:15px;font-weight:800;color:#fff;
+  text-align:center;display:flex;align-items:center;justify-content:center;gap:7px;
+}
+.sticky-call{background:var(--cta)}
+.sticky-call:hover{background:var(--cta-d)}
+.sticky-zalo-btn{background:#0068FF}
+.sticky-zalo-btn:hover{background:#0052cc}
+
+/* ─── MODALS ─────────────────────────────────────────── */
+.modal-overlay{
+  display:none;position:fixed;inset:0;
+  background:rgba(0,0,0,.6);z-index:900;
+  align-items:flex-end;justify-content:center;
+}
+@media(min-width:600px){.modal-overlay{align-items:center;padding:20px}}
+.modal-overlay.open{display:flex}
+.modal-box{
+  background:#fff;border-radius:16px 16px 0 0;
+  max-height:86vh;width:100%;overflow-y:auto;padding:28px 24px;
+}
+@media(min-width:600px){.modal-box{border-radius:16px;max-width:640px;max-height:80vh}}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-head h2{font-size:18px;margin:0}
+.modal-close-btn{
+  width:30px;height:30px;border-radius:50%;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;cursor:pointer;color:var(--muted);flex-shrink:0;
+}
+.modal-close-btn:hover{background:var(--border);color:var(--ink)}
+.modal-body h3{font-size:15px;color:var(--ink);margin:18px 0 6px}
+.modal-body p{font-size:13px;color:#4B5563;line-height:1.65;margin-bottom:6px}
+.modal-body ul{padding-left:16px;list-style:disc}
+.modal-body ul li{font-size:13px;color:#4B5563;margin-bottom:5px;line-height:1.55}
+
+/* ─── BACKGROUND VARIANTS ───────────────────────────── */
+.bg-dark{background:var(--ink-2)}
+.bg-dark .eyebrow{color:rgba(255,255,255,.45)}
+.bg-dark .eyebrow-dot{background:var(--green)!important}
+.bg-dark h2,.bg-dark h3{color:#fff}
+.bg-dark p{color:rgba(255,255,255,.65)}
+.bg-dark .lead{color:rgba(255,255,255,.55)!important}
+.bg-dark .microcopy{color:rgba(255,255,255,.38)!important}
+.bg-dark .step-num{background:var(--green);color:#fff}
+.bg-dark .step-card{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.08)}
+.bg-dark .step-card h3{color:#fff}
+.bg-dark .step-card p{color:rgba(255,255,255,.55)}
+
+.bg-slate{background:var(--secondary)}
+.bg-slate .eyebrow{color:rgba(255,255,255,.5)}
+.bg-slate .eyebrow-dot{background:var(--green)!important}
+.bg-slate h2,.bg-slate h3{color:#fff}
+.bg-slate p{color:rgba(255,255,255,.7)}
+.bg-slate .lead{color:rgba(255,255,255,.6)!important}
+.bg-slate .microcopy{color:rgba(255,255,255,.42)!important}
+.bg-slate .demo-card{border-color:rgba(255,255,255,.1);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+.bg-slate .demo-info h3{color:var(--ink)}
+.bg-slate .demo-info p{color:var(--muted)}
+
+.bg-green-tint{background:#F0FDF4}
+
+/* ─── SVG COLOR OVERRIDES ────────────────────────────── */
+.feat-icon-wrap [stroke]{stroke:#22C55E!important}
+.ch-icon-box [stroke]:not([fill="#0068FF"]){stroke:#22C55E!important}
+
+/* ─── MINI CTA BLOCK ─────────────────────────────────── */
+.mini-cta{
+  text-align:center;padding:24px 0 0;
+}
+.mini-cta .microcopy{
+  font-size:12px;color:var(--muted);margin-top:10px;display:block;
+}
+
+/* ─── MICROCOPY ──────────────────────────────────────── */
+.hero-microcopy{
+  font-size:13px;color:rgba(255,255,255,.45);margin-top:12px;
+  display:flex;align-items:center;gap:6px;justify-content:center;
+}
+.hero-microcopy svg{flex-shrink:0}
+
+/* ─── PRICING HOT ────────────────────────────────────── */
+.price-card.hot{
+  border-width:2.5px;
+}
+
+/* ─── STICKY BAR ─────────────────────────────────────── */
+.sticky-cta a{
+  min-height:56px;font-size:16px;font-weight:800;
+  letter-spacing:.01em;border-radius:0;
+}
+
+/* ─── CTA ORANGE ─────────────────────────────────────── */
+.btn-cta{background:var(--cta);color:#fff;box-shadow:0 4px 14px rgba(34,197,94,.35)}
+.btn-cta:hover{background:var(--cta-d);transform:translateY(-2px);box-shadow:0 6px 22px rgba(34,197,94,.5)}
+@keyframes pulse-ring{
+  0%  {box-shadow:0 4px 14px rgba(34,197,94,.35),0 0 0 0 rgba(34,197,94,.45)}
+  70% {box-shadow:0 4px 14px rgba(34,197,94,.35),0 0 0 13px rgba(34,197,94,0)}
+  100%{box-shadow:0 4px 14px rgba(34,197,94,.35),0 0 0 0 rgba(34,197,94,0)}
+}
+.btn-pulse{animation:pulse-ring 2.2s ease-in-out infinite}
+
+/* ─── HERO BADGES ────────────────────────────────────── */
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;justify-content:center}
+.h-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);
+  color:rgba(255,255,255,.8);font-size:12px;font-weight:700;
+  padding:5px 13px;border-radius:99px;letter-spacing:.02em;
+}
+.h-badge.fomo{
+  background:rgba(34,197,94,.15);border-color:rgba(34,197,94,.5);
+  color:#FED7AA;
+}
+
+/* ─── URGENCY BAND ───────────────────────────────────── */
+.urgency-band{
+  background:linear-gradient(135deg,#7C2D12,#9A3412);
+  padding:22px 0;text-align:center;
+}
+.urgency-band p{color:#FED7AA;font-size:14px;font-weight:600;line-height:1.6}
+.urgency-band strong{color:#fff}
+.u-slots{display:flex;justify-content:center;gap:5px;margin-top:13px}
+.u-slot{width:26px;height:6px;border-radius:3px;background:rgba(255,255,255,.18)}
+.u-slot.taken{background:#22C55E}
+
+/* ─── CASE STUDY ─────────────────────────────────────── */
+.cs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:40px}
+.cs-card{
+  background:#fff;border:1px solid var(--border);border-radius:var(--r);
+  padding:22px 20px;border-left:4px solid var(--green);
+  transition:box-shadow .2s;
+}
+.cs-card:hover{box-shadow:var(--sh)}
+.cs-num{font-size:34px;font-weight:800;color:var(--green);line-height:1;margin-bottom:5px}
+.cs-text{font-size:13px;color:#374151;line-height:1.55;margin-bottom:10px}
+.cs-client{font-size:12px;font-weight:700;color:var(--muted)}
+
+/* ─── PRICE ANCHOR ───────────────────────────────────── */
+.price-old{font-size:14px;color:#9CA3AF;text-decoration:line-through;font-weight:500;margin-bottom:2px}
+.price-save{
+  display:inline-block;font-size:10px;font-weight:800;
+  background:#FEF9C3;color:#854D0E;
+  padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle;
+}
+
+/* ─── INCENTIVE BADGE ────────────────────────────────── */
+.incentive-badge{
+  display:flex;align-items:center;gap:8px;
+  background:#F0FDF4;border:1px solid #DCFCE7;
+  color:#166534;font-size:13px;font-weight:700;
+  padding:10px 14px;border-radius:var(--r);margin-bottom:20px;
+}
+
+/* ─── REVEAL ANIMATION ───────────────────────────────── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+</style>
+</head>
+
+<body>
+<!-- GTM noscript -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- ── ALERT BAND ──────────────────────────────────────── -->
+<div class="alert-band">
+  <p>⚡ Ưu đãi tháng 4: <strong>Giảm 10% + tặng domain .com</strong> cho 3 khách hàng tiếp theo &nbsp;·&nbsp; <a href="#contact">Đăng ký ngay →</a></p>
+</div>
+
+
+<!-- ── HERO ────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Dịch vụ thiết kế web — Giao trong 1–2 ngày
+        </div>
+        <h1>Mỗi ngày không có web, <em>khách đang gọi cho đối thủ</em></h1>
+        <p class="hero-sub"><strong>Chỉ từ 500K · Website trong 48h</strong><br>Chuẩn mobile, SEO sẵn, giao đúng hẹn — không phụ phí ẩn.</p>
+        <div class="hero-badges">
+          <span class="h-badge">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            100+ khách hàng
+          </span>
+          <span class="h-badge">
+            <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hoàn thành trong 48h
+          </span>
+          <span class="h-badge fomo">🔥 Chỉ nhận 10 khách/tháng — Còn 3 slot</span>
+        </div>
+        <div class="hero-btns">
+          <a href="tel:0852297684" class="btn btn-cta btn-xl btn-pulse" onclick="trackEvent('call-btn','hero')">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1A16 16 0 0015.9 17.09l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Gọi tư vấn miễn phí
+          </a>
+          <a href="https://zalo.me/0852297684" class="btn btn-zalo btn-xl" target="_blank" rel="noopener" onclick="trackEvent('zalo-btn','hero')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.959 9.959 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 2c4.418 0 8 3.582 8 8s-3.582 8-8 8a7.957 7.957 0 01-3.95-1.05l-.283-.168-2.938.873.873-2.938-.168-.283A7.957 7.957 0 014 12c0-4.418 3.582-8 8-8zm-1 4v2h2V8h-2zm0 4v4h2v-4h-2z"/></svg>
+            Chat Zalo ngay
+          </a>
+        </div>
+        <p class="hero-microcopy">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Tư vấn miễn phí · Không ràng buộc · Xem demo trước khi trả tiền
+        </p>
+        <div class="hero-stats">
+          <div class="hs-item"><div class="hs-num">300+</div><div class="hs-lbl">Website bàn giao</div></div>
+          <div class="hs-item"><div class="hs-num">4.9 / 5</div><div class="hs-lbl">Đánh giá khách hàng</div></div>
+          <div class="hs-item"><div class="hs-num">48h</div><div class="hs-lbl">Thời gian TB</div></div>
+          <div class="hs-item"><div class="hs-num">0đ</div><div class="hs-lbl">Phụ phí ẩn</div></div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ───────────────────────────────────────── -->
+<div class="trust-bar">
+  <div class="wrap">
+    <div class="trust-inner">
+      <div class="trust-item">
+        <span class="trust-check">
+          <svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        Không phụ phí ẩn
+      </div>
+      <div class="trust-item">
+        <span class="trust-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Thanh toán sau khi nhận bàn giao
+      </div>
+      <div class="trust-item">
+        <span class="trust-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Chuẩn mobile 100%
+      </div>
+      <div class="trust-item">
+        <span class="trust-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Hỗ trợ kỹ thuật 3–12 tháng
+      </div>
+      <div class="trust-item">
+        <span class="trust-check"><svg width="9" height="9" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        Hoàn tiền nếu không đạt yêu cầu
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROBLEM ─────────────────────────────────────────── -->
+<section class="sec bg-light reveal">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot" style="background:var(--red)"></span>Vấn đề</div>
+      <h2>Bạn đang mất khách vì không có website?</h2>
+      <p class="lead">Trong thời đại tìm kiếm online, không có website đồng nghĩa với việc bạn vô hình với hàng ngàn khách hàng tiềm năng.</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="prob-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Mất uy tín trước khách hàng mới</h3>
+        <p>"Shop này không có web riêng, liệu có đáng tin?" — đó là điều khách mới nghĩ khi tìm kiếm về bạn.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+        </div>
+        <h3>Phụ thuộc hoàn toàn vào mạng xã hội</h3>
+        <p>Thuật toán thay đổi, reach giảm liên tục — bạn không thể kiểm soát được lưu lượng khách hàng của mình.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Chi phí quảng cáo ngày càng đắt</h3>
+        <p>Chạy ads mà không có landing page tốt — tỷ lệ chuyển đổi thấp, tiền bay nhanh, hiệu quả giảm dần.</p>
+      </div>
+      <div class="problem-card">
+        <div class="prob-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>Vô hình trên Google tìm kiếm</h3>
+        <p>Khách search dịch vụ của bạn — không thấy kết quả nào — họ chọn đối thủ ngay lập tức.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOLUTION / FEATURES ────────────────────────────── -->
+<section class="sec bg-green-tint reveal">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Giải pháp</div>
+      <h2>Thiết kế website giá rẻ — chất lượng không thỏa hiệp</h2>
+      <p class="lead">WebPro cắt bỏ chi phí trung gian, làm việc trực tiếp với bạn. Giá thấp hơn thị trường, kết quả cao hơn kỳ vọng.</p>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feat-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3>Giao trong 1–3 ngày</h3>
+        <p>Hầu hết dự án hoàn thành trong 24–48 giờ. Cam kết trễ hẹn được giảm 10% phí.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h3>Mobile-first 100%</h3>
+        <p>Hơn 70% người dùng truy cập từ điện thoại. Website chạy mượt và đẹp trên mọi màn hình.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3>SEO cơ bản tích hợp</h3>
+        <p>Meta tags đầy đủ, cấu trúc heading đúng chuẩn, tốc độ tải nhanh — nền tảng vững để lên Google.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feat-icon-wrap">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Thanh toán sau khi nhận hàng</h3>
+        <p>Xem demo thực tế, hài lòng rồi mới chuyển khoản. Không rủi ro cho bạn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DEMO / PORTFOLIO ────────────────────────────────── -->
+<section class="sec bg-slate reveal">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Portfolio</div>
+      <h2>Một số giao diện website đã bàn giao</h2>
+      <p class="lead">Thiết kế theo từng lĩnh vực — mỗi ngành có phong cách riêng phù hợp.</p>
+    </div>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <div class="demo-screen ds-shop" role="img" aria-label="Mẫu website shop bán hàng online — giao diện xanh dương chuyên nghiệp">
+          <div class="ds-nav"></div>
+          <div class="ds-hero"><span>Shop thời trang<br>Landing page chuyển đổi cao</span></div>
+          <div class="ds-row"><div class="ds-mini"></div><div class="ds-mini"></div><div class="ds-mini"></div></div>
+        </div>
+        <div class="demo-info">
+          <div class="demo-type">Shop bán hàng</div>
+          <h3>Website shop thời trang online</h3>
+          <p>Landing page 1 trang, form đặt hàng, nút liên hệ nổi bật, tối ưu chuyển đổi.</p>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-screen ds-spa" role="img" aria-label="Mẫu website spa làm đẹp — giao diện xanh lá cao cấp">
+          <div class="ds-nav"></div>
+          <div class="ds-hero"><span>Spa &amp; làm đẹp<br>Đặt lịch online, giới thiệu dịch vụ</span></div>
+          <div class="ds-row"><div class="ds-mini"></div><div class="ds-mini"></div><div class="ds-mini"></div></div>
+        </div>
+        <div class="demo-info">
+          <div class="demo-type">Spa / Nail / Salon</div>
+          <h3>Website spa đặt lịch online</h3>
+          <p>Giới thiệu dịch vụ, bảng giá rõ ràng, form đặt lịch, tích hợp bản đồ.</p>
+        </div>
+      </div>
+      <div class="demo-card">
+        <div class="demo-screen ds-corp" role="img" aria-label="Mẫu website công ty doanh nghiệp — giao diện tối chuyên nghiệp">
+          <div class="ds-nav"></div>
+          <div class="ds-hero"><span>Doanh nghiệp nhỏ<br>Giới thiệu công ty chuyên nghiệp</span></div>
+          <div class="ds-row"><div class="ds-mini"></div><div class="ds-mini"></div><div class="ds-mini"></div></div>
+        </div>
+        <div class="demo-info">
+          <div class="demo-type">Công ty / Dịch vụ</div>
+          <h3>Website giới thiệu công ty</h3>
+          <p>5 trang đầy đủ, portfolio dự án, blog tin tức, form liên hệ chuyên nghiệp.</p>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:14px;color:var(--muted)">
+      Muốn xem demo theo ngành của bạn? <a href="https://zalo.me/0852297684" target="_blank" rel="noopener" style="color:var(--blue);font-weight:700" onclick="trackEvent('zalo-btn','portfolio')">Nhắn Zalo để xem ngay</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── PRICING ─────────────────────────────────────────── -->
+<section class="sec reveal" id="pricing">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Bảng giá</div>
+      <h2>Bảng giá làm website giá rẻ<br>rõ ràng, không phát sinh thêm</h2>
+      <p class="lead">Giá cố định từ đầu. Chọn gói phù hợp với quy mô và ngân sách của bạn.</p>
+    </div>
+    <div class="pricing-grid">
+      <!-- Basic -->
+      <div class="price-card">
+        <div class="price-tier">Cơ bản</div>
+        <div class="price-amount">500K</div>
+        <div class="price-note">Một lần · Sinh viên, cá nhân</div>
+        <div class="price-sep"></div>
+        <div class="price-features">
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Landing page 1 trang hoàn chỉnh</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Giao diện responsive, mobile-first</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Form liên hệ tích hợp</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SEO cơ bản (meta, H-tags)</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hỗ trợ kỹ thuật 3 tháng</div>
+          <div class="pf"><span class="pf-n"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="3" y1="3" x2="9" y2="9" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"/></svg></span><span style="color:#9CA3AF">Domain &amp; hosting (tự thuê riêng)</span></div>
+          <div class="pf"><span class="pf-n"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><line x1="3" y1="3" x2="9" y2="9" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"/><line x1="9" y1="3" x2="3" y2="9" stroke="#D1D5DB" stroke-width="2" stroke-linecap="round"/></svg></span><span style="color:#9CA3AF">Nhiều trang / Blog</span></div>
+        </div>
+        <div style="margin-top:22px"><a href="#contact" class="btn btn-ghost btn-full">Tư vấn gói này</a></div>
+      </div>
+      <!-- Standard -->
+      <div class="price-card hot">
+        <div class="price-badge">⭐ Phổ biến nhất</div>
+        <div class="price-tier">Tiêu chuẩn</div>
+        <div class="price-old">2.000.000đ <span class="price-save">-50%</span></div>
+        <div class="price-amount">1 triệu</div>
+        <div class="price-note">Một lần · Shop, Spa, Freelancer</div>
+        <div class="price-sep"></div>
+        <div class="price-features">
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>3–5 trang (Home, Dịch vụ, Liên hệ…)</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Thiết kế custom theo thương hiệu</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Form đặt lịch / đặt hàng online</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tích hợp bản đồ Google Maps</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>SEO đầy đủ (meta, sitemap, OG)</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tên miền .com hoặc .vn (1 năm)</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hosting 1 năm</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hỗ trợ kỹ thuật 6 tháng</div>
+        </div>
+        <div style="margin-top:22px"><a href="#contact" class="btn btn-cta btn-full" onclick="trackEvent('call-btn','pricing_standard')">Tư vấn gói này →</a></div>
+      </div>
+      <!-- Pro -->
+      <div class="price-card">
+        <div class="price-tier">Nâng cao</div>
+        <div class="price-amount">2 triệu</div>
+        <div class="price-note">Một lần · Doanh nghiệp nhỏ</div>
+        <div class="price-sep"></div>
+        <div class="price-features">
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tất cả tính năng gói Tiêu chuẩn</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>5–10 trang + Blog / Tin tức</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Admin panel tự cập nhật nội dung</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Tối ưu tốc độ (Core Web Vitals)</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Domain + Hosting 1 năm</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Hỗ trợ kỹ thuật 12 tháng</div>
+          <div class="pf"><span class="pf-y"><svg width="13" height="13" viewBox="0 0 12 12" fill="none"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Đào tạo sử dụng online (30 phút)</div>
+        </div>
+        <div style="margin-top:22px"><a href="#contact" class="btn btn-ghost btn-full">Tư vấn gói này</a></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin-top:20px">
+      Có yêu cầu đặc biệt? <a href="#contact" style="color:var(--blue);font-weight:700">Liên hệ để được báo giá riêng</a> — tư vấn miễn phí, không ràng buộc.
+    </p>
+  </div>
+</section>
+
+<!-- ── PROCESS ─────────────────────────────────────────── -->
+<section class="sec bg-dark reveal">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Quy trình</div>
+      <h2>Quy trình làm web 4 bước đơn giản</h2>
+      <p class="lead">Không cần biết kỹ thuật — chúng tôi xử lý toàn bộ, bạn chỉ cần cung cấp thông tin.</p>
+    </div>
+    <div class="process-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3>Tư vấn miễn phí</h3>
+        <p>Gọi hoặc nhắn Zalo. Chúng tôi lắng nghe yêu cầu, đề xuất gói phù hợp với ngân sách của bạn.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3>Cung cấp nội dung</h3>
+        <p>Gửi logo, ảnh, nội dung qua Zalo. Chưa có sẵn? Chúng tôi hỗ trợ chọn ảnh và gợi ý nội dung miễn phí.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3>Thiết kế &amp; chỉnh sửa</h3>
+        <p>Hoàn thiện trong 1–3 ngày. Bạn xem demo thực tế và yêu cầu chỉnh sửa không giới hạn.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3>Bàn giao &amp; thanh toán</h3>
+        <p>Hài lòng hoàn toàn rồi mới chuyển khoản. Kèm hướng dẫn sử dụng và hỗ trợ sau bàn giao.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ────────────────────────────────────── -->
+<section class="sec bg-green-tint reveal">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Phản hồi khách hàng</div>
+      <h2>Khách hàng nói gì về WebPro</h2>
+    </div>
+    <div class="testi-track-wrap">
+      <div class="testi-track">
+        <!-- set 1 -->
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Mình làm gói 500K cho shop quần áo nhỏ. Chỉ 2 ngày đã có landing page đẹp, khách nhìn vào tin ngay. Đơn hàng qua Zalo tăng rõ rệt sau đó."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16A34A)">L</div>
+            <div><div class="author-name">Linh Nguyễn</div><div class="author-role">Shop thời trang · TP.HCM</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Mở spa nhỏ, ngân sách có hạn. Gói 1 triệu bao gồm cả domain và hosting. Hỗ trợ nhiệt tình, yêu cầu sửa gì cũng nhanh và không tính thêm phí."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#059669,#10B981)">T</div>
+            <div><div class="author-name">Thanh Hương</div><div class="author-role">Chủ spa · Đà Nẵng</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Freelance designer cần portfolio online. Nơi khác báo 4–5 triệu, WebPro làm gói 1 triệu cùng chất lượng. Code sạch, load nhanh, Google index tốt."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#D97706,#F59E0B)">M</div>
+            <div><div class="author-name">Minh Tú</div><div class="author-role">Graphic designer freelance</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Quán ăn gia đình, không biết gì về web. Tư vấn tận tình, làm được form đặt bàn. Giờ khách book qua web nhiều hơn, không cần trực điện thoại liên tục nữa."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#DC2626,#EF4444)">H</div>
+            <div><div class="author-name">Hải Đăng</div><div class="author-role">Chủ quán ăn · Đà Nẵng</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Dịch vụ sửa điện lạnh, từ khi có web khách tìm qua Google nhiều hơn. Tiết kiệm được một khoản quảng cáo Facebook đáng kể mỗi tháng."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#334155,#0F172A)">V</div>
+            <div><div class="author-name">Văn Phú</div><div class="author-role">Dịch vụ điện lạnh · Hà Nội</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star empty"></span></div>
+          <p class="testi-text">"Đặt thứ 2, thứ 6 nhận bàn giao đúng hẹn. Có 1 chỗ cần điều chỉnh nhỏ, nhắn Zalo xong trong 30 phút. Sẽ giới thiệu cho bạn bè kinh doanh online."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">N</div>
+            <div><div class="author-name">Ngọc Anh</div><div class="author-role">Tiệm nail · Bình Dương</div></div>
+          </div>
+        </div>
+        <!-- set 2 (duplicate for seamless loop) -->
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Mình làm gói 500K cho shop quần áo nhỏ. Chỉ 2 ngày đã có landing page đẹp, khách nhìn vào tin ngay. Đơn hàng qua Zalo tăng rõ rệt sau đó."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#22C55E,#16A34A)">L</div>
+            <div><div class="author-name">Linh Nguyễn</div><div class="author-role">Shop thời trang · TP.HCM</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Mở spa nhỏ, ngân sách có hạn. Gói 1 triệu bao gồm cả domain và hosting. Hỗ trợ nhiệt tình, yêu cầu sửa gì cũng nhanh và không tính thêm phí."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#059669,#10B981)">T</div>
+            <div><div class="author-name">Thanh Hương</div><div class="author-role">Chủ spa · Đà Nẵng</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Freelance designer cần portfolio online. Nơi khác báo 4–5 triệu, WebPro làm gói 1 triệu cùng chất lượng. Code sạch, load nhanh, Google index tốt."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#D97706,#F59E0B)">M</div>
+            <div><div class="author-name">Minh Tú</div><div class="author-role">Graphic designer freelance</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Quán ăn gia đình, không biết gì về web. Tư vấn tận tình, làm được form đặt bàn. Giờ khách book qua web nhiều hơn, không cần trực điện thoại liên tục nữa."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#DC2626,#EF4444)">H</div>
+            <div><div class="author-name">Hải Đăng</div><div class="author-role">Chủ quán ăn · Đà Nẵng</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span></div>
+          <p class="testi-text">"Dịch vụ sửa điện lạnh, từ khi có web khách tìm qua Google nhiều hơn. Tiết kiệm được một khoản quảng cáo Facebook đáng kể mỗi tháng."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#334155,#0F172A)">V</div>
+            <div><div class="author-name">Văn Phú</div><div class="author-role">Dịch vụ điện lạnh · Hà Nội</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="stars"><span class="star"></span><span class="star"></span><span class="star"></span><span class="star"></span><span class="star empty"></span></div>
+          <p class="testi-text">"Đặt thứ 2, thứ 6 nhận bàn giao đúng hẹn. Có 1 chỗ cần điều chỉnh nhỏ, nhắn Zalo xong trong 30 phút. Sẽ giới thiệu cho bạn bè kinh doanh online."</p>
+          <div class="testi-author">
+            <div class="avatar" style="background:linear-gradient(135deg,#7C3AED,#A855F7)">N</div>
+            <div><div class="author-name">Ngọc Anh</div><div class="author-role">Tiệm nail · Bình Dương</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ─────────────────────────────────────────────── -->
+<section class="sec reveal" id="faq">
+  <div class="wrap-sm">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>FAQ</div>
+      <h2>Câu hỏi thường gặp</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Làm trong 1–3 ngày có thật không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Có thật. Gói cơ bản thường xong trong 24 giờ, gói tiêu chuẩn 48 giờ, gói nâng cao 3–5 ngày. Cam kết trễ hẹn được giảm 10% phí dịch vụ.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Giá 500K đã bao gồm tất cả chưa? Có phụ phí không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Gói 500K bao gồm toàn bộ phí thiết kế và code. Domain và hosting cần tự thuê riêng (khoảng 300–500K/năm), chúng tôi hướng dẫn đăng ký. Từ gói 1 triệu trở lên đã bao gồm domain + hosting 1 năm, không phát sinh thêm.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Tôi không biết kỹ thuật, có làm được không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Hoàn toàn được. Hơn 80% khách hàng của chúng tôi không có kiến thức kỹ thuật. Bạn chỉ cần cung cấp thông tin cơ bản và ảnh (nếu có). Chưa có ảnh? Chúng tôi chọn ảnh miễn phí từ thư viện bản quyền.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Sau bàn giao có được sửa đổi không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Có, trong thời gian hỗ trợ (3–12 tháng tùy gói). Chỉnh sửa nội dung và giao diện nhỏ miễn phí. Tính năng mới sẽ được báo giá và cần đồng ý trước khi thực hiện.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Thanh toán như thế nào? Có an toàn không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Bạn xem bản demo hoàn chỉnh trên link thực tế, đồng ý rồi mới chuyển khoản. Chúng tôi không yêu cầu đặt cọc trước khi có sản phẩm để xem. Thanh toán qua chuyển khoản ngân hàng, có biên lai đầy đủ.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)" role="button" tabindex="0" aria-expanded="false">
+          Website có lên được Google tìm kiếm không?
+          <span class="faq-toggle"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><line x1="6" y1="2" x2="6" y2="10" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/><line x1="2" y1="6" x2="10" y2="6" stroke="#374151" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        </div>
+        <div class="faq-a">Website sẽ được submit lên Google Search Console và có đầy đủ SEO onpage cơ bản. Google sẽ index trong vài ngày đến vài tuần. Để lên top cần thêm nội dung và thời gian — đây là quá trình tự nhiên với mọi website mới.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ─────────────────────────────────────────── -->
+<section class="sec bg-light reveal" id="contact">
+  <div class="wrap">
+    <div class="center">
+      <div class="eyebrow"><span class="eyebrow-dot"></span>Tư vấn miễn phí</div>
+      <h2>Nhận demo website miễn phí<br>trong 30 phút</h2>
+      <p class="lead">Để lại số điện thoại — chúng tôi gọi lại trong 30 phút với bản demo phù hợp ngành của bạn.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Form -->
+      <div class="form-box">
+        <div class="incentive-badge">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7m0 0H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zm0 0h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          Tặng demo website miễn phí khi đăng ký tư vấn
+        </div>
+        <h3>3 thông tin — nhận demo trong 30 phút</h3>
+        <form id="contactForm" onsubmit="submitForm(event)" novalidate>
+          <div class="form-group">
+            <label for="name">Họ và tên <span style="color:var(--red)">*</span></label>
+            <input type="text" id="name" name="name" placeholder="Nguyễn Văn A" autocomplete="name" required/>
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại <span style="color:var(--red)">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="0852 297 684" autocomplete="tel" required/>
+          </div>
+          <div class="form-group">
+            <label for="service_type">Loại website cần làm</label>
+            <select id="service_type" name="service_type">
+              <option value="">-- Chọn loại website --</option>
+              <option value="landing_page">Landing page / 1 trang</option>
+              <option value="shop">Shop bán hàng online</option>
+              <option value="service">Dịch vụ (Spa, Nail, Salon…)</option>
+              <option value="restaurant">Quán ăn / Cafe</option>
+              <option value="portfolio">Portfolio / Freelancer</option>
+              <option value="company">Website công ty</option>
+              <option value="other">Khác</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-cta btn-full btn-lg" id="submitBtn" onclick="trackEvent('call-btn','contact_form')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1A16 16 0 0015.9 17.09l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Gửi — Nhận tư vấn miễn phí ngay
+          </button>
+          <div class="form-msg" id="formSuccess">Đã nhận thông tin. Chúng tôi sẽ liên hệ bạn trong 30 phút.</div>
+          <div class="form-msg" id="formError"></div>
+        </form>
+        <p class="form-note">Thông tin của bạn được bảo mật. Chúng tôi không spam và không chia sẻ dữ liệu với bên thứ ba.</p>
+      </div>
+      <!-- Info -->
+      <div class="info-box">
+        <h3>Liên hệ trực tiếp</h3>
+        <div class="channels">
+          <a href="tel:0852297684" class="channel" onclick="trackEvent('call-btn','contact_section')">
+            <div class="ch-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1A16 16 0 0015.9 17.09l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div><div class="ch-label">Gọi điện (8:00–21:00, T2–CN)</div><div class="ch-value">0852 297 684</div></div>
+          </a>
+          <a href="https://zalo.me/0852297684" class="channel" target="_blank" rel="noopener" onclick="trackEvent('zalo-btn','contact_section')">
+            <div class="ch-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="#0068FF"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.959 9.959 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+            </div>
+            <div><div class="ch-label">Zalo — phản hồi nhanh nhất</div><div class="ch-value">0852 297 684</div></div>
+          </a>
+          <a href="mailto:namtranhoai179.3@gmail.com" class="channel">
+            <div class="ch-icon-box">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><div class="ch-label">Email</div><div class="ch-value">namtranhoai179.3@gmail.com</div></div>
+          </a>
+        </div>
+        <div class="address-box">
+          <strong>Địa chỉ</strong>
+          WebPro<br>
+          Liên Chiểu, Đà Nẵng
+        </div>
+        <div class="guarantee">
+          <h4>Cam kết dịch vụ</h4>
+          <ul>
+            <li>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;margin-top:1px"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Xem demo trước, hài lòng mới thanh toán
+            </li>
+            <li>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;margin-top:1px"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Chỉnh sửa không giới hạn đến khi ưng ý
+            </li>
+            <li>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;margin-top:1px"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Giao đúng hạn — trễ được giảm 10% phí
+            </li>
+            <li>
+              <svg width="13" height="13" viewBox="0 0 12 12" fill="none" style="flex-shrink:0;margin-top:1px"><polyline points="2,6 5,9 10,3" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Hoàn tiền nếu không đáp ứng yêu cầu đã thống nhất
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ──────────────────────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">Web<span>Pro</span></div>
+        <p>Dịch vụ thiết kế website giá rẻ chuyên nghiệp cho cá nhân kinh doanh, shop, spa và doanh nghiệp nhỏ tại Việt Nam. Giá từ 500.000đ, giao trong 1–3 ngày.</p>
+        <div class="footer-contact">
+          <a href="tel:0852297684">0852 297 684</a><br>
+          <a href="mailto:namtranhoai179.3@gmail.com">namtranhoai179.3@gmail.com</a><br>
+          Liên Chiểu, Đà Nẵng
+        </div>
+      </div>
+      <div>
+        <h5>Dịch vụ</h5>
+        <div class="flinks">
+          <a href="#pricing">Landing page từ 500K</a>
+          <a href="#pricing">Website tiêu chuẩn 1 triệu</a>
+          <a href="#pricing">Website nâng cao 2 triệu</a>
+          <a href="#contact">Báo giá theo yêu cầu</a>
+        </div>
+      </div>
+      <div>
+        <h5>Thông tin</h5>
+        <div class="flinks">
+          <a href="#faq">Câu hỏi thường gặp</a>
+          <a href="#pricing">Bảng giá</a>
+          <a href="#contact">Liên hệ</a>
+          <a href="#" onclick="openModal('privacyModal');return false">Chính sách bảo mật</a>
+          <a href="#" onclick="openModal('tosModal');return false">Điều khoản dịch vụ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-sep"></div>
+    <div class="footer-bottom">
+      <span>© 2025 WebPro. Dịch vụ thiết kế website giá rẻ tại Việt Nam.</span>
+      <div class="footer-legal">
+        <a href="#" onclick="openModal('privacyModal');return false">Chính sách bảo mật</a>
+        <a href="#" onclick="openModal('tosModal');return false">Điều khoản</a>
+        <a href="/admin" style="display:inline-flex;align-items:center;gap:5px;color:#4B5563;font-size:12px;transition:color .15s" onmouseover="this.style.color='#9CA3AF'" onmouseout="this.style.color='#4B5563'">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Admin
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── STICKY MOBILE CTA ────────────────────────────────── -->
+<div class="sticky-cta" role="navigation" aria-label="Liên hệ nhanh">
+  <a href="tel:0852297684" class="sticky-call" onclick="trackEvent('call-btn','sticky_mobile')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1A16 16 0 0015.9 17.09l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+    Gọi ngay
+  </a>
+  <a href="https://zalo.me/0852297684" class="sticky-zalo-btn" target="_blank" rel="noopener" onclick="trackEvent('zalo-btn','sticky_mobile')">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.832-1.438A9.959 9.959 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+    Chat Zalo
+  </a>
+</div>
+
+<!-- ── PRIVACY MODAL ────────────────────────────────────── -->
+<div id="privacyModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pm-title" onclick="closeModalOut(event,'privacyModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pm-title">Chính sách bảo mật</h2>
+      <button class="modal-close-btn" onclick="closeModal('privacyModal')" aria-label="Đóng">
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Cập nhật lần cuối: 01/01/2025. WebPro cam kết bảo vệ thông tin cá nhân của bạn.</p>
+      <h3>1. Thông tin thu thập</h3>
+      <p>Khi bạn điền form liên hệ, chúng tôi thu thập: họ tên, số điện thoại và nội dung yêu cầu bạn cung cấp tự nguyện.</p>
+      <h3>2. Mục đích sử dụng</h3>
+      <ul><li>Liên hệ tư vấn dịch vụ theo yêu cầu của bạn.</li><li>Cải thiện chất lượng dịch vụ.</li></ul>
+      <h3>3. Bảo mật</h3>
+      <p>Chúng tôi không bán, trao đổi hoặc chia sẻ thông tin cá nhân với bên thứ ba vì mục đích thương mại.</p>
+      <h3>4. Quyền của bạn</h3>
+      <p>Yêu cầu xóa hoặc chỉnh sửa thông tin: <a href="mailto:namtranhoai179.3@gmail.com" style="color:var(--blue)">namtranhoai179.3@gmail.com</a></p>
+      <h3>5. Cookie &amp; Analytics</h3>
+      <p>Website sử dụng Google Tag Manager để đo lường hiệu quả. Dữ liệu thu thập ở dạng ẩn danh theo chính sách của Google.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── TERMS MODAL ──────────────────────────────────────── -->
+<div id="tosModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="tos-title" onclick="closeModalOut(event,'tosModal')">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="tos-title">Điều khoản dịch vụ</h2>
+      <button class="modal-close-btn" onclick="closeModal('tosModal')" aria-label="Đóng">
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none"><line x1="2" y1="2" x2="10" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/><line x1="10" y1="2" x2="2" y2="10" stroke="#6B7280" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>Bằng cách sử dụng dịch vụ của WebPro, bạn đồng ý với các điều khoản sau.</p>
+      <h3>1. Phạm vi dịch vụ</h3>
+      <p>WebPro cung cấp dịch vụ thiết kế và phát triển website theo yêu cầu. Phạm vi công việc được thống nhất qua trao đổi trực tiếp trước khi bắt đầu.</p>
+      <h3>2. Thanh toán</h3>
+      <ul><li>Thanh toán sau khi bạn xem và chấp thuận bản demo cuối cùng.</li><li>Hình thức: chuyển khoản ngân hàng, có biên lai xác nhận.</li></ul>
+      <h3>3. Thời gian &amp; cam kết</h3>
+      <p>Nếu giao trễ hơn mốc cam kết, bạn được giảm 10% phí dịch vụ.</p>
+      <h3>4. Chỉnh sửa</h3>
+      <p>Trong thời gian hỗ trợ, chỉnh sửa nội dung và giao diện nhỏ miễn phí. Tính năng mới phải được báo giá và đồng ý trước.</p>
+      <h3>5. Hoàn tiền</h3>
+      <p>Nếu sản phẩm không đáp ứng yêu cầu đã thống nhất và không thể khắc phục, hoàn tiền 100%.</p>
+      <h3>6. Liên hệ</h3>
+      <p><a href="mailto:namtranhoai179.3@gmail.com" style="color:var(--blue)">namtranhoai179.3@gmail.com</a> — 0852 297 684</p>
+    </div>
+  </div>
+</div>
+
+<script>
+window.dataLayer=window.dataLayer||[];
+
+function trackEvent(name,loc){
+  dataLayer.push({event:name,button_location:loc||'unknown',timestamp:new Date().toISOString()});
+}
+
+// FAQ
+function toggleFaq(btn){
+  const item=btn.parentElement,isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>{
+    el.classList.remove('open');
+    el.querySelector('.faq-q').setAttribute('aria-expanded','false');
+  });
+  if(!isOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+}
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'&&e.target.classList.contains('faq-q'))toggleFaq(e.target);
+});
+
+// Reveal on scroll
+const ro=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target);}});
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+// Form submit
+async function submitForm(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const succ=document.getElementById('formSuccess');
+  const errEl=document.getElementById('formError');
+  succ.className='form-msg';errEl.className='form-msg';
+
+  const name=document.getElementById('name').value.trim();
+  const phone=document.getElementById('phone').value.trim().replace(/\s/g,'');
+
+  if(!name){errEl.textContent='Vui lòng nhập họ và tên.';errEl.className='form-msg err';return;}
+  if(!/^(0|\+84)[3-9]\d{8}$/.test(phone)){errEl.textContent='Số điện thoại không hợp lệ.';errEl.className='form-msg err';return;}
+
+  btn.disabled=true;btn.textContent='Đang gửi…';
+  const stEl=document.getElementById('service_type');
+  const payload={name,phone,service_type:stEl?stEl.value:'',message:''};
+
+  try{
+    const res=await fetch('/api/contacts',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    const data=await res.json();
+    if(res.ok&&data.success){succ.className='form-msg ok';document.getElementById('contactForm').reset();trackEvent('form_submit_success','contact');}
+    else{errEl.textContent=data.error||'Có lỗi xảy ra. Vui lòng thử lại hoặc gọi trực tiếp.';errEl.className='form-msg err';}
+  }catch(_){succ.className='form-msg ok';document.getElementById('contactForm').reset();}
+
+  btn.disabled=false;btn.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012.18 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.1A16 16 0 0015.9 17.09l1.46-1.46a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg> Gửi — Nhận tư vấn miễn phí ngay';
+}
+
+// Modals
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+function closeModalOut(e,id){if(e.target===document.getElementById(id))closeModal(id);}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')['privacyModal','tosModal'].forEach(closeModal);});
+</script>
+</body>
+</html>

@@ -53,26 +53,14 @@ function renderFooter() {
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="/" class="footer__logo">Web<span>Pro</span>.</a>
-          <p class="footer__tagline">Dịch vụ thiết kế website chuyên nghiệp, giá rẻ từ 500K.<br>Bàn giao nhanh trong 24–48h.</p>
-          <div class="footer__social">
-            <a href="${FB_URL}" aria-label="Facebook" target="_blank" rel="noopener">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            </a>
-            <a href="${YT_URL}" aria-label="YouTube" target="_blank" rel="noopener">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-            </a>
-            <a href="${ZALO_URL}" aria-label="Zalo" target="_blank" rel="noopener">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 16.612a.672.672 0 0 1-.848.084l-2.761-1.892a.672.672 0 0 0-.74-.016l-3.133 1.985a.672.672 0 0 1-.94-.835l1.097-2.838a.672.672 0 0 0-.148-.713L7.69 10.476a.672.672 0 0 1 .475-1.147h2.981a.672.672 0 0 0 .627-.432l1.097-2.838a.672.672 0 0 1 1.258 0l1.097 2.838a.672.672 0 0 0 .627.432h2.981a.672.672 0 0 1 .475 1.147l-2.46 1.91a.672.672 0 0 0-.208.73l.922 2.836a.672.672 0 0 1-.2.66z"/></svg>
-            </a>
-          </div>
+          <p class="footer__tagline">Dịch vụ thiết kế website chuyên nghiệp, giá rẻ<br>Bàn giao nhanh trong 24–48h.</p>
         </div>
 
         <div class="footer__col">
           <h4>Dịch Vụ</h4>
           <ul class="footer__links">
-            <li><a href="/services">Landing Page từ 500K</a></li>
+            <li><a href="/services">Landing Page</a></li>
             <li><a href="/services">Website Doanh Nghiệp</a></li>
-            <li><a href="/services">Website WordPress</a></li>
             <li><a href="/services">Website Thương Mại Điện Tử</a></li>
             <li><a href="/services">SEO &amp; Content Marketing</a></li>
           </ul>
@@ -83,7 +71,6 @@ function renderFooter() {
           <ul class="footer__links">
             <li><a href="/blog">Blog Thiết Kế Web</a></li>
             <li><a href="/blog?category=kiem-tien-online">Kiếm Tiền Online</a></li>
-            <li><a href="/blog?category=wordpress">WordPress Tutorial</a></li>
             <li><a href="/blog?category=review-cong-cu">Review Công Cụ</a></li>
             <li><a href="/sitemap.xml" target="_blank">Sitemap</a></li>
           </ul>
@@ -101,7 +88,7 @@ function renderFooter() {
           </div>
           <div class="footer__contact-item">
             <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            <span>T2–T7: 8:00–20:00</span>
+            <span>T2–CN: 8:00–23:00</span>
           </div>
         </div>
       </div>
@@ -123,15 +110,54 @@ function renderFloatCTA() {
   const el = document.getElementById('floatCta');
   if (!el) return;
   el.innerHTML = `
-    <a href="${ZALO_URL}" class="float-cta__btn float-cta__zalo" target="_blank" rel="noopener" data-event="zalo_float">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0z"/></svg>
-      <span class="float-cta__label">Zalo ngay</span>
+    <a href="tel:${PHONE_RAW}" class="float-btn float-btn--phone">
+      <div class="float-btn__tip">${PHONE}</div>
+      <svg width="21" height="21" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
     </a>
-    <a href="tel:${PHONE_RAW}" class="float-cta__btn float-cta__phone" data-event="call_float">
-      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.32A2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6.08 6.08l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span class="float-cta__label">${PHONE}</span>
+    <a href="${ZALO_URL}" class="float-btn float-btn--zalo" target="_blank" rel="noopener">
+      <div class="float-btn__tip">Chat Zalo</div>
+      <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 5h16L4 19h16"/>
+      </svg>
     </a>
+    <div class="float-chat-wrap">
+      <div class="chat-popup" id="chatPopup">
+        <div class="chat-popup__head">
+          <div class="chat-popup__avatar">W</div>
+          <div>
+            <div class="chat-popup__name">WebPro Tư Vấn</div>
+            <div class="chat-popup__status"><span class="chat-popup__sdot"></span> Đang trực tuyến</div>
+          </div>
+          <button class="chat-popup__close" onclick="toggleChat()">×</button>
+        </div>
+        <div class="chat-popup__body">
+          <div class="chat-popup__bubble">Xin chào! 👋 Bạn cần tư vấn gói website nào? Mình hỗ trợ ngay.</div>
+          <div class="chat-popup__chips">
+            <a href="/services" class="chat-popup__chip">📋 Xem bảng giá dịch vụ</a>
+            <a href="${ZALO_URL}" target="_blank" rel="noopener" class="chat-popup__chip">💬 Chat Zalo ngay</a>
+            <a href="tel:${PHONE_RAW}" class="chat-popup__chip">📞 Gọi ${PHONE}</a>
+            <a href="/contact" class="chat-popup__chip">✉️ Để lại thông tin</a>
+          </div>
+        </div>
+      </div>
+      <button class="float-btn float-btn--chat" onclick="toggleChat()" id="chatBtn">
+        <div class="float-btn__tip">Tư vấn ngay</div>
+        <svg width="21" height="21" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <circle cx="9" cy="10" r="1" fill="white" stroke="none"/>
+          <circle cx="12" cy="10" r="1" fill="white" stroke="none"/>
+          <circle cx="15" cy="10" r="1" fill="white" stroke="none"/>
+        </svg>
+      </button>
+    </div>
   `;
+}
+
+function toggleChat() {
+  const popup = document.getElementById('chatPopup');
+  if (popup) popup.classList.toggle('open');
 }
 
 /* == Utilities ===================================================== */
@@ -312,4 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initNavbarScroll();
   initCounters();
+  document.addEventListener('click', e => {
+    const popup = document.getElementById('chatPopup');
+    const wrap  = document.querySelector('.float-chat-wrap');
+    if (popup && popup.classList.contains('open') && wrap && !wrap.contains(e.target)) {
+      popup.classList.remove('open');
+    }
+  });
 });

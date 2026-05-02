@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title id="pageTitle">Đang tải... | WebPro Blog</title>
+  <meta id="metaDesc" name="description" content="">
+  <meta id="metaKeywords" name="keywords" content="">
+  <meta id="ogTitle" property="og:title" content="">
+  <meta id="ogDesc" property="og:description" content="">
+  <meta id="ogImage" property="og:image" content="">
+  <meta property="og:type" content="article">
+  <meta name="robots" content="index, follow">
+  <link id="canonical" rel="canonical" href="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav id="navbar"></nav>
+
+<section class="section" style="padding-top:2rem">
+  <div class="container">
+
+    <div id="loadingState" style="text-align:center;padding:4rem 0">
+      <div class="spinner"></div>
+      <p class="text-muted mt-2">Đang tải bài viết...</p>
+    </div>
+
+    <div id="errorState" class="hidden" style="text-align:center;padding:4rem 0">
+      <div style="font-size:4rem;margin-bottom:1rem">😢</div>
+      <h2>Bài viết không tìm thấy</h2>
+      <p class="text-muted mt-2">Bài viết này có thể đã bị xóa hoặc URL không đúng.</p>
+      <a href="/blog" class="btn btn--blue mt-4">← Về Trang Blog</a>
+    </div>
+
+    <div id="articleContent" class="hidden">
+      <div class="blog-layout">
+
+        <!-- Article -->
+        <article>
+          <!-- Breadcrumb -->
+          <div class="breadcrumb">
+            <a href="/">Trang Chủ</a>
+            <span class="breadcrumb__sep">›</span>
+            <a href="/blog">Blog</a>
+            <span class="breadcrumb__sep">›</span>
+            <span id="breadCat"></span>
+          </div>
+
+          <!-- Article Header -->
+          <div class="article-header">
+            <div style="margin-bottom:.75rem">
+              <span class="badge" id="articleCatBadge"></span>
+            </div>
+            <h1 class="article-header__title" id="articleTitle"></h1>
+            <div class="article-meta">
+              <span id="articleAuthor"></span>
+              <span class="article-meta__sep">·</span>
+              <span id="articleDate"></span>
+              <span class="article-meta__sep">·</span>
+              <span id="articleReadTime"></span>
+              <span class="article-meta__sep">·</span>
+              <span id="articleViews"></span>
+            </div>
+          </div>
+
+          <!-- Hero Image -->
+          <img id="articleImg" class="article-hero-img" src="" alt="">
+
+          <!-- AdSense Zone 1: Before Content -->
+          <div class="ad-zone ad-zone--in-article" data-label="AdSense — In-Article (Top)">
+            <!-- PASTE ADSENSE IN-ARTICLE CODE HERE
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXX" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block;text-align:center" data-ad-layout="in-article" data-ad-format="fluid" data-ad-client="ca-pub-XXXXXXXX" data-ad-slot="XXXXXXXX"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+          </div>
+
+          <!-- Disclosure Notice -->
+          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:.65rem 1rem;font-size:.8125rem;color:var(--muted);margin-bottom:1.5rem">
+            📌 <em>Bài viết có thể chứa affiliate links. Nếu bạn mua qua link, chúng tôi nhận được hoa hồng mà không tốn thêm chi phí của bạn.</em>
+          </div>
+
+          <!-- Article Body -->
+          <div class="article-content" id="articleBody"></div>
+
+          <!-- AdSense Zone 2: After Content -->
+          <div class="ad-zone ad-zone--in-article" data-label="AdSense — In-Article (Bottom)">
+            <!-- PASTE ADSENSE CODE HERE -->
+          </div>
+
+          <!-- Article CTA Box -->
+          <div class="article-cta-box">
+            <h3>🚀 Cần Website Để Áp Dụng Những Kiến Thức Này?</h3>
+            <p>WebPro thiết kế website chuyên nghiệp từ 500K — chuẩn SEO, tối ưu AdSense, mobile-first.</p>
+            <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
+              <a href="/contact" class="btn btn--primary">Tư Vấn Miễn Phí</a>
+              <a href="/services" class="btn btn--outline">Xem Bảng Giá</a>
+            </div>
+          </div>
+
+          <!-- Tags -->
+          <div style="margin:1.5rem 0">
+            <strong class="text-sm" style="color:var(--muted)">Tags: </strong>
+            <span class="tag-list" id="articleTags"></span>
+          </div>
+
+          <!-- Share -->
+          <div style="padding:1.25rem;background:var(--bg);border-radius:var(--radius);text-align:center;margin-bottom:2rem">
+            <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Bài viết hữu ích? Chia sẻ cho bạn bè nhé!</p>
+            <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
+              <a id="shareFb" href="#" target="_blank" rel="noopener" class="btn btn--sm" style="background:#1877F2;color:white;border-color:#1877F2">Facebook</a>
+              <a id="shareTw" href="#" target="_blank" rel="noopener" class="btn btn--sm" style="background:#1DA1F2;color:white;border-color:#1DA1F2">Twitter</a>
+              <button onclick="copyLink()" class="btn btn--sm btn--outline">📋 Copy Link</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="blog-sidebar">
+          <div class="sidebar-cta">
+            <h3>🚀 Làm Website Từ 500K</h3>
+            <p>Bàn giao 48h, chuẩn SEO, hỗ trợ 24/7.</p>
+            <a href="/contact" class="btn btn--primary btn--full btn--sm">Tư Vấn Ngay</a>
+          </div>
+
+          <div class="sidebar-widget">
+            <h3>📰 Bài Viết Liên Quan</h3>
+            <div id="relatedPosts"><div class="spinner"></div></div>
+          </div>
+
+          <div class="ad-zone ad-zone--sidebar" data-label="AdSense — Sidebar 300×250">
+            <!-- PASTE ADSENSE CODE HERE -->
+          </div>
+
+          <div class="sidebar-affiliate">
+            <h3>🔧 Công Cụ Khuyến Nghị</h3>
+            <ul>
+              <li>🌐 <a href="#" rel="nofollow sponsored">Hostinger</a> — Hosting từ 29K/tháng</li>
+              <li>📝 <a href="#" rel="nofollow sponsored">Elementor Pro</a> — Page builder tốt nhất</li>
+              <li>📊 <a href="#" rel="nofollow sponsored">Ahrefs</a> — SEO tool chuyên nghiệp</li>
+              <li>📧 <a href="#" rel="nofollow sponsored">ConvertKit</a> — Email marketing</li>
+            </ul>
+          </div>
+
+          <!-- Sticky Ad (desktop) -->
+          <div class="ad-zone" data-label="AdSense — 300×600" style="min-height:250px;position:sticky;top:80px">
+            <!-- PASTE ADSENSE CODE HERE -->
+          </div>
+        </aside>
+      </div>
+
+      <!-- Related Posts -->
+      <div id="relatedSection" class="hidden" style="margin-top:3rem">
+        <h2 style="margin-bottom:1.5rem">Bài Viết Liên Quan</h2>
+        <div class="grid-3" id="relatedGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" style="padding:3rem 0">
+  <div class="container">
+    <h2>Bạn Muốn Website Như Thế Này?</h2>
+    <p>WebPro thiết kế website đẹp, nhanh, chuẩn SEO từ chỉ 500.000đ.</p>
+    <div class="cta-banner__actions">
+      <a href="/contact" class="btn btn--primary btn--lg">Tư Vấn Miễn Phí</a>
+      <a href="/services" class="btn btn--outline-white btn--lg">Xem Bảng Giá</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<div class="float-cta" id="floatCta"></div>
+
+<script src="/js/common.js"></script>
+<script>
+renderNavbar('blog');
+renderFooter();
+
+const slug = window.location.pathname.replace('/blog/', '').replace(/\//g, '');
+
+if (!slug) {
+  window.location.href = '/blog';
+}
+
+fetch(`/api/blog/posts/${slug}`)
+  .then(r => {
+    if (!r.ok) throw new Error('Not found');
+    return r.json();
+  })
+  .then(post => {
+    // Hide loading, show content
+    document.getElementById('loadingState').classList.add('hidden');
+    document.getElementById('articleContent').classList.remove('hidden');
+
+    // Update <head> SEO tags
+    document.getElementById('pageTitle').textContent       = (post.seo_title || post.title) + ' | WebPro Blog';
+    document.getElementById('metaDesc').content            = post.seo_description || post.excerpt || '';
+    document.getElementById('metaKeywords').content        = post.seo_keywords || '';
+    document.getElementById('ogTitle').content             = post.seo_title || post.title;
+    document.getElementById('ogDesc').content              = post.seo_description || post.excerpt || '';
+    document.getElementById('ogImage').content             = post.image_url || '';
+    document.getElementById('canonical').href              = window.location.href;
+
+    // Inject JSON-LD Article schema
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": post.title,
+      "description": post.excerpt,
+      "image": post.image_url,
+      "author": { "@type": "Person", "name": post.author || 'WebPro Team' },
+      "publisher": { "@type": "Organization", "name": "WebPro" },
+      "datePublished": post.created_at,
+      "dateModified": post.updated_at || post.created_at,
+    });
+    document.head.appendChild(schema);
+
+    // Fill article content
+    document.getElementById('breadCat').textContent       = post.category_name || 'Blog';
+    document.getElementById('articleTitle').textContent   = post.title;
+    document.getElementById('articleAuthor').textContent  = '✍️ ' + (post.author || 'WebPro Team');
+    document.getElementById('articleDate').textContent    = formatDate(post.created_at);
+    document.getElementById('articleReadTime').textContent = `⏱ ${post.read_time || 5} phút đọc`;
+    document.getElementById('articleViews').textContent   = `👁 ${formatNumber(post.views)} lượt xem`;
+
+    const catBadge = document.getElementById('articleCatBadge');
+    catBadge.textContent = `${post.category_icon || ''} ${post.category_name || ''}`;
+    catBadge.className   = 'badge ' + getCategoryColor(post.category_slug);
+
+    const img = document.getElementById('articleImg');
+    if (post.image_url) { img.src = post.image_url; img.alt = post.title; }
+    else img.style.display = 'none';
+
+    document.getElementById('articleBody').innerHTML = post.content || '';
+
+    // Tags
+    const tagsEl = document.getElementById('articleTags');
+    if (post.tags) {
+      tagsEl.innerHTML = post.tags.split(',').map(t =>
+        `<a href="/blog?search=${encodeURIComponent(t.trim())}" class="tag">${t.trim()}</a>`
+      ).join('');
+    }
+
+    // Share links
+    const url = encodeURIComponent(window.location.href);
+    const title = encodeURIComponent(post.title);
+    document.getElementById('shareFb').href = `https://www.facebook.com/sharer/sharer.php?u=${url}`;
+    document.getElementById('shareTw').href = `https://twitter.com/intent/tweet?url=${url}&text=${title}`;
+
+    // Load related posts
+    fetch(`/api/blog/posts/related/${post.id}`)
+      .then(r => r.json())
+      .then(related => {
+        const sideEl = document.getElementById('relatedPosts');
+        if (!related.length) { sideEl.innerHTML = '<p class="text-muted text-sm">Chưa có bài liên quan.</p>'; return; }
+        sideEl.innerHTML = related.map(p => `
+          <div class="sidebar-post">
+            <img src="${p.image_url || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=150&q=60'}" alt="${p.title}" loading="lazy">
+            <div>
+              <div class="sidebar-post__title"><a href="/blog/${p.slug}">${p.title}</a></div>
+              <div class="sidebar-post__meta">${formatDate(p.created_at)}</div>
+            </div>
+          </div>`).join('');
+
+        // Main related grid
+        if (related.length >= 2) {
+          document.getElementById('relatedSection').classList.remove('hidden');
+          document.getElementById('relatedGrid').innerHTML = related.map(renderBlogCard).join('');
+        }
+      });
+  })
+  .catch(() => {
+    document.getElementById('loadingState').classList.add('hidden');
+    document.getElementById('errorState').classList.remove('hidden');
+  });
+
+function copyLink() {
+  navigator.clipboard.writeText(window.location.href)
+    .then(() => showToast('✅ Đã copy link!', 'success'))
+    .catch(() => showToast('Copy thất bại.', 'error'));
+}
+</script>
+</body>
+</html>

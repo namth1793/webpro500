@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog — Thiết Kế Web, Kiếm Tiền Online, WordPress | WebPro</title>
+  <meta name="description" content="Blog kiến thức về thiết kế website, kiếm tiền online với AdSense và affiliate marketing, hướng dẫn WordPress, review công cụ làm web tốt nhất 2024.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="/blog">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav id="navbar"></nav>
+
+<!-- Page Hero -->
+<div class="page-hero">
+  <div class="container">
+    <h1>Blog WebPro</h1>
+    <p>Kiến thức thiết kế web, kiếm tiền online, WordPress và review công cụ cho doanh nghiệp Việt Nam</p>
+  </div>
+</div>
+
+<!-- AdSense Zone 1: Top of Blog -->
+<div class="container" style="padding-top:2rem">
+  <div class="ad-zone ad-zone--leaderboard" data-label="AdSense — Leaderboard 728×90">
+    <!-- PASTE ADSENSE CODE HERE -->
+  </div>
+</div>
+
+<!-- Blog Content -->
+<section class="section" style="padding-top:2rem">
+  <div class="container">
+    <div class="blog-layout">
+
+      <!-- Main Content -->
+      <div>
+        <!-- Search + Category Filter -->
+        <div style="margin-bottom:1.5rem">
+          <div style="display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." class="form-input" style="flex:1;min-width:200px">
+            <button class="btn btn--blue" id="searchBtn">Tìm</button>
+          </div>
+          <div class="cat-filter" id="catFilter">
+            <button class="cat-filter__btn active" data-cat="">Tất Cả</button>
+          </div>
+        </div>
+
+        <!-- Post count info -->
+        <p class="text-muted text-sm mb-2" id="postInfo"></p>
+
+        <!-- Posts Grid -->
+        <div class="grid-3" id="postsGrid">
+          <div class="spinner" style="grid-column:1/-1"></div>
+        </div>
+
+        <!-- AdSense Zone 2: Between Posts -->
+        <div class="ad-zone ad-zone--in-article" data-label="AdSense — In-Content" style="margin:2rem 0">
+          <!-- PASTE ADSENSE CODE HERE -->
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination" id="pagination"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="blog-sidebar">
+
+        <!-- Sidebar CTA -->
+        <div class="sidebar-cta">
+          <h3>🚀 Cần Website Giá Rẻ?</h3>
+          <p>Từ 500K — bàn giao trong 24–48 giờ, tối ưu SEO sẵn.</p>
+          <a href="/contact" class="btn btn--primary btn--full btn--sm">Tư Vấn Miễn Phí</a>
+        </div>
+
+        <!-- Categories -->
+        <div class="sidebar-widget">
+          <h3>📂 Danh Mục</h3>
+          <div id="sidebarCats"><div class="spinner"></div></div>
+        </div>
+
+        <!-- Popular Posts -->
+        <div class="sidebar-widget">
+          <h3>🔥 Bài Viết Nổi Bật</h3>
+          <div id="popularPosts"><div class="spinner"></div></div>
+        </div>
+
+        <!-- AdSense Sidebar -->
+        <div class="ad-zone ad-zone--sidebar" data-label="AdSense — Sidebar 300×250">
+          <!-- PASTE ADSENSE CODE HERE -->
+        </div>
+
+        <!-- Affiliate Recommendations -->
+        <div class="sidebar-affiliate">
+          <h3>🔧 Công Cụ Được Khuyến Nghị</h3>
+          <ul>
+            <li>🌐 <a href="#" rel="nofollow sponsored">Hostinger</a> — Hosting từ 29K/tháng</li>
+            <li>📝 <a href="#" rel="nofollow sponsored">Elementor</a> — Page builder WordPress tốt nhất</li>
+            <li>📊 <a href="#" rel="nofollow sponsored">Ahrefs</a> — SEO tool chuyên nghiệp</li>
+            <li>📧 <a href="#" rel="nofollow sponsored">Mailchimp</a> — Email marketing miễn phí</li>
+          </ul>
+          <p style="font-size:.75rem;color:var(--muted);margin-top:.5rem">* Affiliate links — chúng tôi nhận hoa hồng khi bạn mua qua link</p>
+        </div>
+
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- Blog Post Ideas (SEO-hidden as comment for reference)
+20 Ý Tưởng Bài Viết SEO:
+1. Làm website bán hàng online giá rẻ từ 500K
+2. Google AdSense là gì? Cách đăng ký và kiếm tiền
+3. Affiliate marketing là gì? 5 bước bắt đầu từ zero
+4. WordPress vs Wix: Nên chọn nền tảng nào?
+5. Top 10 hosting WordPress giá rẻ tốt nhất 2024
+6. Cách tối ưu SEO on-page từng bước cho người mới
+7. Landing page là gì? Tại sao shop online cần landing page?
+8. Cách chạy quảng cáo Google Ads cho người mới
+9. Email marketing cho doanh nghiệp nhỏ
+10. WooCommerce vs Shopify: So sánh chi tiết
+11. Cách tăng tốc độ website WordPress lên 90+ điểm
+12. Top 7 plugin WordPress cho website bán hàng
+13. Cách viết content website chuẩn SEO
+14. Google Analytics 4: Cách cài đặt và đọc báo cáo
+15. Kiếm tiền từ TikTok với affiliate marketing
+16. Cách làm website cá nhân/portfolio miễn phí
+17. Local SEO: Đưa doanh nghiệp lên Google Maps
+18. Hostinger review: Có đáng dùng không?
+19. Canva Pro vs Figma: Công cụ nào tốt hơn?
+20. Cách xây dựng email list từ 0 đến 1000 subscribers
+-->
+
+<section class="cta-banner" style="padding:3rem 0">
+  <div class="container">
+    <h2>Cần Website Để Chạy AdSense & Affiliate?</h2>
+    <p>WebPro thiết kế website chuẩn SEO, tích hợp sẵn vị trí đặt quảng cáo và affiliate links.</p>
+    <div class="cta-banner__actions">
+      <a href="/services" class="btn btn--primary btn--lg">Xem Dịch Vụ</a>
+      <a href="/contact" class="btn btn--outline-white btn--lg">Liên Hệ Ngay</a>
+    </div>
+  </div>
+</section>
+
+<footer id="footer"></footer>
+<div class="float-cta" id="floatCta"></div>
+
+<script src="/js/common.js"></script>
+<script>
+renderNavbar('blog');
+renderFooter();
+
+let currentPage = 1;
+let currentCat  = '';
+let currentSearch = '';
+const LIMIT = 9;
+
+// Load categories
+fetch('/api/blog/categories')
+  .then(r => r.json())
+  .then(cats => {
+    // Category filter buttons
+    const filterEl = document.getElementById('catFilter');
+    cats.forEach(c => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-filter__btn';
+      btn.dataset.cat = c.slug;
+      btn.textContent = `${c.icon} ${c.name}`;
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.cat-filter__btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCat = c.slug;
+        currentPage = 1;
+        loadPosts();
+      });
+      filterEl.appendChild(btn);
+    });
+
+    // Sidebar categories
+    const sidebarEl = document.getElementById('sidebarCats');
+    sidebarEl.innerHTML = cats.map(c => `
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.875rem">
+        <a href="#" style="color:var(--text)" data-cat="${c.slug}">${c.icon} ${c.name}</a>
+        <span class="badge" style="background:${c.color}15;color:${c.color}">${c.post_count}</span>
+      </div>`).join('');
+
+    sidebarEl.querySelectorAll('a[data-cat]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelectorAll('.cat-filter__btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.cat === a.dataset.cat);
+        });
+        currentCat = a.dataset.cat;
+        currentPage = 1;
+        loadPosts();
+        window.scrollTo({ top: 300, behavior: 'smooth' });
+      });
+    });
+  });
+
+// Load popular posts for sidebar
+fetch('/api/blog/posts?limit=5')
+  .then(r => r.json())
+  .then(data => {
+    const el = document.getElementById('popularPosts');
+    if (!data.posts?.length) { el.innerHTML = ''; return; }
+    const sorted = [...data.posts].sort((a, b) => b.views - a.views).slice(0, 5);
+    el.innerHTML = sorted.map(p => `
+      <div class="sidebar-post">
+        <img src="${p.image_url || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=150&q=60'}" alt="${p.title}" loading="lazy">
+        <div>
+          <div class="sidebar-post__title"><a href="/blog/${p.slug}">${p.title}</a></div>
+          <div class="sidebar-post__meta">👁 ${formatNumber(p.views)} lượt xem</div>
+        </div>
+      </div>`).join('');
+  });
+
+// Load posts from URL params
+const urlParams = new URLSearchParams(window.location.search);
+if (urlParams.get('category')) {
+  currentCat = urlParams.get('category');
+}
+if (urlParams.get('search')) {
+  currentSearch = urlParams.get('search');
+  document.getElementById('searchInput').value = currentSearch;
+}
+
+function loadPosts() {
+  const grid = document.getElementById('postsGrid');
+  const info = document.getElementById('postInfo');
+  grid.innerHTML = '<div class="spinner" style="grid-column:1/-1"></div>';
+
+  const params = new URLSearchParams({
+    page: currentPage, limit: LIMIT,
+    ...(currentCat && { category: currentCat }),
+    ...(currentSearch && { search: currentSearch })
+  });
+
+  fetch(`/api/blog/posts?${params}`)
+    .then(r => r.json())
+    .then(data => {
+      if (!data.posts?.length) {
+        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">
+          <div style="font-size:3rem;margin-bottom:1rem">📭</div>
+          <p>Không tìm thấy bài viết nào.</p>
+        </div>`;
+        info.textContent = '';
+        renderPagination(0, 1);
+        return;
+      }
+      info.textContent = `Hiển thị ${data.posts.length} / ${data.total} bài viết`;
+      grid.innerHTML = data.posts.map(renderBlogCard).join('');
+      renderPagination(data.pages, data.page);
+    })
+    .catch(() => {
+      grid.innerHTML = '<p class="text-muted text-center" style="grid-column:1/-1">Không thể tải bài viết.</p>';
+    });
+}
+
+function renderPagination(totalPages, currentP) {
+  const el = document.getElementById('pagination');
+  if (totalPages <= 1) { el.innerHTML = ''; return; }
+  let html = `<button class="pagination__btn" ${currentP <= 1 ? 'disabled' : ''} onclick="goPage(${currentP - 1})">← Trước</button>`;
+  for (let i = 1; i <= totalPages; i++) {
+    if (totalPages > 7 && Math.abs(i - currentP) > 2 && i !== 1 && i !== totalPages) {
+      if (i === currentP - 3 || i === currentP + 3) html += '<span style="padding:0 .3rem">…</span>';
+      continue;
+    }
+    html += `<button class="pagination__btn ${i === currentP ? 'active' : ''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  html += `<button class="pagination__btn" ${currentP >= totalPages ? 'disabled' : ''} onclick="goPage(${currentP + 1})">Sau →</button>`;
+  el.innerHTML = html;
+}
+
+function goPage(p) {
+  currentPage = p;
+  loadPosts();
+  window.scrollTo({ top: 200, behavior: 'smooth' });
+}
+
+// Search
+document.getElementById('searchBtn').addEventListener('click', () => {
+  currentSearch = document.getElementById('searchInput').value.trim();
+  currentPage = 1;
+  loadPosts();
+});
+document.getElementById('searchInput').addEventListener('keypress', e => {
+  if (e.key === 'Enter') document.getElementById('searchBtn').click();
+});
+
+loadPosts();
+</script>
+</body>
+</html>

@@ -87,6 +87,11 @@
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
     .form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
     .form-hint{font-size:.775rem;color:var(--muted);margin-top:.25rem}
+    .img-upload-zone{width:100%;height:160px;border:2px dashed var(--border);border-radius:10px;cursor:pointer;overflow:hidden;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:var(--muted);font-size:.875rem;transition:border-color .2s}
+    .img-upload-zone:hover{border-color:var(--blue);color:var(--blue)}
+    .img-upload-zone img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .img-upload-zone .iz-overlay{position:absolute;inset:0;background:rgba(0,0,0,.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.4rem;color:#fff;opacity:0;transition:opacity .2s}
+    .img-upload-zone:hover .iz-overlay{opacity:1}
 
     /* Badge / Status */
     .badge{display:inline-flex;align-items:center;padding:.2rem .6rem;border-radius:999px;font-size:.75rem;font-weight:600}
@@ -625,7 +630,18 @@
       <div class="form-group"><label class="form-label">Danh Mục *</label><input class="form-input" id="dCategory" placeholder="Spa / Salon"></div>
       <div class="form-group"><label class="form-label">Mô Tả</label><textarea class="form-textarea" id="dDesc" rows="2"></textarea></div>
       <div class="form-row">
-        <div class="form-group"><label class="form-label">URL Ảnh</label><input class="form-input" id="dImage" placeholder="https://..."></div>
+        <div class="form-group">
+          <label class="form-label">Ảnh Portfolio</label>
+          <div class="img-upload-zone" id="dImageZone" onclick="document.getElementById('dImageFile').click()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v13.5A1.5 1.5 0 003.75 21zm10.5-11.25h.008v.008h-.008V9.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/></svg>
+            <span>Nhấp để chọn ảnh</span>
+            <div class="iz-overlay">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"/></svg>
+              <span>Đổi ảnh</span>
+            </div>
+          </div>
+          <input type="file" id="dImageFile" accept="image/*" style="display:none" onchange="onDemoImageChange(this)">
+        </div>
         <div class="form-group"><label class="form-label">Tech Stack</label><input class="form-input" id="dTech" placeholder="HTML/CSS, React, Node.js..."></div>
       </div>
       <div class="form-row">
@@ -654,6 +670,7 @@ let TOKEN = localStorage.getItem('webpro_token') || '';
 let currentSection = 'dashboard';
 let editPostId = null;
 let editDemoId = null;
+let dCurrentImageUrl = '';
 let allPosts = [];
 let allContacts = [];
 let quill;
@@ -1196,13 +1213,37 @@ function loadPortfolio() {
   });
 }
 
+function onDemoImageChange(input) {
+  if (!input.files || !input.files[0]) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const zone = document.getElementById('dImageZone');
+    let img = zone.querySelector('img');
+    if (!img) {
+      img = document.createElement('img');
+      zone.insertBefore(img, zone.firstChild);
+    }
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(input.files[0]);
+}
+
+function resetDemoImageZone() {
+  const zone = document.getElementById('dImageZone');
+  const img = zone.querySelector('img');
+  if (img) img.remove();
+  document.getElementById('dImageFile').value = '';
+  dCurrentImageUrl = '';
+}
+
 function openDemoModal(id = null) {
   editDemoId = id;
   if (!id) {
-    ['dTitle','dCategory','dDesc','dImage','dTech','dUrl'].forEach(i => document.getElementById(i).value = '');
+    ['dTitle','dCategory','dDesc','dTech','dUrl'].forEach(i => document.getElementById(i).value = '');
     document.getElementById('dOrder').value = '0';
     document.getElementById('dActive').checked = true;
     document.getElementById('demoModalTitle').textContent = 'Thêm Portfolio';
+    resetDemoImageZone();
   }
   document.getElementById('demoModal').classList.add('open');
 }
@@ -1216,11 +1257,20 @@ async function editDemo(id) {
     document.getElementById('dTitle').value    = d.title;
     document.getElementById('dCategory').value = d.category;
     document.getElementById('dDesc').value     = d.description || '';
-    document.getElementById('dImage').value    = d.image_url || '';
     document.getElementById('dTech').value     = d.tech_stack || '';
     document.getElementById('dUrl').value      = d.demo_url || '';
     document.getElementById('dOrder').value    = d.sort_order || 0;
     document.getElementById('dActive').checked = !!d.is_active;
+    document.getElementById('dImageFile').value = '';
+    dCurrentImageUrl = d.image_url || '';
+    const zone = document.getElementById('dImageZone');
+    let img = zone.querySelector('img');
+    if (dCurrentImageUrl) {
+      if (!img) { img = document.createElement('img'); zone.insertBefore(img, zone.firstChild); }
+      img.src = dCurrentImageUrl;
+    } else {
+      if (img) img.remove();
+    }
     document.getElementById('demoModal').classList.add('open');
   });
 }
@@ -1229,10 +1279,28 @@ async function saveDemo() {
   const title    = document.getElementById('dTitle').value.trim();
   const category = document.getElementById('dCategory').value.trim();
   if (!title || !category) { toast('Vui lòng nhập tiêu đề và danh mục.', 'error'); return; }
+
+  let image_url = dCurrentImageUrl;
+  const fileInput = document.getElementById('dImageFile');
+  if (fileInput.files && fileInput.files[0]) {
+    try {
+      const fd = new FormData();
+      fd.append('image', fileInput.files[0]);
+      const res = await fetch('/api/admin/upload-image', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + TOKEN },
+        body: fd,
+      });
+      if (!res.ok) throw new Error('upload failed');
+      const json = await res.json();
+      image_url = json.url;
+    } catch(e) { toast('❌ Upload ảnh thất bại.', 'error'); return; }
+  }
+
   const data = {
     title, category,
     description: document.getElementById('dDesc').value.trim(),
-    image_url:   document.getElementById('dImage').value.trim(),
+    image_url,
     tech_stack:  document.getElementById('dTech').value.trim(),
     demo_url:    document.getElementById('dUrl').value.trim(),
     sort_order:  parseInt(document.getElementById('dOrder').value) || 0,

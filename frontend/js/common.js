@@ -38,8 +38,9 @@ function renderNavbar(activePage = '') {
     </div>
   `;
 
-  document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navToggle').addEventListener('click', function() {
     document.getElementById('navMenu').classList.toggle('open');
+    this.classList.toggle('open');
   });
 }
 
@@ -255,7 +256,60 @@ function initFAQ(container = document) {
   });
 }
 
+/* == Scroll Reveal ================================================= */
+function initScrollReveal() {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in-view');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-scale').forEach(el => io.observe(el));
+}
+
+/* == Navbar Scroll ================================================= */
+function initNavbarScroll() {
+  const nav = document.getElementById('navbar');
+  if (!nav) return;
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 20);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+/* == Number Counter =============================================== */
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseFloat(el.dataset.count);
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const dur = 1600;
+    const start = performance.now();
+    const update = (now) => {
+      const t = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      const val = target * ease;
+      el.textContent = prefix + (Number.isInteger(target) ? Math.round(val) : val.toFixed(1)) + suffix;
+      if (t < 1) requestAnimationFrame(update);
+    };
+    requestAnimationFrame(update);
+  });
+}
+
+function initCounters() {
+  const statsBar = document.querySelector('.stats-bar');
+  if (!statsBar) return;
+  const io = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateCounters(); io.disconnect(); }
+  }, { threshold: 0.5 });
+  io.observe(statsBar);
+}
+
 /* == Init ========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   renderFloatCTA();
+  initScrollReveal();
+  initNavbarScroll();
+  initCounters();
 });

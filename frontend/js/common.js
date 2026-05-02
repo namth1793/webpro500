@@ -2,6 +2,18 @@
    WebPro — Shared JS: Navbar, Footer, Utilities
    ───────────────────────────────────────────────────────────────── */
 
+// Prepend Railway URL to /api calls when deployed on Netlify
+// window.API_BASE is set by frontend/js/env.js (generated at build time)
+if (typeof window !== 'undefined' && window.API_BASE) {
+  const _nativeFetch = window.fetch.bind(window);
+  window.fetch = (input, init) => {
+    if (typeof input === 'string' && input.startsWith('/api')) {
+      input = window.API_BASE.replace(/\/$/, '') + input;
+    }
+    return _nativeFetch(input, init);
+  };
+}
+
 const PHONE     = '0852 297 684';
 const PHONE_RAW = '0852297684';
 const ZALO_URL  = 'https://zalo.me/0852297684';

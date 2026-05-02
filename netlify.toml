@@ -1,13 +1,39 @@
 [build]
-  base    = "/"
   publish = "frontend"
+  command = "sh build.sh"
+
+# Clean URL routing — map paths to HTML files
+[[redirects]]
+  from   = "/blog/:slug"
+  to     = "/blog-post.html"
+  status = 200
 
 [[redirects]]
-  from   = "/api/*"
-  to     = "https://REPLACE_WITH_RAILWAY_URL/api/:splat"
+  from   = "/blog"
+  to     = "/blog.html"
   status = 200
-  force  = true
 
+[[redirects]]
+  from   = "/services"
+  to     = "/services.html"
+  status = 200
+
+[[redirects]]
+  from   = "/contact"
+  to     = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from   = "/admin/*"
+  to     = "/admin.html"
+  status = 200
+
+[[redirects]]
+  from   = "/admin"
+  to     = "/admin.html"
+  status = 200
+
+# Fallback
 [[redirects]]
   from   = "/*"
   to     = "/index.html"

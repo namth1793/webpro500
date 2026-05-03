@@ -404,16 +404,22 @@ fetch('/api/admin/demo-sites/public')
     const el = document.getElementById('portfolioGrid');
     const list = demos.slice(0, 6);
     if (!list.length) { el.innerHTML = ''; return; }
-    el.innerHTML = list.map(d => `
-      <div class="portfolio-card">
+    el.innerHTML = list.map(d => {
+      const url  = d.demo_url || '';
+      const tag  = url ? `a href="${url}" target="_blank" rel="noopener noreferrer"` : 'div';
+      const end  = url ? 'a' : 'div';
+      return `
+      <${tag} class="portfolio-card">
         <img src="${d.image_url || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=70'}" alt="${d.title}" loading="lazy">
         <div class="portfolio-card__overlay">
           <div class="portfolio-card__cat">${d.category}</div>
           <div class="portfolio-card__title">${d.title}</div>
           <div class="portfolio-card__desc">${d.description || ''}</div>
+          ${url ? `<div class="portfolio-card__cta">Xem Demo <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg></div>` : ''}
         </div>
         ${d.tech_stack ? `<div class="portfolio-card__tech">${d.tech_stack}</div>` : ''}
-      </div>`).join('');
+      </${end}>`;
+    }).join('');
   });
 </script>
 </body>

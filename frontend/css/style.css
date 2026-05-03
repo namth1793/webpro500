@@ -492,6 +492,16 @@ strong { font-weight: 600; }
   padding: .25rem .6rem; border-radius: 999px;
   border: 1px solid rgba(255,255,255,.12);
 }
+.portfolio-card__cta {
+  display: inline-flex; align-items: center; gap: .4rem;
+  margin-top: .7rem; padding: .38rem .9rem;
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px; color: white; font-size: .8125rem; font-weight: 700;
+  backdrop-filter: blur(4px); transition: background var(--transition);
+  align-self: flex-start;
+}
+.portfolio-card:hover .portfolio-card__cta { background: rgba(255,255,255,.28); }
+a.portfolio-card { display: block; text-decoration: none; }
 
 /* == Pricing Cards ================================================= */
 .pricing-card {

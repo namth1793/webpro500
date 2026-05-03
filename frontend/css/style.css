@@ -1043,3 +1043,54 @@ strong { font-weight: 600; }
   .float-btn          { width: 48px; height: 48px; }
   .chat-popup         { width: 270px; }
 }
+
+/* == Policy Pages (privacy.html, terms.html) ======================= */
+.policy-wrap {
+  max-width: 780px; margin: 0 auto; padding: 3rem 0 4rem;
+}
+.policy-meta {
+  display: flex; align-items: center; gap: 1.5rem;
+  font-size: .875rem; color: var(--muted); margin-bottom: 2.5rem;
+  padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.policy-meta span { display: flex; align-items: center; gap: .35rem; }
+.policy-body h2 {
+  font-size: 1.25rem; font-weight: 700; color: var(--text);
+  margin: 2.25rem 0 .85rem; padding-left: 1rem;
+  border-left: 3px solid var(--blue);
+}
+.policy-body h3 {
+  font-size: 1rem; font-weight: 700; color: var(--text);
+  margin: 1.5rem 0 .5rem;
+}
+.policy-body p  { color: var(--text); line-height: 1.85; margin-bottom: .9rem; }
+.policy-body ul { padding-left: 1.4rem; margin-bottom: .9rem; }
+.policy-body ul li { color: var(--text); line-height: 1.8; margin-bottom: .35rem; list-style: disc; }
+.policy-body a  { color: var(--blue); text-decoration: underline; }
+.policy-body a:hover { color: var(--blue-d); }
+.policy-box {
+  background: var(--blue-l); border: 1px solid var(--blue-xl);
+  border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin: 1.5rem 0;
+}
+.policy-box p { margin-bottom: 0; color: var(--blue-d); font-size: .9375rem; }
+.policy-toc {
+  background: var(--bg); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.25rem 1.5rem; margin-bottom: 2.25rem;
+}
+.policy-toc h4 { font-size: .9375rem; font-weight: 700; margin-bottom: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.policy-toc ol { padding-left: 1.25rem; margin: 0; }
+.policy-toc ol li { font-size: .9375rem; line-height: 1.85; }
+.policy-toc ol li a { color: var(--blue); text-decoration: none; }
+.policy-toc ol li a:hover { text-decoration: underline; }
+.policy-related {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem;
+}
+.policy-related a {
+  display: flex; align-items: center; gap: .75rem; padding: 1rem 1.25rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); text-decoration: none; color: var(--text);
+  font-weight: 600; font-size: .9375rem; transition: all var(--transition);
+}
+.policy-related a:hover { border-color: var(--blue); color: var(--blue); box-shadow: var(--shadow); }
+@media (max-width: 600px) { .policy-related { grid-template-columns: 1fr; } }

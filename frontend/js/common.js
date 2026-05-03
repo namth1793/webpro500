@@ -96,8 +96,8 @@ function renderFooter() {
       <div class="footer__bottom">
         <p class="footer__copyright">© ${new Date().getFullYear()} WebPro. Thiết kế website chuyên nghiệp, giá rẻ.</p>
         <div class="footer__legal">
-          <a href="#">Chính Sách Bảo Mật</a>
-          <a href="#">Điều Khoản Dịch Vụ</a>
+          <a href="/privacy">Chính Sách Bảo Mật</a>
+          <a href="/terms">Điều Khoản Dịch Vụ</a>
           <a href="/admin" style="opacity:.3">Admin</a>
         </div>
       </div>

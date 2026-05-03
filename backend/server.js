@@ -17,6 +17,7 @@ app.use(express.static(FE));
 app.use('/api/contacts', require('./routes/contacts'));
 app.use('/api/blog',     require('./routes/blog'));
 app.use('/api/admin',    require('./routes/admin'));
+app.use('/api/comments', require('./routes/comments'));
 
 // ── Sitemap ───────────────────────────────────────────────────────
 app.get('/sitemap.xml', (req, res) => {

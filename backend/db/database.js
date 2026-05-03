@@ -78,6 +78,19 @@ db.exec(`
 `);
 
 // ── Migrations for existing databases ─────────────────────────────
+// comments table
+db.exec(`
+  CREATE TABLE IF NOT EXISTS comments (
+    id          INTEGER PRIMARY KEY AUTOINCREMENT,
+    post_id     INTEGER NOT NULL,
+    name        TEXT NOT NULL,
+    content     TEXT NOT NULL,
+    is_approved INTEGER DEFAULT 1,
+    created_at  DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (post_id) REFERENCES blog_posts(id)
+  );
+`);
+
 const demoCols = db.pragma('table_info(demo_sites)').map(c => c.name);
 if (!demoCols.includes('image_url'))  db.exec('ALTER TABLE demo_sites ADD COLUMN image_url TEXT');
 if (!demoCols.includes('demo_url'))   db.exec('ALTER TABLE demo_sites ADD COLUMN demo_url TEXT');

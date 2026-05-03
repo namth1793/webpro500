@@ -337,6 +337,10 @@
         <span class="icon">📬</span> Liên Hệ
         <span id="newLeadBadge" style="margin-left:auto;background:#dc2626;color:#fff;font-size:.7rem;padding:.1rem .4rem;border-radius:999px;display:none"></span>
       </button>
+      <button class="nav-item" onclick="showSection('comments')" id="nav-comments">
+        <span class="icon">💬</span> Bình Luận
+        <span id="commentBadge" style="margin-left:auto;background:#2563eb;color:#fff;font-size:.7rem;padding:.1rem .4rem;border-radius:999px;display:none"></span>
+      </button>
       <button class="nav-item" onclick="showSection('portfolio')" id="nav-portfolio">
         <span class="icon">🎨</span> Portfolio
       </button>
@@ -410,6 +414,13 @@
             </select>
           </div>
           <div id="contactsTable"><div class="spinner"></div></div>
+        </div>
+      </div>
+
+      <!-- COMMENTS -->
+      <div class="section" id="section-comments">
+        <div class="card">
+          <div id="commentsAdminTable"><div class="spinner"></div></div>
         </div>
       </div>
 
@@ -846,7 +857,7 @@ function showSection(name) {
   document.getElementById('section-' + name).classList.add('active');
   document.getElementById('nav-' + name).classList.add('active');
   currentSection = name;
-  const titles = { dashboard: 'Dashboard', posts: 'Bài Viết Blog', categories: 'Danh Mục Blog', contacts: 'Liên Hệ', portfolio: 'Portfolio', settings: 'Cài Đặt' };
+  const titles = { dashboard: 'Dashboard', posts: 'Bài Viết Blog', categories: 'Danh Mục Blog', contacts: 'Liên Hệ', comments: 'Bình Luận', portfolio: 'Portfolio', settings: 'Cài Đặt' };
   document.getElementById('pageTitle').textContent = titles[name] || name;
   const actions = {
     posts:      '<button class="btn btn-primary btn-sm" onclick="openPostModal()">+ Thêm Bài Viết</button>',
@@ -858,6 +869,7 @@ function showSection(name) {
   if (name === 'posts')     loadPosts();
   if (name === 'categories') loadCatsTable();
   if (name === 'contacts')  loadContacts();
+  if (name === 'comments')  loadCommentsAdmin();
   if (name === 'portfolio') loadPortfolio();
 }
 
@@ -1317,6 +1329,44 @@ async function saveDemo() {
     document.getElementById('demoModal').classList.remove('open');
     loadPortfolio();
   } catch(e) { toast('❌ Lỗi lưu.', 'error'); }
+}
+
+// ── Comments ──────────────────────────────────────────────────────
+async function loadCommentsAdmin() {
+  const el = document.getElementById('commentsAdminTable');
+  el.innerHTML = '<div class="spinner"></div>';
+  const comments = await api('/api/comments');
+  const badge = document.getElementById('commentBadge');
+  if (comments.length) { badge.textContent = comments.length; badge.style.display = ''; }
+  else badge.style.display = 'none';
+
+  if (!comments.length) { el.innerHTML = '<p class="text-muted" style="padding:1rem">Chưa có bình luận nào.</p>'; return; }
+  el.innerHTML = `
+    <table class="table">
+      <thead><tr>
+        <th>Người bình luận</th>
+        <th>Nội dung</th>
+        <th>Bài viết</th>
+        <th>Thời gian</th>
+        <th></th>
+      </tr></thead>
+      <tbody>
+        ${comments.map(c => `<tr>
+          <td style="font-weight:600;white-space:nowrap">${c.name}</td>
+          <td style="font-size:.875rem;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${c.content.replace(/"/g,'&quot;')}">${c.content}</td>
+          <td style="font-size:.8125rem"><a href="/blog/${c.post_slug}" target="_blank" style="color:var(--blue)">${c.post_title || '—'}</a></td>
+          <td style="font-size:.8125rem;color:var(--muted);white-space:nowrap">${formatDate(c.created_at)}</td>
+          <td><button class="btn btn-xs" style="background:#fef2f2;border-color:#fecaca;color:var(--red)" onclick="deleteComment(${c.id})">🗑️</button></td>
+        </tr>`).join('')}
+      </tbody>
+    </table>`;
+}
+
+async function deleteComment(id) {
+  if (!confirm('Xóa bình luận này?')) return;
+  await api(`/api/comments/${id}`, { method: 'DELETE' });
+  toast('Đã xóa bình luận.', 'success');
+  loadCommentsAdmin();
 }
 
 async function deleteDemo(id, title) {

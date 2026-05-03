@@ -960,7 +960,7 @@ a.portfolio-card { display: block; text-decoration: none; }
 /* == Process Steps ================================================= */
 .process-steps {
   display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 1.5rem; position: relative;
+  gap: 1.5rem;
 }
 .process-steps::before {
   content: ''; position: absolute;

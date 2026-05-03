@@ -646,4 +646,431 @@ if (db.prepare('SELECT COUNT(*) as c FROM blog_posts').get().c === 0) {
   `).run();
 }
 
+// ── Additional posts migration (2026-05) ───────────────────────────
+{
+  const ins2   = db.prepare(`INSERT INTO blog_posts (title,slug,excerpt,content,category_id,image_url,seo_title,seo_description,seo_keywords,is_featured,read_time,tags,views) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)`);
+  const getcat2 = db.prepare('SELECT id FROM blog_categories WHERE slug = ?');
+  const has     = db.prepare('SELECT id FROM blog_posts WHERE slug = ?');
+
+  const newPosts = [
+    // ── Bài 1 ──────────────────────────────────────────────────────
+    {
+      title:    'Website Là Gì Và Tại Sao Doanh Nghiệp Cần Có Website',
+      slug:     'website-la-gi-tai-sao-doanh-nghiep-can-co-website',
+      cat:      'thiet-ke-website',
+      image:    'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
+      excerpt:  'Website là gì? Tại sao mỗi doanh nghiệp — dù nhỏ hay lớn — đều cần có website trong thời đại số? Bài viết phân tích 8 lý do thực tế và con số chứng minh rõ ràng.',
+      seo_title:'Website Là Gì? Tại Sao Doanh Nghiệp Cần Website — Giải Thích Đơn Giản 2026',
+      seo_desc: 'Website là gì và tại sao doanh nghiệp nhỏ cần có website? 8 lý do thực tế, số liệu cụ thể và hướng dẫn bước đầu để có website chuyên nghiệp từ 1.000.000đ.',
+      seo_kw:   'website là gì, tại sao cần website, lợi ích website doanh nghiệp, làm website cho doanh nghiệp nhỏ',
+      featured: 1, read_time: 9, tags: 'website,doanh nghiệp,kiến thức cơ bản', views: 0,
+      content: `<h2>Website Là Gì? Định Nghĩa Đơn Giản Nhất</h2>
+<p><strong>Website</strong> là tập hợp các trang web được lưu trữ trên một máy chủ (server) và có thể truy cập thông qua Internet bằng địa chỉ URL — còn gọi là tên miền (domain). Ví dụ: <strong>webpro500.io.vn</strong> là địa chỉ dẫn đến website của WebPro.</p>
+<p>Nói theo cách dễ hiểu nhất: website giống như một <strong>văn phòng hoặc cửa hàng trên Internet</strong> — hoạt động 24/7, tiếp đón khách hàng từ khắp nơi mà không cần thuê mặt bằng hay nhân viên trực thường xuyên.</p>
+<p>Website có thể chứa đủ loại nội dung: văn bản, hình ảnh, video, biểu mẫu liên hệ, giỏ hàng mua sắm, đặt lịch hẹn, bản đồ, chatbot... Tùy mục đích kinh doanh, bạn chọn loại website phù hợp.</p>
+
+<h2>Các Loại Website Phổ Biến Nhất Hiện Nay</h2>
+<p>Nhiều chủ doanh nghiệp nhầm lẫn giữa các loại website, dẫn đến đầu tư sai chỗ. Dưới đây là bảng phân loại rõ ràng:</p>
+<table>
+  <thead><tr><th>Loại Website</th><th>Mục Đích Chính</th><th>Phù Hợp Với</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Landing Page</strong></td><td>Quảng cáo 1 sản phẩm, thu thập lead</td><td>Dịch vụ cá nhân, freelancer, chạy ads</td></tr>
+    <tr><td><strong>Website doanh nghiệp</strong></td><td>Giới thiệu công ty, xây dựng thương hiệu</td><td>Công ty B2B, dịch vụ chuyên nghiệp</td></tr>
+    <tr><td><strong>Website bán hàng (TMĐT)</strong></td><td>Bán sản phẩm trực tuyến, thanh toán online</td><td>Shop thời trang, đồ điện tử, thực phẩm</td></tr>
+    <tr><td><strong>Blog / Website nội dung</strong></td><td>Chia sẻ kiến thức, kiếm tiền AdSense</td><td>Blogger, người làm nội dung, affiliate</td></tr>
+    <tr><td><strong>Portfolio cá nhân</strong></td><td>Showcase tác phẩm, tìm việc, thu hút khách</td><td>Designer, photographer, lập trình viên</td></tr>
+    <tr><td><strong>Website đặt lịch</strong></td><td>Khách đặt lịch hẹn trực tuyến</td><td>Spa, salon tóc, phòng khám, nail</td></tr>
+  </tbody>
+</table>
+
+<h2>Con Số Thực Tế Chứng Minh Tầm Quan Trọng Của Website</h2>
+<p>Nếu bạn vẫn nghĩ website là thứ "nice to have" — những số liệu sau sẽ thay đổi quan điểm đó:</p>
+<ul>
+  <li><strong>97% người tiêu dùng</strong> tìm kiếm thông tin doanh nghiệp trên Google trước khi mua hàng hoặc đến trực tiếp (BrightLocal, 2024)</li>
+  <li><strong>75% người dùng</strong> đánh giá độ uy tín của doanh nghiệp dựa vào thiết kế website — ngay trong lần nhìn đầu tiên (Stanford Web Credibility Research)</li>
+  <li><strong>60% doanh nghiệp nhỏ</strong> không có website mất khách hàng vào tay đối thủ có website (SCORE, 2023)</li>
+  <li>Người Việt Nam dành trung bình <strong>6,5 giờ mỗi ngày</strong> trên Internet, trong đó phần lớn để tìm kiếm thông tin trước khi mua sắm</li>
+  <li>Doanh nghiệp có website đẹp, tốc độ nhanh có tỷ lệ chuyển đổi <strong>cao hơn 2–3 lần</strong> so với dùng fanpage đơn thuần</li>
+</ul>
+<p>Không có website, bạn đang <strong>vô hình với 97% khách hàng tiềm năng</strong> ngay từ bước đầu tiên họ tìm kiếm.</p>
+
+<h2>8 Lý Do Doanh Nghiệp Nhỏ Cần Website Ngay Hôm Nay</h2>
+
+<h3>1. Hoạt Động 24/7 — Không Ngủ, Không Nghỉ</h3>
+<p>Fanpage Facebook hay Zalo chỉ hoạt động khi bạn online để trả lời tin nhắn. Website thì khác — nó tiếp đón khách hàng, trả lời câu hỏi thường gặp (FAQ), nhận đặt hàng và thu thập thông tin liên hệ ngay lúc 2 giờ sáng trong khi bạn đang ngủ. Đây là "nhân viên bán hàng số 1" không cần lương, không xin nghỉ phép, không bao giờ đến trễ.</p>
+
+<h3>2. Tăng Độ Uy Tín Và Chuyên Nghiệp Ngay Lập Tức</h3>
+<p>Thử so sánh hai tình huống: khách hàng Google tên công ty bạn và thấy website được thiết kế đẹp, đầy đủ thông tin — với việc chỉ thấy một trang Facebook ít bài đăng. Kết quả: <strong>website tạo ra sự tin tưởng ngay lần nhìn đầu tiên</strong> mà không cần tốn thêm công sức giải thích.</p>
+<p>Đặc biệt quan trọng với doanh nghiệp B2B — đối tác, nhà cung cấp, khách hàng doanh nghiệp đều Google tên công ty trước khi hợp tác. Không có website = thiếu chuyên nghiệp trong mắt họ.</p>
+
+<h3>3. Khách Hàng Tự Tìm Đến Qua Google (SEO Miễn Phí)</h3>
+<p>Mỗi ngày có hàng nghìn người tìm kiếm dịch vụ của bạn ngay tại thành phố bạn đang sống. Ví dụ: "spa quận Đống Đa", "thợ sửa máy lạnh quận 7", "tiệm nail giá rẻ Cần Thơ". Website được tối ưu SEO đúng cách sẽ xuất hiện đầu kết quả tìm kiếm — đưa khách hàng đến với bạn mà không tốn phí quảng cáo.</p>
+
+<h3>4. Sở Hữu Tài Sản Kỹ Thuật Số Lâu Dài</h3>
+<p>Facebook giảm reach, Instagram thay đổi thuật toán, TikTok bị cấm ở một số quốc gia. Website là <strong>tài sản của riêng bạn</strong> — không ai có thể lấy đi, không bị phụ thuộc vào bất kỳ nền tảng bên thứ ba nào. Đây là sự khác biệt cơ bản giữa "thuê nhà" và "sở hữu nhà".</p>
+
+<h3>5. Tiết Kiệm Chi Phí Marketing Về Lâu Dài</h3>
+<p>Chạy quảng cáo Facebook mỗi tháng tốn 3–10 triệu và traffic dừng ngay khi hết ngân sách. Website với SEO tốt tạo ra lượng khách hàng ổn định, <strong>không tốn thêm đồng nào sau khi đã đầu tư ban đầu</strong>. Sau 6–12 tháng, chi phí khách hàng từ SEO luôn thấp hơn nhiều so với quảng cáo trả phí.</p>
+
+<h3>6. Thu Thập Và Phân Tích Dữ Liệu Khách Hàng</h3>
+<p>Google Analytics (miễn phí) cho bạn biết: bao nhiêu người ghé website, họ xem trang nào lâu nhất, họ đến từ kênh nào (Google, Facebook, Zalo...), họ rời đi ở bước nào trong quá trình mua hàng. Dữ liệu này giúp bạn cải thiện sản phẩm và chiến lược marketing liên tục dựa trên thực tế, không phải cảm tính.</p>
+
+<h3>7. Mở Rộng Thị Trường Không Giới Hạn Địa Lý</h3>
+<p>Cửa hàng vật lý chỉ phục vụ khách trong bán kính vài km. Website phục vụ toàn quốc, thậm chí toàn cầu. Một shop handmade nhỏ ở Đà Lạt có thể bán hàng cho khách ở Hà Nội, TP.HCM hay Việt kiều ở Mỹ — tất cả nhờ website và hệ thống đặt hàng online.</p>
+
+<h3>8. Tích Hợp Toàn Bộ Công Cụ Kinh Doanh Hiện Đại</h3>
+<p>Website hiện đại tích hợp được: đặt lịch online, thanh toán VNPAY/Momo/banking, chatbot tư vấn tự động, email marketing, Google Maps chỉ đường, bảng đánh giá/review. Tất cả tạo ra trải nghiệm khách hàng mượt mà, chuyên nghiệp hơn đối thủ chỉ dùng mạng xã hội.</p>
+
+<h2>Doanh Nghiệp Không Có Website Đang Mất Gì Mỗi Ngày?</h2>
+<p>Mỗi ngày không có website, bạn đang chịu những thiệt hại âm thầm sau:</p>
+<ul>
+  <li><strong>Mất khách vào tay đối thủ:</strong> Khách tìm "spa Hà Nội" trên Google, thấy website đẹp của đối thủ — gọi luôn. Bạn không xuất hiện = không có cơ hội.</li>
+  <li><strong>Mất đối tác tiềm năng:</strong> Công ty lớn muốn hợp tác nhưng Google không thấy thông tin — họ chọn đơn vị khác có website chuyên nghiệp.</li>
+  <li><strong>Phụ thuộc hoàn toàn vào mạng xã hội:</strong> Facebook từng giảm organic reach 80% chỉ sau một đêm thay đổi thuật toán năm 2018. Hàng nghìn doanh nghiệp Việt điêu đứng. Website là "bảo hiểm" tránh rủi ro này.</li>
+  <li><strong>Tụt hậu trong cuộc đua SEO:</strong> Mỗi tháng không có website là mỗi tháng đối thủ tích lũy thêm domain authority, backlink và thứ hạng Google. Càng trễ bắt đầu, càng khó bắt kịp.</li>
+</ul>
+
+<h2>Bước Đầu Tiên Để Có Website: Cần Chuẩn Bị Gì?</h2>
+<p>Để có website hoạt động, bạn cần 3 thành phần cơ bản:</p>
+
+<h3>1. Tên Miền (Domain) — Địa Chỉ Website</h3>
+<p>Ví dụ: <strong>tencuahang.vn</strong> hoặc <strong>tencuahang.com</strong>. Chi phí khoảng 200.000–400.000đ/năm. Chọn tên ngắn, dễ nhớ, liên quan đến thương hiệu hoặc ngành nghề. Ưu tiên đuôi <strong>.vn</strong> nếu kinh doanh tại Việt Nam vì Google ưu tiên website địa phương trong kết quả tìm kiếm.</p>
+
+<h3>2. Hosting — Nơi Lưu Trữ Website</h3>
+<p>Là máy chủ lưu toàn bộ dữ liệu website. Chi phí từ 500.000–2.000.000đ/năm tùy gói và nhà cung cấp. Khi thuê đơn vị thiết kế, thường được tư vấn hosting phù hợp hoặc đã bao gồm trong gói dịch vụ.</p>
+
+<h3>3. Thiết Kế và Phát Triển Website</h3>
+<p>Đây là phần quan trọng nhất. Có 3 con đường: tự học làm (tốn 3–6 tháng), dùng website builder (Wix, Squarespace — hạn chế tùy chỉnh), hoặc thuê đơn vị chuyên nghiệp. Với <a href="/services">WebPro</a>, bạn có website hoàn chỉnh từ <strong>1.000.000đ</strong>, bàn giao trong 24–48 giờ mà không cần biết lập trình.</p>
+
+<div class="affiliate-box">
+  <h3>Bắt Đầu Ngay Hôm Nay</h3>
+  <p>Không cần biết kỹ thuật — WebPro lo toàn bộ từ A đến Z: tư vấn miễn phí, thiết kế theo thương hiệu, tối ưu SEO, bàn giao 48h.</p>
+  <ul>
+    <li><a href="/contact"><strong>Nhận tư vấn miễn phí</strong></a> — Phản hồi trong 30 phút</li>
+    <li><a href="/services"><strong>Xem bảng giá dịch vụ</strong></a> — Từ 1.000.000đ, báo giá cố định</li>
+  </ul>
+</div>
+
+<h2>Kết Luận</h2>
+<p>Website không còn là xa xỉ phẩm chỉ dành cho doanh nghiệp lớn — đó là <strong>công cụ kinh doanh thiết yếu</strong> cho bất kỳ ai muốn tồn tại và phát triển trong thời đại số. Với ngân sách từ 1.000.000đ và thời gian bàn giao 24–48 giờ, rào cản để có website chuyên nghiệp chưa bao giờ thấp đến vậy.</p>
+<p>Mỗi ngày không có website là mỗi ngày bạn đang nhường thị phần cho đối thủ. Hành động ngay hôm nay — <a href="/contact">liên hệ WebPro để được tư vấn miễn phí</a> và nhận báo giá cố định trong 30 phút.</p>`,
+    },
+
+    // ── Bài 2 ──────────────────────────────────────────────────────
+    {
+      title:    'Website Bán Hàng Cần Những Gì Để Hoạt Động Hiệu Quả',
+      slug:     'website-ban-hang-can-nhung-gi-de-hoat-dong-hieu-qua',
+      cat:      'thiet-ke-website',
+      image:    'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
+      excerpt:  'Muốn mở shop online nhưng không biết website bán hàng cần những gì? Bài viết liệt kê đầy đủ 9 yếu tố kỹ thuật và kinh doanh để website bán hàng hoạt động hiệu quả, tăng doanh thu thực sự.',
+      seo_title:'Website Bán Hàng Cần Những Gì? 9 Yếu Tố Không Thể Thiếu Năm 2026',
+      seo_desc: 'Website bán hàng hiệu quả cần gì? Từ domain, hosting, SSL đến giỏ hàng, thanh toán, SEO và tốc độ tải. Checklist đầy đủ cho người mới bắt đầu kinh doanh online.',
+      seo_kw:   'website bán hàng cần gì, làm website bán hàng, yếu tố website bán hàng hiệu quả, shop online',
+      featured: 1, read_time: 10, tags: 'website bán hàng,thương mại điện tử,shop online,kinh doanh', views: 0,
+      content: `<h2>Website Bán Hàng Là Gì? Khác Gì Fanpage Facebook?</h2>
+<p><strong>Website bán hàng</strong> (hay còn gọi là website thương mại điện tử — e-commerce) là nền tảng trực tuyến cho phép khách hàng xem sản phẩm, thêm vào giỏ hàng và thanh toán trực tiếp — hoàn toàn tự động, không cần bạn can thiệp thủ công từng đơn.</p>
+<p>So với bán hàng qua Facebook hay Zalo, website bán hàng có những ưu điểm vượt trội:</p>
+<table>
+  <thead><tr><th>Tiêu Chí</th><th>Facebook/Zalo</th><th>Website Bán Hàng</th></tr></thead>
+  <tbody>
+    <tr><td>Hoạt động 24/7</td><td>Cần người trực</td><td>Tự động hoàn toàn</td></tr>
+    <tr><td>Nhận đơn hàng</td><td>Nhắn tin thủ công</td><td>Tự động vào hệ thống</td></tr>
+    <tr><td>Thanh toán</td><td>Chuyển khoản riêng</td><td>VNPAY, Momo, thẻ, COD</td></tr>
+    <tr><td>Quản lý sản phẩm</td><td>Đăng bài từng cái</td><td>Admin panel đầy đủ</td></tr>
+    <tr><td>SEO Google</td><td>Không có</td><td>Có, traffic miễn phí</td></tr>
+    <tr><td>Phụ thuộc nền tảng</td><td>Cao (bị khóa tài khoản)</td><td>Không — tài sản của bạn</td></tr>
+  </tbody>
+</table>
+
+<h2>1. Nền Tảng Kỹ Thuật: Domain, Hosting Và SSL</h2>
+
+<h3>Tên Miền (Domain) — Địa Chỉ Thương Hiệu</h3>
+<p>Domain không chỉ là địa chỉ truy cập — nó còn là thương hiệu kỹ thuật số. Chọn domain theo nguyên tắc:</p>
+<ul>
+  <li>Ngắn, dễ nhớ, dễ đánh máy (tối đa 15 ký tự)</li>
+  <li>Tránh dấu gạch ngang hoặc số khó nhớ</li>
+  <li>Ưu tiên đuôi <strong>.vn</strong> hoặc <strong>.com</strong> cho uy tín</li>
+  <li>Chứa từ khóa chính nếu có thể (vd: shopgiay.vn, muabanhoa.com)</li>
+</ul>
+
+<h3>Hosting — Nền Tảng Chịu Tải</h3>
+<p>Website bán hàng cần hosting mạnh hơn website giới thiệu thông thường vì phải xử lý nhiều request đồng thời (nhiều người xem sản phẩm cùng lúc). Cần chú ý: RAM tối thiểu 1GB, SSD storage, uptime cam kết 99.9%+, hỗ trợ kỹ thuật 24/7.</p>
+
+<h3>Chứng Chỉ SSL (HTTPS) — Bắt Buộc 100%</h3>
+<p>SSL mã hóa dữ liệu giữa trình duyệt khách hàng và server của bạn. Đây là <strong>yêu cầu bắt buộc</strong> cho website bán hàng vì: Google xếp hạng cao hơn website có HTTPS, khách hàng tin tưởng hơn khi thấy ổ khóa xanh, và thông tin thẻ ngân hàng cần được mã hóa an toàn.</p>
+
+<h2>2. Thiết Kế UX/UI Tối Ưu Chuyển Đổi</h2>
+<p>Thiết kế đẹp chỉ là điều kiện cần — thiết kế <strong>tối ưu chuyển đổi</strong> mới là điều kiện đủ. Nguyên tắc UX cho website bán hàng:</p>
+<ul>
+  <li><strong>Mobile-first:</strong> Hơn 70% người Việt mua sắm qua điện thoại. Nếu website không đẹp trên mobile, bạn mất 7 trong 10 khách hàng tiềm năng.</li>
+  <li><strong>Tốc độ tải dưới 3 giây:</strong> Nghiên cứu Google cho thấy 53% người dùng mobile rời đi nếu trang tải quá 3 giây.</li>
+  <li><strong>Nút CTA nổi bật:</strong> Nút "Thêm vào giỏ hàng" và "Mua ngay" phải màu sắc tương phản, kích thước đủ lớn để nhấn dễ trên mobile.</li>
+  <li><strong>Điều hướng đơn giản:</strong> Khách hàng phải tìm được sản phẩm muốn mua trong tối đa 3 lần click.</li>
+  <li><strong>Ảnh sản phẩm chất lượng cao:</strong> Cho phép zoom, xem nhiều góc độ, video sản phẩm nếu cần.</li>
+</ul>
+
+<h2>3. Tính Năng Cốt Lõi Không Thể Thiếu</h2>
+
+<h3>Giỏ Hàng và Quy Trình Checkout Đơn Giản</h3>
+<p>Quy trình thanh toán phức tạp là nguyên nhân số 1 khiến khách bỏ giỏ hàng (cart abandonment rate trung bình 70%). Thiết kế checkout tốt cần: tối đa 3 bước, cho phép mua không cần đăng ký, hiển thị tổng chi phí rõ ràng (bao gồm phí ship), hỗ trợ nhiều phương thức thanh toán.</p>
+
+<h3>Tích Hợp Thanh Toán Việt Nam</h3>
+<p>Website bán hàng tại Việt Nam cần hỗ trợ các phương thức phổ biến:</p>
+<ul>
+  <li><strong>COD (Thu hộ):</strong> Vẫn là phương thức phổ biến nhất, đặc biệt với khách hàng mới</li>
+  <li><strong>VNPAY/VNPAY-QR:</strong> Thanh toán qua QR, liên kết với 40+ ngân hàng Việt</li>
+  <li><strong>MoMo, ZaloPay:</strong> Ví điện tử phổ biến, đặc biệt với người trẻ</li>
+  <li><strong>Chuyển khoản ngân hàng:</strong> Hiển thị thông tin tài khoản rõ ràng với QR tự động</li>
+</ul>
+
+<h3>Hệ Thống Quản Lý Đơn Hàng</h3>
+<p>Admin panel phải cho phép: xem và cập nhật trạng thái đơn hàng, quản lý tồn kho, in phiếu giao hàng, xuất báo cáo doanh thu. Đây là "bộ não" vận hành shop online của bạn.</p>
+
+<h3>Tìm Kiếm và Lọc Sản Phẩm</h3>
+<p>Khách hàng cần tìm đúng sản phẩm muốn mua nhanh chóng. Cần có: thanh tìm kiếm thông minh, bộ lọc theo danh mục/giá/màu sắc/kích thước, sắp xếp theo giá/mới nhất/bán chạy.</p>
+
+<h2>4. SEO Cho Website Bán Hàng</h2>
+<p>SEO là kênh marketing hiệu quả nhất về dài hạn cho website bán hàng. Cần tối ưu:</p>
+
+<h3>SEO Trang Sản Phẩm</h3>
+<p>Mỗi trang sản phẩm phải có: tiêu đề chứa từ khóa mua hàng (vd: "Mua áo thun nam oversize giá rẻ"), mô tả sản phẩm chi tiết tối thiểu 300 chữ, alt text cho ảnh, schema markup Product để hiển thị giá/đánh giá trên Google.</p>
+
+<h3>SEO Trang Danh Mục</h3>
+<p>Trang danh mục là "landing page SEO" quan trọng nhất. Cần có: URL thân thiện (vd: /ao-thun-nam thay vì /category?id=5), mô tả danh mục đủ từ khóa, phân trang đúng chuẩn.</p>
+
+<h3>Tốc Độ Trang — Yếu Tố SEO Quan Trọng Nhất 2026</h3>
+<p>Google xác nhận tốc độ tải trang là yếu tố xếp hạng trực tiếp. Để đạt Core Web Vitals tốt: tối ưu ảnh (dùng định dạng WebP), lazy loading, CDN, minify CSS/JS, caching.</p>
+
+<h2>5. Nội Dung Sản Phẩm Chuẩn Chuyên Nghiệp</h2>
+<p>Nội dung sản phẩm kém chất lượng là lý do thứ 2 khiến khách không mua. Mỗi sản phẩm cần:</p>
+<ul>
+  <li><strong>Ảnh chất lượng cao:</strong> Tối thiểu 3–5 ảnh từ nhiều góc độ, nền trắng hoặc phong cách thương hiệu nhất quán</li>
+  <li><strong>Mô tả đầy đủ và trung thực:</strong> Chất liệu, kích thước, hướng dẫn sử dụng, bảo quản — thông tin mà khách hàng cần để quyết định mua</li>
+  <li><strong>Bảng size/thông số kỹ thuật:</strong> Giảm tỷ lệ đổi trả do mua sai size</li>
+  <li><strong>Đánh giá từ khách hàng thực:</strong> 93% người mua đọc review trước khi quyết định — đây là social proof mạnh nhất</li>
+  <li><strong>Chính sách rõ ràng:</strong> Đổi trả, bảo hành, vận chuyển, cam kết hàng chính hãng</li>
+</ul>
+
+<h2>6. Chiến Lược Giữ Chân Và Tăng Giá Trị Đơn Hàng</h2>
+
+<h3>Upsell và Cross-sell</h3>
+<p>Hiển thị sản phẩm liên quan, combo khuyến mãi, "Khách hàng cũng mua..." để tăng giá trị trung bình mỗi đơn hàng. Đây là tính năng giúp tăng doanh thu mà không cần thêm khách hàng mới.</p>
+
+<h3>Chương Trình Khuyến Mãi</h3>
+<p>Website bán hàng cần hỗ trợ: mã giảm giá (coupon code), flash sale có đồng hồ đếm ngược, freeship theo điều kiện giá trị đơn, tặng quà khi mua số lượng lớn.</p>
+
+<h3>Hệ Thống Đánh Giá và Review</h3>
+<p>Khuyến khích khách hàng để lại review bằng: email nhắc nhở sau khi nhận hàng, giảm giá đơn sau cho khách để lại đánh giá có ảnh. Review thực từ khách hàng là tài sản marketing giá trị nhất.</p>
+
+<h2>7. Bảo Mật và An Toàn Dữ Liệu</h2>
+<p>Website bán hàng lưu trữ thông tin nhạy cảm của khách hàng (địa chỉ, số điện thoại, lịch sử mua hàng). Cần đảm bảo:</p>
+<ul>
+  <li>SSL/HTTPS bắt buộc cho toàn bộ website</li>
+  <li>Mã hóa mật khẩu người dùng bằng bcrypt</li>
+  <li>Không lưu thông tin thẻ ngân hàng trực tiếp — dùng cổng thanh toán trung gian</li>
+  <li>Backup dữ liệu tự động hàng ngày</li>
+  <li>Chính sách bảo mật và điều khoản rõ ràng theo Luật An ninh mạng Việt Nam</li>
+</ul>
+
+<h2>8. Tích Hợp Hỗ Trợ Khách Hàng Online</h2>
+<p>Khách hàng cần được giải đáp thắc mắc nhanh chóng. Website bán hàng hiệu quả cần:</p>
+<ul>
+  <li><strong>Live chat / Chatbot:</strong> Trả lời tự động câu hỏi thường gặp, kết nối nhân viên khi cần</li>
+  <li><strong>Nút Zalo/Facebook nổi:</strong> Khách nhắn tin trực tiếp qua kênh quen thuộc</li>
+  <li><strong>FAQ đầy đủ:</strong> Giảm tải cho nhân viên hỗ trợ, tăng SEO</li>
+  <li><strong>Chính sách đổi trả rõ ràng:</strong> Khách hàng tự xem, không cần hỏi</li>
+</ul>
+
+<h2>9. Phân Tích và Tối Ưu Liên Tục</h2>
+<p>Website bán hàng không phải làm một lần là xong. Cần theo dõi và cải thiện liên tục:</p>
+<ul>
+  <li><strong>Google Analytics 4:</strong> Xem hành trình mua hàng, tỷ lệ bỏ giỏ hàng, sản phẩm xem nhiều nhất</li>
+  <li><strong>Google Search Console:</strong> Từ khóa nào đang đưa khách đến, trang nào cần cải thiện SEO</li>
+  <li><strong>Heatmap (Hotjar/free tools):</strong> Khách click vào đâu nhiều nhất trên trang</li>
+  <li><strong>A/B testing:</strong> Thử nghiệm tiêu đề, ảnh, giá để tìm phiên bản chuyển đổi tốt nhất</li>
+</ul>
+
+<div class="affiliate-box">
+  <h3>Cần Website Bán Hàng Hoàn Chỉnh?</h3>
+  <p>WebPro xây dựng website bán hàng đầy đủ tính năng: giỏ hàng, thanh toán VNPAY/Momo, admin panel, SEO — bàn giao trong 48–72 giờ.</p>
+  <ul>
+    <li><a href="/contact"><strong>Tư vấn miễn phí ngay</strong></a> — Nhận báo giá cố định trong 30 phút</li>
+    <li><a href="/services"><strong>Xem gói Website Premium</strong></a> — Từ 2.000.000đ, bảo hành 6 tháng</li>
+  </ul>
+</div>
+
+<h2>Kết Luận: Checklist Website Bán Hàng Hiệu Quả</h2>
+<p>Tóm lại, website bán hàng hoạt động hiệu quả cần đảm bảo 9 yếu tố: nền tảng kỹ thuật vững (domain, hosting, SSL), thiết kế mobile-first tối ưu chuyển đổi, tính năng bán hàng đầy đủ (giỏ hàng, thanh toán đa phương thức), SEO chuẩn, nội dung sản phẩm chất lượng, chiến lược tăng giá trị đơn hàng, bảo mật dữ liệu, hỗ trợ khách hàng tốt và phân tích dữ liệu liên tục.</p>
+<p>Đây không phải là danh sách để "làm cho xong" — mà là hành trình cải tiến liên tục. Bắt đầu đúng từ nền tảng, rồi tối ưu dần theo dữ liệu thực tế từ khách hàng của bạn. <a href="/contact">Liên hệ WebPro</a> để được tư vấn giải pháp phù hợp với ngành nghề và ngân sách cụ thể của bạn.</p>`,
+    },
+
+    // ── Bài 3 ──────────────────────────────────────────────────────
+    {
+      title:    'Chi Phí Làm Website Năm 2026 Là Bao Nhiêu? (Cập Nhật Mới Nhất)',
+      slug:     'chi-phi-lam-website-nam-2026-la-bao-nhieu',
+      cat:      'thiet-ke-website',
+      image:    'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=80',
+      excerpt:  'Chi phí làm website năm 2026 dao động từ 1.000.000đ đến hàng trăm triệu tùy loại. Bài viết phân tích chi tiết từng hạng mục, chi phí ẩn cần biết và cách tính giá thực tế để không bị "hớ".',
+      seo_title:'Chi Phí Làm Website 2026 Là Bao Nhiêu? Bảng Giá Chi Tiết Cập Nhật',
+      seo_desc: 'Chi phí làm website năm 2026 từ landing page 1 triệu đến web TMĐT 50 triệu+. Bảng giá chi tiết, chi phí ẩn cần tránh, so sánh tự làm vs thuê chuyên nghiệp.',
+      seo_kw:   'chi phí làm website 2026, giá làm website, làm website bao nhiêu tiền, bảng giá thiết kế website',
+      featured: 1, read_time: 11, tags: 'chi phí,giá cả,thiết kế website,ngân sách', views: 0,
+      content: `<h2>Tại Sao Chi Phí Làm Website Chênh Lệch Đến Vậy?</h2>
+<p>Bạn hỏi "làm website bao nhiêu tiền?" trên các diễn đàn và nhận được câu trả lời từ <strong>500.000đ đến 500.000.000đ</strong> — chênh lệch 1.000 lần! Điều này không có gì lạ, vì "website" là khái niệm rộng bao gồm hàng chục loại khác nhau về tính năng, công nghệ và quy mô.</p>
+<p>Bài viết này sẽ phân tích chi phí theo từng loại cụ thể, liệt kê đầy đủ các hạng mục chi phí (kể cả chi phí ẩn ít người nói đến), và giúp bạn tính toán ngân sách thực tế cho dự án của mình.</p>
+
+<h2>Bảng Giá Chi Phí Làm Website 2026 Theo Loại</h2>
+<table>
+  <thead><tr><th>Loại Website</th><th>Chi Phí Làm</th><th>Thời Gian</th><th>Phù Hợp Với</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Landing Page đơn giản</strong></td><td>1.000.000 – 2.000.000đ</td><td>1–2 ngày</td><td>Dịch vụ cá nhân, chạy ads</td></tr>
+    <tr><td><strong>Website doanh nghiệp 5 trang</strong></td><td>2.000.000 – 5.000.000đ</td><td>3–5 ngày</td><td>Công ty vừa và nhỏ, B2B</td></tr>
+    <tr><td><strong>Website bán hàng cơ bản</strong></td><td>3.000.000 – 8.000.000đ</td><td>5–10 ngày</td><td>Shop online dưới 100 sản phẩm</td></tr>
+    <tr><td><strong>Website bán hàng nâng cao</strong></td><td>10.000.000 – 30.000.000đ</td><td>15–30 ngày</td><td>Shop lớn, nhiều tính năng tùy chỉnh</td></tr>
+    <tr><td><strong>Website đặt lịch / booking</strong></td><td>3.000.000 – 10.000.000đ</td><td>7–14 ngày</td><td>Spa, phòng khám, nhà hàng</td></tr>
+    <tr><td><strong>Hệ thống quản lý (CRM/ERP)</strong></td><td>30.000.000 – 200.000.000đ+</td><td>1–6 tháng</td><td>Doanh nghiệp lớn, quy trình phức tạp</td></tr>
+    <tr><td><strong>Ứng dụng web (SaaS)</strong></td><td>50.000.000 – 500.000.000đ+</td><td>3–12 tháng</td><td>Startup công nghệ</td></tr>
+  </tbody>
+</table>
+<p><em>Lưu ý: Đây là chi phí thiết kế và phát triển, chưa bao gồm domain và hosting hàng năm.</em></p>
+
+<h2>Chi Phí Cố Định Hàng Năm — Đừng Bỏ Qua</h2>
+<p>Ngoài chi phí làm website một lần, bạn cần tính thêm các chi phí vận hành hàng năm:</p>
+
+<h3>1. Tên Miền (Domain) — 200.000 – 500.000đ/năm</h3>
+<p>Chi phí tùy theo đuôi domain:</p>
+<ul>
+  <li><strong>.com:</strong> Khoảng 280.000–350.000đ/năm — phổ biến toàn cầu, uy tín cao</li>
+  <li><strong>.vn:</strong> Khoảng 350.000–500.000đ/năm — ưu tiên SEO tại Việt Nam</li>
+  <li><strong>.net, .org:</strong> Khoảng 250.000–320.000đ/năm</li>
+  <li><strong>.io, .tech, .store:</strong> Khoảng 400.000–800.000đ/năm — thường dùng cho startup</li>
+</ul>
+
+<h3>2. Hosting (Web Hosting) — 500.000 – 5.000.000đ/năm</h3>
+<p>Chi phí hosting phụ thuộc vào traffic và tính năng:</p>
+<ul>
+  <li><strong>Shared Hosting:</strong> 500.000–1.000.000đ/năm — phù hợp website nhỏ, dưới 1.000 lượt/ngày</li>
+  <li><strong>VPS (Virtual Private Server):</strong> 1.500.000–4.000.000đ/năm — phù hợp website bán hàng, traffic trung bình</li>
+  <li><strong>Cloud Hosting (Railway, Render...):</strong> Tính theo usage, thường 200.000–2.000.000đ/tháng cho dự án thực tế</li>
+  <li><strong>Dedicated Server:</strong> 5.000.000đ+/tháng — cho hệ thống lớn, traffic cao</li>
+</ul>
+
+<h3>3. SSL Certificate — 0 – 3.000.000đ/năm</h3>
+<p>Chứng chỉ SSL (HTTPS) là bắt buộc. Tin tốt: <strong>Let's Encrypt cung cấp SSL miễn phí</strong> và được hầu hết hosting hỗ trợ tự động. Chỉ cần trả phí nếu bạn cần SSL wildcard hoặc EV SSL cho website thương mại điện tử lớn.</p>
+
+<h3>4. Email Doanh Nghiệp — 0 – 2.000.000đ/năm</h3>
+<p>Email dạng <strong>ten@tencongty.vn</strong> (thay vì Gmail cá nhân) giúp tăng uy tín đáng kể. Chi phí:</p>
+<ul>
+  <li>Google Workspace: khoảng 150.000đ/user/tháng</li>
+  <li>Zoho Mail: miễn phí cho 5 user đầu</li>
+  <li>Email hosting đi kèm hosting: thường miễn phí</li>
+</ul>
+
+<h2>Chi Phí Ẩn Cần Biết Trước Khi Ký Hợp Đồng</h2>
+<p>Nhiều người bị "hớ" vì không biết những chi phí phát sinh này:</p>
+
+<h3>Phí Bảo Trì và Cập Nhật</h3>
+<p>Website không phải làm xong là để đó mãi mãi. Cần cập nhật thường xuyên để: vá lỗi bảo mật, cập nhật plugin/framework, thêm nội dung mới, cải tiến theo phản hồi người dùng. Chi phí bảo trì thường từ <strong>500.000 – 2.000.000đ/tháng</strong> nếu thuê ngoài.</p>
+<p>Giải pháp: Chọn đơn vị cung cấp <strong>gói bảo hành dài hạn</strong> với giá cố định, hoặc học quản lý admin panel cơ bản để tự cập nhật nội dung.</p>
+
+<h3>Phí Thiết Kế Thêm Tính Năng</h3>
+<p>Sau khi website hoạt động, thường nảy sinh nhu cầu thêm: tích hợp thanh toán, thêm ngôn ngữ, làm app mobile, tích hợp phần mềm quản lý kho... Mỗi tính năng mới là một chi phí phát sinh. Lên kế hoạch rõ ràng từ đầu để tránh "mua thêm" liên tục.</p>
+
+<h3>Phí Nội Dung (Content)</h3>
+<p>Nhiều chủ doanh nghiệp quên tính chi phí nội dung: chụp ảnh sản phẩm chuyên nghiệp (2–5 triệu/buổi), viết bài blog SEO (200.000–500.000đ/bài), thiết kế banner/ảnh marketing. Nội dung chất lượng là yếu tố quyết định hiệu quả dài hạn của website.</p>
+
+<h3>Phí Quảng Cáo Ban Đầu</h3>
+<p>Website mới ra mắt thường cần ngân sách quảng cáo để có traffic ban đầu trong khi chờ SEO lên kết quả (thường 3–6 tháng). Tính thêm ngân sách Google Ads hoặc Facebook Ads: tối thiểu 3–5 triệu/tháng cho hiệu quả đo lường được.</p>
+
+<h2>Tự Làm Website vs Thuê Chuyên Nghiệp — So Sánh Thực Tế</h2>
+<table>
+  <thead><tr><th>Tiêu Chí</th><th>Tự Làm (Wix/Webflow)</th><th>Thuê Chuyên Nghiệp</th></tr></thead>
+  <tbody>
+    <tr><td>Chi phí ban đầu</td><td>0 – 3.000.000đ/năm</td><td>1.000.000 – 50.000.000đ</td></tr>
+    <tr><td>Thời gian</td><td>1–3 tháng tự học</td><td>1–10 ngày</td></tr>
+    <tr><td>Chất lượng thiết kế</td><td>Template có sẵn, hạn chế tùy chỉnh</td><td>Tùy chỉnh hoàn toàn theo thương hiệu</td></tr>
+    <tr><td>SEO</td><td>Hạn chế (code nặng, khó tối ưu)</td><td>Tối ưu từ nền tảng</td></tr>
+    <tr><td>Tính năng đặc thù</td><td>Bị giới hạn bởi nền tảng</td><td>Làm được theo yêu cầu</td></tr>
+    <tr><td>Hỗ trợ kỹ thuật</td><td>Tự xử lý</td><td>Có đội ngũ hỗ trợ</td></tr>
+    <tr><td>Sở hữu dữ liệu</td><td>Phụ thuộc nền tảng</td><td>Sở hữu 100% source code</td></tr>
+  </tbody>
+</table>
+<p><strong>Kết luận:</strong> Nếu ngân sách cực kỳ hạn hẹp và có thời gian học, website builder là lựa chọn tạm thời. Nhưng dài hạn, thuê chuyên nghiệp luôn hiệu quả hơn — chất lượng cao hơn, SEO tốt hơn, tiết kiệm thời gian để tập trung vào kinh doanh cốt lõi.</p>
+
+<h2>Các Yếu Tố Ảnh Hưởng Đến Giá Làm Website</h2>
+<p>Hiểu những yếu tố này giúp bạn báo giá đúng và tránh bị "hét giá":</p>
+
+<h3>1. Số Lượng Trang và Tính Năng</h3>
+<p>Landing page 1 trang rõ ràng ít tốn công hơn website 20 trang với admin panel, blog, giỏ hàng, đa ngôn ngữ. Mỗi tính năng thêm = thêm giờ lập trình = thêm chi phí.</p>
+
+<h3>2. Thiết Kế Có Sẵn hay Tùy Chỉnh Hoàn Toàn</h3>
+<p>Dùng template có sẵn (thay màu, thay nội dung) rẻ hơn nhiều so với thiết kế từ file trắng theo brand identity riêng. Nếu không có yêu cầu đặc biệt về thiết kế, template cao cấp là lựa chọn cost-effective.</p>
+
+<h3>3. Tích Hợp Bên Thứ Ba</h3>
+<p>Tích hợp thanh toán VNPAY, kết nối phần mềm kế toán MISA, đồng bộ với Shopee/Lazada, tích hợp CRM... mỗi thứ tốn thêm chi phí phát triển và testing.</p>
+
+<h3>4. Vị Trí Địa Lý của Đơn Vị Làm Web</h3>
+<p>Cùng chất lượng: công ty agency lớn TP.HCM/Hà Nội > freelancer kinh nghiệm > sinh viên thực tập. Giá agency lớn có thể cao hơn 3–5 lần so với freelancer nhưng đi kèm quy trình chuyên nghiệp và bảo hành rõ ràng.</p>
+
+<h2>WebPro — Bảng Giá Minh Bạch 2026</h2>
+<p>Tại WebPro, chúng tôi công khai bảng giá cố định, không phí ẩn:</p>
+<table>
+  <thead><tr><th>Gói</th><th>Giá</th><th>Bao Gồm</th><th>Bàn Giao</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Website Chuẩn</strong></td><td>1.000.000đ</td><td>5–7 trang, SEO on-page, admin panel, bảo hành 3 tháng</td><td>48 giờ</td></tr>
+    <tr><td><strong>Website Premium</strong></td><td>2.000.000đ</td><td>Giỏ hàng, thanh toán online, SEO nâng cao, bảo hành 6 tháng</td><td>72 giờ</td></tr>
+    <tr><td><strong>Tùy Chỉnh</strong></td><td>Từ 2 triệu</td><td>Theo yêu cầu cụ thể, báo giá sau khảo sát</td><td>Thỏa thuận</td></tr>
+  </tbody>
+</table>
+<p>So sánh với thị trường: agency truyền thống thường báo giá 5–15 triệu cho website tương đương. WebPro tối ưu quy trình để giảm chi phí mà vẫn đảm bảo chất lượng — <strong>bàn giao source code đầy đủ, không lock-in vào nền tảng nào</strong>.</p>
+
+<div class="affiliate-box">
+  <h3>Nhận Báo Giá Cố Định Trong 30 Phút</h3>
+  <p>Mô tả yêu cầu của bạn — WebPro báo giá chính xác ngay, không hỏi đi hỏi lại, không phí ẩn phát sinh.</p>
+  <ul>
+    <li><a href="/contact"><strong>Điền form tư vấn miễn phí</strong></a> — Phản hồi trong 30 phút</li>
+    <li><a href="/services"><strong>Xem chi tiết bảng giá</strong></a> — So sánh 3 gói dịch vụ</li>
+  </ul>
+</div>
+
+<h2>Làm Sao Chọn Đơn Vị Làm Website Uy Tín?</h2>
+<p>Tránh bị "hớ" bằng cách kiểm tra kỹ trước khi ký hợp đồng:</p>
+<ul>
+  <li><strong>Xem portfolio thực tế:</strong> Yêu cầu link website đã làm, vào kiểm tra tốc độ tải, giao diện mobile, tính năng hoạt động có đúng không</li>
+  <li><strong>Báo giá phải rõ ràng từng hạng mục:</strong> Tránh báo giá "trọn gói" không liệt kê chi tiết — dễ phát sinh phí sau</li>
+  <li><strong>Chính sách bảo hành bằng văn bản:</strong> Bảo hành bao lâu? Bảo hành cái gì? Sửa bao nhiêu lần?</li>
+  <li><strong>Bàn giao source code:</strong> Đảm bảo bạn nhận được toàn bộ code sau khi thanh toán, không bị "giữ con tin"</li>
+  <li><strong>Đánh giá từ khách hàng cũ:</strong> Google tên đơn vị + "review" hoặc hỏi họ giới thiệu khách hàng cũ để xác nhận</li>
+</ul>
+
+<h2>Kết Luận: Ngân Sách Phù Hợp Cho Từng Giai Đoạn</h2>
+<p>Chi phí làm website "phù hợp" phụ thuộc vào giai đoạn kinh doanh của bạn:</p>
+<ul>
+  <li><strong>Mới bắt đầu, ngân sách hạn chế:</strong> Landing page 1–2 triệu để test thị trường trước khi đầu tư lớn hơn</li>
+  <li><strong>Đã có doanh thu, muốn mở rộng:</strong> Website doanh nghiệp đầy đủ 2–5 triệu, đầu tư vào SEO và nội dung</li>
+  <li><strong>Muốn bán hàng online chuyên nghiệp:</strong> Website bán hàng 3–10 triệu tùy quy mô, tích hợp thanh toán đầy đủ</li>
+  <li><strong>Doanh nghiệp tăng trưởng nhanh:</strong> Hệ thống tùy chỉnh 10–50 triệu, đầu tư đúng chỗ sẽ hoàn vốn nhanh</li>
+</ul>
+<p>Điều quan trọng không phải là tìm website rẻ nhất — mà là tìm website <strong>tốt nhất trong ngân sách cho phép</strong>. Một website 2 triệu hoạt động tốt, tăng doanh thu sẽ luôn tốt hơn website 500.000đ không ai tìm thấy trên Google.</p>
+<p>Cần tư vấn chi phí cụ thể cho dự án của bạn? <a href="/contact">Liên hệ WebPro ngay</a> — tư vấn miễn phí, báo giá cố định trong 30 phút, không ràng buộc.</p>`,
+    },
+  ];
+
+  let added = 0;
+  newPosts.forEach(p => {
+    if (!has.get(p.slug)) {
+      const cat = getcat2.get(p.cat);
+      if (cat) {
+        ins2.run(p.title, p.slug, p.excerpt, p.content, cat.id, p.image, p.seo_title, p.seo_desc, p.seo_kw, p.featured || 0, p.read_time, p.tags, p.views || 0);
+        added++;
+      }
+    }
+  });
+
+  if (added > 0) {
+    db.prepare('UPDATE blog_categories SET post_count = (SELECT COUNT(*) FROM blog_posts WHERE category_id = blog_categories.id AND is_published = 1)').run();
+    console.log(`[DB] Inserted ${added} new blog post(s)`);
+  }
+}
+
 module.exports = db;

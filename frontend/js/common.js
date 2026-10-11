@@ -27,7 +27,7 @@ function renderNavbar(activePage = '') {
   navbar.innerHTML = `
     <div class="container">
       <div class="navbar__inner">
-        <a href="/" class="logo navbar__logo"><span class="logo__mark">&lt;/&gt;</span><span>Web<b>Pro</b></span></a>
+        <a href="/" class="logo navbar__logo"><span class="logo__mark">W</span><span>Web<b>Pro</b></span></a>
         <ul class="navbar__nav" id="navMenu">
           ${navHtml}
         </ul>
@@ -53,7 +53,7 @@ function renderFooter() {
     <div class="container">
       <div class="footer__grid">
         <div class="footer__brand">
-          <a href="/" class="logo footer__logo"><span class="logo__mark">&lt;/&gt;</span><span>Web<b>Pro</b></span></a>
+          <a href="/" class="logo footer__logo"><span class="logo__mark">W</span><span>Web<b>Pro</b></span></a>
           <p class="footer__tagline">Dịch vụ thiết kế website chuyên nghiệp, giá rẻ<br>Bàn giao nhanh trong 24–48h.</p>
           <span class="footer__status"><i></i> Đang nhận dự án mới</span>
         </div>
@@ -127,7 +127,7 @@ function renderFloatCTA() {
     <div class="float-chat-wrap">
       <div class="chat-popup" id="chatPopup">
         <div class="chat-popup__head">
-          <div class="chat-popup__avatar">&lt;/&gt;</div>
+          <div class="chat-popup__avatar">W</div>
           <div>
             <div class="chat-popup__name">WebPro Tư Vấn</div>
             <div class="chat-popup__status"><span class="chat-popup__sdot"></span> Đang trực tuyến</div>
@@ -222,7 +222,7 @@ function renderBlogCard(post) {
       </div>
       <div class="blog-card__body">
         <div class="blog-card__meta">
-          <span class="${badgeClass}">${post.category_icon || ''} ${post.category_name || ''}</span>
+          ${post.category_name ? `<span class="${badgeClass}">${post.category_icon || ''} ${post.category_name}</span>` : ''}
           <span class="blog-card__readtime">${post.read_time} phút đọc</span>
         </div>
         <h3 class="blog-card__title"><a href="/blog/${post.slug}">${post.title}</a></h3>
@@ -407,17 +407,6 @@ function particleNetwork(canvas, host) {
   resize();
 }
 
-// Dòng lệnh kiểu terminal phía trên tiêu đề các trang phụ
-function initPagePath() {
-  const box = document.querySelector('.page-hero .container');
-  if (!box || box.querySelector('.page-hero__path')) return;
-  const path = location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
-  const el = document.createElement('div');
-  el.className = 'page-hero__path';
-  el.innerHTML = `<span>$</span> cd <b>~/webpro${path}</b><span class="caret"></span>`;
-  box.prepend(el);
-}
-
 // Gõ chữ luân phiên: <span data-typed='["a","b"]'></span>
 function initTyped() {
   document.querySelectorAll('[data-typed]').forEach(el => {
@@ -438,16 +427,16 @@ function initTyped() {
   });
 }
 
-// Cửa sổ code ở hero: gõ lại theo chu kỳ
-function initCodeWindow() {
-  const win = document.querySelector('.code-window');
-  if (!win) return;
-  const lines = win.querySelectorAll('.code-line');
-  lines.forEach((l, i) => l.style.setProperty('--i', i));
+// Mô phỏng trang web ở hero: dựng lại theo chu kỳ
+function initSiteMock() {
+  const mock = document.querySelector('.site-mock');
+  if (!mock) return;
+  mock.querySelectorAll('.sm-a').forEach((el, i) => el.style.setProperty('--i', i));
+  mock.querySelectorAll('.sm-bars i').forEach((el, i) => el.style.setProperty('--b', i));
   if (REDUCED_MOTION) return;
-  const cycle = () => { win.classList.remove('typing'); void win.offsetWidth; win.classList.add('typing'); };
+  const cycle = () => { mock.classList.remove('build'); void mock.offsetWidth; mock.classList.add('build'); };
   cycle();
-  setInterval(cycle, lines.length * 320 + 5000);
+  setInterval(cycle, 9000);
 }
 
 // Vệt sáng đi theo chuột trên các card .spot
@@ -478,9 +467,8 @@ function initScrollProgress() {
 document.addEventListener('DOMContentLoaded', () => {
   renderFloatCTA();
   initTechBackgrounds();
-  initPagePath();
   initTyped();
-  initCodeWindow();
+  initSiteMock();
   initSpotlight();
   initScrollProgress();
   initScrollReveal();

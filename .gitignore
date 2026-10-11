@@ -3,3 +3,4 @@ backend/data/
 backend/.env
 .DS_Store
 *.log
+frontend/_redirects

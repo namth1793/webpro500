@@ -91,6 +91,31 @@ db.exec(`
   );
 `);
 
+// articles — bài viết nhận tự động từ Ryze qua webhook (upsert theo slug)
+db.exec(`
+  CREATE TABLE IF NOT EXISTS articles (
+    id               INTEGER PRIMARY KEY AUTOINCREMENT,
+    slug             TEXT NOT NULL UNIQUE,
+    title            TEXT NOT NULL,
+    body_markdown    TEXT,
+    body_html        TEXT,
+    blocks           TEXT,
+    meta_title       TEXT,
+    meta_description TEXT,
+    excerpt          TEXT,
+    primary_keyword  TEXT,
+    image_url        TEXT,
+    image_alt        TEXT,
+    published_at     TEXT,
+    updated_at       TEXT,
+    status           TEXT DEFAULT 'published',
+    read_time        INTEGER DEFAULT 5,
+    created_at       DATETIME DEFAULT CURRENT_TIMESTAMP,
+    received_at      DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
+  CREATE INDEX IF NOT EXISTS idx_articles_status_pub ON articles(status, published_at);
+`);
+
 const demoCols = db.pragma('table_info(demo_sites)').map(c => c.name);
 if (!demoCols.includes('image_url'))  db.exec('ALTER TABLE demo_sites ADD COLUMN image_url TEXT');
 if (!demoCols.includes('demo_url'))   db.exec('ALTER TABLE demo_sites ADD COLUMN demo_url TEXT');

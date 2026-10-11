@@ -14,7 +14,7 @@
   <link id="canonical" rel="canonical" href="">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1872384049448380" crossorigin="anonymous"></script>
 </head>
@@ -31,7 +31,7 @@
     </div>
 
     <div id="errorState" class="hidden" style="text-align:center;padding:4rem 0">
-      <div style="font-size:4rem;margin-bottom:1rem">😢</div>
+      <svg width="56" height="56" fill="none" stroke="var(--navy)" stroke-width="1.6" viewBox="0 0 24 24" style="margin:0 auto 1rem"><circle cx="12" cy="12" r="9"/><path d="M9 9h.01M15 9h.01M8 16c1.2-1.3 2.5-2 4-2s2.8.7 4 2"/></svg>
       <h2>Bài viết không tìm thấy</h2>
       <p class="text-muted mt-2">Bài viết này có thể đã bị xóa hoặc URL không đúng.</p>
       <a href="/blog" class="btn btn--blue mt-4">← Về Trang Blog</a>
@@ -80,8 +80,8 @@
           </div>
 
           <!-- Disclosure Notice -->
-          <div style="background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:.65rem 1rem;font-size:.8125rem;color:var(--muted);margin-bottom:1.5rem">
-            📌 <em>Bài viết có thể chứa affiliate links. Nếu bạn mua qua link, chúng tôi nhận được hoa hồng mà không tốn thêm chi phí của bạn.</em>
+          <div class="article-notice">
+            <em>Bài viết có thể chứa affiliate links. Nếu bạn mua qua link, chúng tôi nhận được hoa hồng mà không tốn thêm chi phí của bạn.</em>
           </div>
 
           <!-- Article Body -->
@@ -94,7 +94,7 @@
 
           <!-- Article CTA Box -->
           <div class="article-cta-box">
-            <h3>🚀 Cần Website Để Áp Dụng Những Kiến Thức Này?</h3>
+            <h3>Cần Website Để Áp Dụng Những Kiến Thức Này?</h3>
             <p>WebPro thiết kế website chuyên nghiệp từ 500K — chuẩn SEO, tối ưu AdSense, mobile-first.</p>
             <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap">
               <a href="/contact" class="btn btn--primary">Tư Vấn Miễn Phí</a>
@@ -109,12 +109,12 @@
           </div>
 
           <!-- Share -->
-          <div style="padding:1.25rem;background:var(--bg);border-radius:var(--radius);text-align:center;margin-bottom:2rem">
-            <p style="font-size:.9rem;color:var(--muted);margin-bottom:.75rem">Bài viết hữu ích? Chia sẻ cho bạn bè nhé!</p>
-            <div style="display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap">
-              <a id="shareFb" href="#" target="_blank" rel="noopener" class="btn btn--sm" style="background:#1877F2;color:white;border-color:#1877F2">Facebook</a>
-              <a id="shareTw" href="#" target="_blank" rel="noopener" class="btn btn--sm" style="background:#1DA1F2;color:white;border-color:#1DA1F2">Twitter</a>
-              <button onclick="copyLink()" class="btn btn--sm btn--outline">📋 Copy Link</button>
+          <div class="share-box">
+            <p>Bài viết hữu ích? Chia sẻ cho bạn bè nhé!</p>
+            <div class="share-box__actions">
+              <a id="shareFb" href="#" target="_blank" rel="noopener" class="btn btn--sm btn--primary">Facebook</a>
+              <a id="shareTw" href="#" target="_blank" rel="noopener" class="btn btn--sm btn--primary">Twitter</a>
+              <button onclick="copyLink()" class="btn btn--sm btn--outline">Copy Link</button>
             </div>
           </div>
 
@@ -128,7 +128,7 @@
             <div id="commentsList"></div>
 
             <div class="comment-form-wrap">
-              <h3>✍️ Để lại bình luận của bạn</h3>
+              <h3>Để lại bình luận của bạn</h3>
               <form id="commentForm" onsubmit="submitComment(event)">
                 <div class="grid-2" style="gap:1rem;margin-bottom:1rem">
                   <div>
@@ -159,13 +159,13 @@
         <!-- Sidebar -->
         <aside class="blog-sidebar">
           <div class="sidebar-cta">
-            <h3>🚀 Làm Website Từ 1.000.000đ</h3>
+            <h3>Làm Website Từ 1.000.000đ</h3>
             <p>Bàn giao 48h, chuẩn SEO, hỗ trợ 24/7.</p>
             <a href="/contact" class="btn btn--primary btn--full btn--sm">Tư Vấn Ngay</a>
           </div>
 
           <div class="sidebar-widget">
-            <h3>📰 Bài Viết Liên Quan</h3>
+            <h3>// Bài Viết Liên Quan</h3>
             <div id="relatedPosts"><div class="spinner"></div></div>
           </div>
 
@@ -176,15 +176,15 @@
       </div>
 
       <!-- Related Posts -->
-      <div id="relatedSection" class="hidden" style="margin-top:3rem">
-        <h2 style="margin-bottom:1.5rem">Bài Viết Liên Quan</h2>
+      <div id="relatedSection" class="hidden" style="margin-top:4rem">
+        <div class="section-header section-header--left"><span class="eyebrow">Đọc thêm</span><h2>Bài Viết Liên Quan</h2></div>
         <div class="grid-3" id="relatedGrid"></div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-banner" style="padding:3rem 0">
+<section class="cta-banner" style="padding:4rem 0">
   <div class="container">
     <h2>Bạn Muốn Website Như Thế Này?</h2>
     <p>WebPro thiết kế website đẹp, nhanh, chuẩn SEO từ chỉ 500.000đ.</p>
@@ -248,10 +248,10 @@ fetch(`/api/blog/posts/${slug}`)
     // Fill article content
     document.getElementById('breadCat').textContent       = post.category_name || 'Blog';
     document.getElementById('articleTitle').textContent   = post.title;
-    document.getElementById('articleAuthor').textContent  = '✍️ ' + (post.author || 'WebPro Team');
+    document.getElementById('articleAuthor').textContent  = post.author || 'WebPro Team';
     document.getElementById('articleDate').textContent    = formatDate(post.created_at);
-    document.getElementById('articleReadTime').textContent = `⏱ ${post.read_time || 5} phút đọc`;
-    document.getElementById('articleViews').textContent   = `👁 ${formatNumber(post.views)} lượt xem`;
+    document.getElementById('articleReadTime').textContent = `${post.read_time || 5} phút đọc`;
+    document.getElementById('articleViews').textContent   = `${formatNumber(post.views)} lượt xem`;
 
     const catBadge = document.getElementById('articleCatBadge');
     catBadge.textContent = `${post.category_icon || ''} ${post.category_name || ''}`;
@@ -317,14 +317,7 @@ function copyLink() {
 // ── Comments ───────────────────────────────────────────────────────
 let currentPostId = null;
 
-const AVATAR_COLORS = [
-  'linear-gradient(135deg,#2563eb,#7c3aed)',
-  'linear-gradient(135deg,#059669,#0891b2)',
-  'linear-gradient(135deg,#ea580c,#dc2626)',
-  'linear-gradient(135deg,#db2777,#7c3aed)',
-  'linear-gradient(135deg,#0891b2,#2563eb)',
-  'linear-gradient(135deg,#16a34a,#059669)',
-];
+const AVATAR_COLORS = ['#0C3A76', '#082a57', '#1d4f8f', '#061d3d'];
 
 function avatarColor(name) {
   let n = 0;
@@ -345,7 +338,7 @@ function renderComments(comments) {
   const el = document.getElementById('commentsList');
   document.getElementById('commentCount').textContent = comments.length;
   if (!comments.length) {
-    el.innerHTML = '<div class="comment-empty">Chưa có bình luận nào. Hãy là người đầu tiên! 👇</div>';
+    el.innerHTML = '<div class="comment-empty">Chưa có bình luận nào. Hãy là người đầu tiên!</div>';
     return;
   }
   el.innerHTML = comments.map(c => `

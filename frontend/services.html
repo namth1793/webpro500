@@ -10,7 +10,7 @@
   <link rel="canonical" href="/services">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1872384049448380" crossorigin="anonymous"></script>
 </head>
@@ -27,15 +27,17 @@
 </div>
 
 <!-- Pricing -->
-<section class="section">
+<section class="section section--grid">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="eyebrow">Bảng giá</span>
       <h2>Chọn Gói Dịch Vụ Phù Hợp</h2>
       <p>Báo giá cố định, không phí ẩn. Chọn gói phù hợp hoặc liên hệ để được tư vấn gói tùy chỉnh.</p>
     </div>
     <div class="grid-3">
       <!-- Gói 1.000.000đ -->
-      <div class="pricing-card">
+      <div class="pricing-card spot reveal">
+        <div class="pricing-card__tier">PLAN_01</div>
         <div class="pricing-card__name">Website Chuẩn</div>
         <div class="pricing-card__desc">Website doanh nghiệp đầy đủ tính năng, chuẩn SEO</div>
         <div class="pricing-card__price">1.000.000đ </div>
@@ -54,8 +56,9 @@
       </div>
 
       <!-- Gói 2.000.000đ -->
-      <div class="pricing-card pricing-card--popular">
+      <div class="pricing-card pricing-card--popular spot reveal reveal-d1">
         <div class="pricing-card__badge">PHỔ BIẾN NHẤT</div>
+        <div class="pricing-card__tier">PLAN_02</div>
         <div class="pricing-card__name">Website Premium</div>
         <div class="pricing-card__desc">Website bán hàng online + blog monetization đầy đủ</div>
         <div class="pricing-card__price">2.000.000đ </div>
@@ -73,7 +76,8 @@
       </div>
 
       <!-- Gói trên 2.000.000đ -->
-      <div class="pricing-card">
+      <div class="pricing-card spot reveal">
+        <div class="pricing-card__tier">PLAN_03</div>
         <div class="pricing-card__name">Tùy Chỉnh</div>
         <div class="pricing-card__desc">Hệ thống phức tạp, thương mại điện tử lớn, ứng dụng nội bộ</div>
         <div class="pricing-card__price">Trên 2 triệu </div>
@@ -94,29 +98,30 @@
 </section>
 
 <!-- Process -->
-<section class="section" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section class="section section--tint">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="eyebrow">Quy trình</span>
       <h2>Làm Việc Với WebPro Như Thế Nào?</h2>
       <p>Quy trình rõ ràng, minh bạch — bạn luôn biết tiến độ dự án của mình.</p>
     </div>
     <div class="process-steps">
-      <div class="process-step">
+      <div class="process-step reveal reveal-d1">
         <div class="process-step__num">1</div>
         <div class="process-step__title">Tư Vấn Miễn Phí</div>
         <div class="process-step__desc">Gửi yêu cầu qua form hoặc Zalo. Chúng tôi phản hồi trong 30 phút và tư vấn gói phù hợp.</div>
       </div>
-      <div class="process-step">
+      <div class="process-step reveal reveal-d2">
         <div class="process-step__num">2</div>
         <div class="process-step__title">Báo Giá & Xác Nhận</div>
         <div class="process-step__desc">Nhận báo giá cố định, ký hợp đồng đơn giản. Đặt cọc 50% để bắt đầu thiết kế.</div>
       </div>
-      <div class="process-step">
+      <div class="process-step reveal reveal-d3">
         <div class="process-step__num">3</div>
         <div class="process-step__title">Thiết Kế & Phát Triển</div>
         <div class="process-step__desc">Thiết kế giao diện, lập trình, tích hợp tính năng. Cập nhật tiến độ hàng ngày qua Zalo.</div>
       </div>
-      <div class="process-step">
+      <div class="process-step reveal reveal-d4">
         <div class="process-step__num">4</div>
         <div class="process-step__title">Bàn Giao & Hỗ Trợ</div>
         <div class="process-step__desc">Bàn giao toàn bộ source code, hướng dẫn sử dụng. Hỗ trợ kỹ thuật và bảo hành sửa lỗi.</div>
@@ -128,7 +133,8 @@
 <!-- Portfolio -->
 <section class="section">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="eyebrow">Portfolio</span>
       <h2>Dự Án Đã Thực Hiện</h2>
       <p>Xem qua một số website chúng tôi đã thiết kế.</p>
     </div>
@@ -137,31 +143,32 @@
 </section>
 
 <!-- What's Included -->
-<section class="section" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section class="section section--tint">
   <div class="container">
-    <div class="section-header">
+    <div class="section-header reveal">
+      <span class="eyebrow">Tiêu chuẩn</span>
       <h2>Tất Cả Các Gói Đều Bao Gồm</h2>
     </div>
     <div class="grid-4">
-      <div style="text-align:center;padding:1.25rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">🎨</div>
-        <h4 style="margin-bottom:.35rem">Thiết Kế Unique</h4>
-        <p class="text-muted" style="font-size:.85rem">Không dùng template có sẵn, thiết kế riêng cho từng khách hàng</p>
+      <div class="include-card reveal reveal-d1">
+        <div class="include-card__icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-4-6 4 1.5-7.5L2 9h7z"/></svg></div>
+        <h4>Thiết Kế Unique</h4>
+        <p>Không dùng template có sẵn, thiết kế riêng cho từng khách hàng</p>
       </div>
-      <div style="text-align:center;padding:1.25rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">📱</div>
-        <h4 style="margin-bottom:.35rem">Mobile-First</h4>
-        <p class="text-muted" style="font-size:.85rem">Tối ưu trên tất cả thiết bị: điện thoại, tablet, máy tính</p>
+      <div class="include-card reveal reveal-d2">
+        <div class="include-card__icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
+        <h4>Mobile-First</h4>
+        <p>Tối ưu trên tất cả thiết bị: điện thoại, tablet, máy tính</p>
       </div>
-      <div style="font-size:2rem;text-align:center;padding:1.25rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">⚡</div>
-        <h4 style="margin-bottom:.35rem">Tốc Độ Cao</h4>
-        <p class="text-muted" style="font-size:.85rem">Tải trang dưới 2 giây, điểm Google PageSpeed 80+ trên mobile</p>
+      <div class="include-card reveal reveal-d3">
+        <div class="include-card__icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <h4>Tốc Độ Cao</h4>
+        <p>Tải trang dưới 2 giây, điểm Google PageSpeed 80+ trên mobile</p>
       </div>
-      <div style="text-align:center;padding:1.25rem">
-        <div style="font-size:2rem;margin-bottom:.5rem">🔒</div>
-        <h4 style="margin-bottom:.35rem">Bảo Mật SSL</h4>
-        <p class="text-muted" style="font-size:.85rem">HTTPS miễn phí, bảo vệ thông tin khách hàng của bạn</p>
+      <div class="include-card reveal reveal-d4">
+        <div class="include-card__icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
+        <h4>Bảo Mật SSL</h4>
+        <p>HTTPS miễn phí, bảo vệ thông tin khách hàng của bạn</p>
       </div>
     </div>
   </div>
@@ -170,8 +177,8 @@
 <!-- FAQ -->
 <section class="section">
   <div class="container container--narrow">
-    <div class="section-header">
-      <span class="section-header__label">❓ FAQ</span>
+    <div class="section-header reveal">
+      <span class="eyebrow">FAQ</span>
       <h2>Câu Hỏi Thường Gặp</h2>
     </div>
     <div id="faqList">
@@ -210,6 +217,7 @@
 <!-- CTA -->
 <section class="cta-banner">
   <div class="container">
+    <div class="cta-banner__term">$ npm run start-your-website</div>
     <h2>Bắt Đầu Dự Án Ngay Hôm Nay</h2>
     <p>Điền form tư vấn và nhận báo giá trong vòng 30 phút. Miễn phí, không ràng buộc.</p>
     <div class="cta-banner__actions">

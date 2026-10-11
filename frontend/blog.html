@@ -9,7 +9,7 @@
   <link rel="canonical" href="/blog">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1872384049448380" crossorigin="anonymous"></script>
 </head>
@@ -33,7 +33,7 @@
 </div>
 
 <!-- Blog Content -->
-<section class="section" style="padding-top:2rem">
+<section class="section" style="padding-top:2.5rem">
   <div class="container">
     <div class="blog-layout">
 
@@ -41,8 +41,9 @@
       <div>
         <!-- Search + Category Filter -->
         <div style="margin-bottom:1.5rem">
-          <div style="display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap">
-            <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." class="form-input" style="flex:1;min-width:200px">
+          <div class="search-box">
+            <svg class="search-box__icon" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+            <input type="text" id="searchInput" placeholder="Tìm kiếm bài viết..." class="form-input">
             <button class="btn btn--blue" id="searchBtn">Tìm</button>
           </div>
           <div class="cat-filter" id="catFilter">
@@ -72,20 +73,20 @@
 
         <!-- Sidebar CTA -->
         <div class="sidebar-cta">
-          <h3>🚀 Cần Website Giá Rẻ?</h3>
+          <h3>Cần Website Giá Rẻ?</h3>
           <p>Từ 500K — bàn giao trong 24–48 giờ, tối ưu SEO sẵn.</p>
           <a href="/contact" class="btn btn--primary btn--full btn--sm">Tư Vấn Miễn Phí</a>
         </div>
 
         <!-- Categories -->
         <div class="sidebar-widget">
-          <h3>📂 Danh Mục</h3>
+          <h3>// Danh Mục</h3>
           <div id="sidebarCats"><div class="spinner"></div></div>
         </div>
 
         <!-- Popular Posts -->
         <div class="sidebar-widget">
-          <h3>🔥 Bài Viết Nổi Bật</h3>
+          <h3>// Bài Viết Nổi Bật</h3>
           <div id="popularPosts"><div class="spinner"></div></div>
         </div>
 
@@ -123,7 +124,7 @@
 20. Cách xây dựng email list từ 0 đến 1000 subscribers
 -->
 
-<section class="cta-banner" style="padding:3rem 0">
+<section class="cta-banner" style="padding:4rem 0">
   <div class="container">
     <h2>Cần Website Để Chạy AdSense & Affiliate?</h2>
     <p>WebPro thiết kế website chuẩn SEO, tích hợp sẵn vị trí đặt quảng cáo và affiliate links.</p>
@@ -172,10 +173,10 @@ fetch('/api/blog/categories')
     // Sidebar categories
     const sidebarEl = document.getElementById('sidebarCats');
     sidebarEl.innerHTML = cats.map(c => `
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:.4rem 0;border-bottom:1px solid var(--border);font-size:.875rem">
-        <a href="#" style="color:var(--text)" data-cat="${c.slug}">${c.icon} ${c.name}</a>
-        <span class="badge" style="background:${c.color}15;color:${c.color}">${c.post_count}</span>
-      </div>`).join('');
+      <a href="#" class="sidebar-cat" data-cat="${c.slug}">
+        <span>${c.icon} ${c.name}</span>
+        <span class="badge">${c.post_count}</span>
+      </a>`).join('');
 
     sidebarEl.querySelectorAll('a[data-cat]').forEach(a => {
       a.addEventListener('click', e => {
@@ -203,7 +204,7 @@ fetch('/api/blog/posts?limit=5')
         <img src="${p.image_url || 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=150&q=60'}" alt="${p.title}" loading="lazy">
         <div>
           <div class="sidebar-post__title"><a href="/blog/${p.slug}">${p.title}</a></div>
-          <div class="sidebar-post__meta">👁 ${formatNumber(p.views)} lượt xem</div>
+          <div class="sidebar-post__meta">${formatNumber(p.views)} lượt xem</div>
         </div>
       </div>`).join('');
   });
@@ -233,8 +234,8 @@ function loadPosts() {
     .then(r => r.json())
     .then(data => {
       if (!data.posts?.length) {
-        grid.innerHTML = `<div style="grid-column:1/-1;text-align:center;padding:3rem;color:var(--muted)">
-          <div style="font-size:3rem;margin-bottom:1rem">📭</div>
+        grid.innerHTML = `<div class="empty-state">
+          <svg width="44" height="44" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M8.5 11h5"/></svg>
           <p>Không tìm thấy bài viết nào.</p>
         </div>`;
         info.textContent = '';
